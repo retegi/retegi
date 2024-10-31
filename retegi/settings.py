@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-m#*6=iewe5u5@xat%am#d!khy2ho58%k@ndeu0u7vg#!tf&_b0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.retegi.eus','*']
 
 
 # Application definition
