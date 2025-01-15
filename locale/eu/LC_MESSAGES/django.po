@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 14:29+0100\n"
-"PO-Revision-Date: 2025-01-15 12:45+0100\n"
+"POT-Creation-Date: 2025-01-15 14:39+0100\n"
+"PO-Revision-Date: 2025-01-15 14:40+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -24,6 +24,11 @@ msgstr ""
 msgid "About"
 msgstr "Ni"
 
+#: templates/home/about.html:29 templates/home/cookies_policy.html:29
+#: templates/home/legal_policies.html:29 templates/home/privacy_policy.html:29
+msgid "Page under construction"
+msgstr "Orria eraikitzen ari da"
+
 #: templates/home/base.html:87 templates/home/base.html:155
 msgid "Home"
 msgstr "Hasiera"
@@ -31,7 +36,7 @@ msgstr "Hasiera"
 #: templates/home/base.html:89 templates/home/base.html:161
 #: templates/home/contact.html:89
 msgid "Contact"
-msgstr ""
+msgstr "Kontaktatu"
 
 #: templates/home/base.html:118
 msgid "Search..."
@@ -43,7 +48,7 @@ msgstr "Argitaratu"
 
 #: templates/home/base.html:125
 msgid "log out"
-msgstr ""
+msgstr "Irten"
 
 #: templates/home/base.html:129
 msgid "Login"
@@ -55,47 +60,47 @@ msgstr "Erregistratu"
 
 #: templates/home/contact.html:102
 msgid "First name"
-msgstr ""
+msgstr "Izena"
 
 #: templates/home/contact.html:108
 msgid "Last name"
-msgstr ""
+msgstr "Abizena"
 
 #: templates/home/contact.html:116
 msgid "Company name"
-msgstr ""
+msgstr "Enpresa"
 
 #: templates/home/contact.html:122
 msgid "Address"
-msgstr ""
+msgstr "Helbidea"
 
 #: templates/home/contact.html:128
 msgid "Email"
-msgstr ""
+msgstr "Emaila"
 
 #: templates/home/contact.html:134
 msgid "Phone"
-msgstr ""
+msgstr "Telefonoa"
 
 #: templates/home/contact.html:140
 msgid "Additional information"
-msgstr ""
+msgstr "Informazio gehigarria"
 
 #: templates/home/contact.html:156
 msgid "Send"
-msgstr ""
+msgstr "Bidali"
 
 #: templates/home/cookies_policy.html:22
 msgid "Cookies Policy"
-msgstr ""
+msgstr "Cookien politika"
 
 #: templates/home/index.html:180
 msgid "Month"
-msgstr ""
+msgstr "Hilabetea"
 
 #: templates/home/index.html:190
 msgid "Technologies"
-msgstr ""
+msgstr "Teknologiak"
 
 #: templates/home/index.html:228
 msgid "¿Creamos algo juntos? ;)"
@@ -103,8 +108,8 @@ msgstr "Elkarrekin zerbait sortuko dugu? ;)"
 
 #: templates/home/legal_policies.html:22
 msgid "Legal Policy"
-msgstr ""
+msgstr "Politika Juridikoa"
 
 #: templates/home/privacy_policy.html:22
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Pribatutasun Politika"
