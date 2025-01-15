@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-14 17:32+0100\n"
-"PO-Revision-Date: 2025-01-14 17:49+0100\n"
+"POT-Creation-Date: 2025-01-15 12:47+0100\n"
+"PO-Revision-Date: 2025-01-15 12:47+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,26 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: templates/home/base.html:61
+#: templates/home/base.html:62
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/home/base.html:62
+#: templates/home/base.html:63
 msgid "About"
 msgstr "Sobre"
 
-#: templates/home/base.html:72
+#: templates/home/base.html:92
 msgid "Search..."
 msgstr "Buscar..."
 
-#: templates/home/base.html:77
+#: templates/home/base.html:97
 msgid "publish"
 msgstr "Publicar"
 
-#: templates/home/base.html:82
+#: templates/home/base.html:99
+msgid "log out"
+msgstr "Salir"
+
+#: templates/home/base.html:103
 msgid "Login"
 msgstr "Iniciar"
 
-#: templates/home/base.html:83
+#: templates/home/base.html:104
 msgid "Sign-up"
 msgstr "Registrarse"
+
+#: templates/home/index.html:228
+msgid "¿Creamos algo juntos? ;)"
+msgstr "¿Creamos algo juntos? ;)"

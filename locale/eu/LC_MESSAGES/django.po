@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-14 17:31+0100\n"
-"PO-Revision-Date: 2025-01-14 17:36+0100\n"
+"POT-Creation-Date: 2025-01-15 12:47+0100\n"
+"PO-Revision-Date: 2025-01-15 12:45+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,26 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: templates/home/base.html:61
+#: templates/home/base.html:62
 msgid "Home"
 msgstr "Hasiera"
 
-#: templates/home/base.html:62
+#: templates/home/base.html:63
 msgid "About"
 msgstr "Ni"
 
-#: templates/home/base.html:72
+#: templates/home/base.html:92
 msgid "Search..."
 msgstr "Bilatu"
 
-#: templates/home/base.html:77
+#: templates/home/base.html:97
 msgid "publish"
 msgstr "Argitaratu"
 
-#: templates/home/base.html:82
+#: templates/home/base.html:99
+msgid "log out"
+msgstr ""
+
+#: templates/home/base.html:103
 msgid "Login"
 msgstr "Saioa hasi"
 
-#: templates/home/base.html:83
+#: templates/home/base.html:104
 msgid "Sign-up"
 msgstr "Erregistratu"
+
+#: templates/home/index.html:228
+msgid "¿Creamos algo juntos? ;)"
+msgstr "Elkarrekin zerbait sortuko dugu? ;)"

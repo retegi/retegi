@@ -9,6 +9,9 @@ from django.views.generic import (
 from .models import Post, Technology, Comment, Hacked
 from django.urls import reverse_lazy
 from .forms import PostForm, CommentForm
+from django.db.models.functions import TruncMonth
+from django.db.models import Count
+from django.utils.dateformat import format
 
 
 class HomePageView(ListView):
@@ -22,6 +25,25 @@ class HomePageView(ListView):
         context["post_list"] = Post.objects.all()
         context["technology_list"] = Technology.objects.all()
         context["hacked_victims"] = Hacked.objects.all()
+        posts_by_month = (
+            Post.objects.annotate(month=TruncMonth('date_time'))  # Trunca la fecha por mes
+            .values('month')  # Agrupa por mes
+            .annotate(count=Count('id'))  # Cuenta las publicaciones en ese mes
+            .order_by('-month')  # Ordena por mes descendente
+        )
+
+        # Crear una lista de meses con publicaciones
+        month_names = {
+            1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
+            7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
+        }
+        post_by_month_list = [
+            f"{month_names[post['month'].month]} {post['month'].year}"
+            for post in posts_by_month
+        ]
+
+        # Añadir la lista al contexto
+        context["post_by_month"] = post_by_month_list
         return context
     
 class ArticleDetailView(DetailView):
@@ -77,3 +99,22 @@ def add_comment(request, post_id):
         form = CommentForm()
     
     return render(request, 'comments/add_comment.html', {'form': form, 'post': post})
+
+
+
+class ContactView(TemplateView):
+    template_name = 'home/contact.html'
+
+class AboutView(TemplateView):
+    template_name = 'home/about.html'
+
+class CookiesPolicyView(TemplateView):
+    template_name = 'home/cookies_policy.html'
+
+class ProvacyPolicyView(TemplateView):
+    template_name = 'home/privacy_policy.html'
+
+class LegalPoliciesView(TemplateView):
+    template_name = 'home/legal_policies.html'
+
+  

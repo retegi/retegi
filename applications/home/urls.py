@@ -24,6 +24,28 @@ urlpatterns = [
         name='article_update',
     ),
     path('tinymce/', include('tinymce.urls')),
+
+    path('contact/',
+         views.ContactView.as_view(),
+         name='contact',
+    ),
+    path('about/',
+         views.AboutView.as_view(),
+         name='about',
+    ),
+
+    path('cookies_policy/',
+         views.CookiesPolicyView.as_view(),
+         name='cookies_policy',
+    ),
+    path('privacy_policy/',
+         views.ProvacyPolicyView.as_view(),
+         name='privacy_policy',
+    ),
+    path('legal_policies/',
+         views.LegalPoliciesView.as_view(),
+         name='legal_policies',
+    ),
 ]
 
 if settings.DEBUG:

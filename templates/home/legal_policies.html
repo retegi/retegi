@@ -1,0 +1,35 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% load i18n %}
+
+
+{% block head %}
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row text-center p-5 bg-white">
+            <h1>{% trans 'Legal Policy' %}</h1>
+        </div>
+    </div>
+    <div class="container bg-white">
+        <div class="row">
+        <div class="col-2"></div>
+        <div class="col-lg-8 col-md-12 bg-white p-5">
+            <h5>En construcción...</h5>
+        </div>
+        <div class="col-2"></div>
+          
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% load i18n %}
+
+
+{% block head %}
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+.word {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0.8;
+  animation: moveWord linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveWord {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(var(--x-end), var(--y-end)) scale(var(--scale-end));
+    opacity: 0;
+  }
+}
+
+        .radar-circle {
+            animation: expand 2s linear infinite;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes expand {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+
+
+   
+    .fullscreen-btn {
+        position: absolute;
+        top: 6vh; /* Distancia desde la parte superior del contenedor */
+        right: 51vw; /* Distancia desde la parte derecha del contenedor */
+        z-index: 1000; /* Para que quede encima del mapa */
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        width:auto;
+    }
+
+    .fullscreen-btn:hover {
+        background: #f0f0f0;
+    }
+
+    /* Pantalla completa para el mapa */
+    .fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+    }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row text-center p-5 bg-white">
+            <h1>{% trans 'Contact' %}</h1>
+        </div>
+    </div>
+    <div class="container bg-white">
+        <div class="row">
+        <div class="col-2"></div>
+        <div class="col-lg-8 col-md-12 bg-white p-5">
+              <form>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-4">
+                    <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                        <input type="text" id="form6Example1" class="form-control" />
+                        <label class="form-label" for="form6Example1">{% trans 'First name' %}</label>
+                    </div>
+                    </div>
+                    <div class="col">
+                    <div data-mdb-input-init class="form-outline">
+                        <input type="text" id="form6Example2" class="form-control" />
+                        <label class="form-label" for="form6Example2">{% trans 'Last name' %}</label>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Text input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="form6Example3" class="form-control" />
+                    <label class="form-label" for="form6Example3">{% trans 'Company name' %}</label>
+                </div>
+
+                <!-- Text input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="form6Example4" class="form-control" />
+                    <label class="form-label" for="form6Example4">{% trans 'Address' %}</label>
+                </div>
+
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="form6Example5" class="form-control" />
+                    <label class="form-label" for="form6Example5">{% trans 'Email' %}</label>
+                </div>
+
+                <!-- Number input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="number" id="form6Example6" class="form-control" />
+                    <label class="form-label" for="form6Example6">{% trans 'Phone' %}</label>
+                </div>
+
+                <!-- Message input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+                    <label class="form-label" for="form7Example7">{% trans 'Additional information' %}</label>
+                </div>
+
+                <!-- Checkbox -->
+                <div class="form-check d-flex justify-content-center mb-4">
+                    <input
+                    class="form-check-input me-2 bg-dark"
+                    type="checkbox"
+                    value=""
+                    id="form6Example8"
+                    checked
+                    />
+                    <label class="form-check-label" for="form6Example8"> Create an account? </label>
+                </div>
+                <div class="w-100">
+                <!-- Submit button -->
+                <button data-mdb-ripple-init type="button" class="btn btn-dark btn-block mb-4 w-100 text-center">{% trans 'Send' %}</button>
+                </div>
+                </form>
+        </div>
+        <div class="col-2"></div>
+          
+        </div>
+    </div>
+{% endblock %}

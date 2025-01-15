@@ -40,6 +40,31 @@
     opacity: 0;
   }
 }
+
+
+input::placeholder {
+    color: #aaa; /* Cambia a un color claro para contraste */
+    opacity: 1; /* Asegúrate de que el placeholder sea visible */
+}
+
+input:focus::placeholder {
+    color: #bbb; /* Cambia el color del placeholder al enfocar el campo, si lo deseas */
+}
+input[type="search"] {
+    background-color: #222; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    border: 0.1px solid #555; /* Borde inicial */
+    border-radius: 5px; /* Bordes redondeados */
+    
+}
+
+input[type="search"]:focus {
+    intline: 0.1px solid gray; /* Contorno verde al enfocar */
+    intline-offset: 0.1px;
+    box-shadow: 0 0 5px gray; /* Efecto de brillo */
+    border-color: gray; /* Cambia el color del borde */
+}
+
     </style>
     {% block head %}
     {% endblock %}
@@ -53,59 +78,66 @@
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
-  <a href="{% url 'home_app:home' %}" class="nav-link px-2 text-secondary text-white text-center">
-    <b class="inter-familia" id="animated-text" style="font-family: 'Courier New', monospace;">Iñaki Retegi</b>
-  </a>
-</li> </ul>
+              <a href="{% url 'home_app:home' %}" class="nav-link px-2 text-secondary text-white text-center">
+                <b class="inter-familia" id="animated-text" style="font-family: 'Courier New', monospace;">Iñaki Retegi</b>
+              </a>
+            </li> </ul>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               
               <li><a href="{% url 'home_app:home' %}" class="nav-link px-2 text-white">{% trans "Home" %}</a></li>
               <li><a href="#" class="nav-link px-2 text-white">{% trans "About" %}</a></li>
-            
+              <li><a href="{% url 'home_app:contact' %}" class="nav-link px-2 text-white">{% trans "Contact" %}</a></li>
+            </ul>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-           {% load i18n %}
-{% get_current_language as CURRENT_LANGUAGE %}
-{% get_available_languages as AVAILABLE_LANGUAGES %}
-{% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+              {% load i18n %}
+              {% get_current_language as CURRENT_LANGUAGE %}
+              {% get_available_languages as AVAILABLE_LANGUAGES %}
+              {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
 
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" 
-       style="color:white;" 
-       href="#" data-bs-toggle="dropdown" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
-  <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
-</svg>
-    </a>
-    <ul class="dropdown-menu" style="z-index:500;">
-        {% for language in languages %}
-        <li>
-            <a class="dropdown-item" style="text-transform:uppercase;" 
-               href="/{{ language.code }}/{{ request.get_full_path|slice:'4:' }}">
-                {{ language.code }}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</li>
-    
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-              <input type="search" class="form-control form-control-dark text-bg-dark text-light" placeholder="{% trans "Search..." %}" aria-label="Search">
-            </form>
-    
-            {% if user.is_authenticated %}
-            <div class="text-end">
-             <a href="{% url 'home_app:article_create' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "publish" %}</button></a>
-              <a href="#"><button type="button" class="btn btn-outline-light me-2">{{ user.username }}</button></a>
-            </div>
-            {% else %}
-            <div class="text-end">
-              <a href="{% url 'account_login' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "Login" %}</button></a>
-              <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-light">{% trans "Sign-up" %}</button></a>
-            </div>
-            {% endif %}
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" 
+                    style="color:white;" 
+                    href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
+                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+              </svg>
+                  </a>
+                  <ul class="dropdown-menu" style="z-index:500;">
+                      {% for language in languages %}
+                      <li>
+                          <a class="dropdown-item" style="text-transform:uppercase;" 
+                            href="/{{ language.code }}/{{ request.get_full_path|slice:'4:' }}">
+                              {{ language.code }}
+                          </a>
+                      </li>
+                      {% endfor %}
+                  </ul>
+              </li>
+              <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control text-light bg-dark" placeholder="{% trans 'Search...' %}" aria-label="Search" autofocus>
+              </form>
+      
+              {% if user.is_authenticated %}
+              <div class="text-end">
+              <a href="{% url 'home_app:article_create' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "publish" %}</button></a>
+                <a href="#"><button type="button" class="btn btn-outline-light me-2">{{ user.username }}</button></a>
+                <a href="{% url 'account_logout' %}"><button type="button" class="btn btn-outline-light me-2">{% trans 'log out' %}</button></a>
+              </div>
+              {% else %}
+              <div class="text-end">
+                <a href="{% url 'account_login' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "Login" %}</button></a>
+                <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-light">{% trans "Sign-up" %}</button></a>
+              </div>
+              {% endif %}
+            </ul>
           </div>
         </div>
       </header>
+
+
+
+
 
       {% block content %}
       {% endblock %}
@@ -113,18 +145,54 @@
 
      
     
+<div class="bg-dark">
+    <div class="container bg-dark">
+        <div class="row">
+            <!-- Primera columna -->
+            <div class="col-lg-4 col-md-12">
+                <ul class="list-unstyled">
+                    <li class="text-light footer-lista">
+                        <a href="{% url 'home_app:home' %}" class="text-light">{% trans 'Home' %}</a>
+                    </li>
+                    <li class="text-light footer-lista">
+                        <a href="{% url 'home_app:about' %}" class="text-light">{% trans 'About' %}</a>
+                    </li>
+                    <li class="text-light footer-lista">
+                        <a href="{% url 'home_app:contact' %}" class="text-light">{% trans 'Contact' %}</a>
+                    </li>
+                </ul>
+            </div>
 
-      <div class="container-fluid bg-dark p-3">
-        <div class="col">
-            <ul class="">
-                <li class="text-light footer-lista">Iñaki Retegi</li>
-                <li class="text-light footer-lista">Inicio</li>
-                <li class="text-light footer-lista">Sobre mi</li>
-                <li class="text-light footer-lista">info@retegi.eus</li>
-                <li class="text-light footer-lista">www.retegi.eus</li>
-              </ul>
+            <!-- Segunda columna -->
+            <div class="col-lg-4 col-md-12">
+                <ul class="list-unstyled">
+                    <li class="text-light footer-lista">Iñaki Retegi</li>
+                    <li class="text-light footer-lista">
+                        <a href="https://github.com/yourprofile" class="text-light">Github</a>
+                    </li>
+                    <li class="text-light footer-lista">info@retegi.eus</li>
+                    <li class="text-light footer-lista">www.retegi.eus</li>
+                </ul>
+            </div>
+
+            <!-- Tercera columna -->
+            <div class="col-lg-4 col-md-12">
+                <ul class="list-unstyled">
+                    <li class="text-light footer-lista">
+                        <a href="{% url 'home_app:cookies_policy' %}" class="text-light">Cookies Policy</a>
+                    </li>
+                    <li class="text-light footer-lista">
+                        <a href="{% url 'home_app:privacy_policy' %}" class="text-light">Privacy Policy</a>
+                    </li>
+                    <li class="text-light footer-lista">
+                        <a href="{% url 'home_app:legal_policies' %}" class="text-light">Legal Policies</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </div>
+</div>
+
     
 
 
@@ -247,6 +315,16 @@ setInterval(createWord, 500);
     randomizeText(); // Inicia la animación
   });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.querySelector('input[type="search"]');
+        if (searchInput) {
+            searchInput.focus();
+        }
+    });
+</script>
+
 
   </body>
 </html>
