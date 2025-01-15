@@ -118,14 +118,16 @@ input[type="search"]:focus {
                 <input type="search" class="form-control text-light bg-dark" placeholder="{% trans 'Search...' %}" aria-label="Search" autofocus>
               </form>
       
-              {% if user.is_authenticated %}
+              
               <div class="text-end">
+              {% if user.is_authenticated and user.is_staff %}
               <a href="{% url 'home_app:article_create' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "publish" %}</button></a>
+              {% endif %}
+              {% if user.is_authenticated %}
                 <a href="#"><button type="button" class="btn btn-outline-light me-2">{{ user.username }}</button></a>
                 <a href="{% url 'account_logout' %}"><button type="button" class="btn btn-outline-light me-2">{% trans 'log out' %}</button></a>
               </div>
               {% else %}
-              <div class="text-end">
                 <a href="{% url 'account_login' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "Login" %}</button></a>
                 <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-light">{% trans "Sign-up" %}</button></a>
               </div>

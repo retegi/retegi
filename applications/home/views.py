@@ -12,7 +12,7 @@ from .forms import PostForm, CommentForm
 from django.db.models.functions import TruncMonth
 from django.db.models import Count
 from django.utils.dateformat import format
-
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 class HomePageView(ListView):
     template_name = "home/index.html"
@@ -72,17 +72,23 @@ class ArticleDetailView(DetailView):
         return self.render_to_response(context)
 
 
-class ArticleCreateView(CreateView):
+class ArticleCreateView(UserPassesTestMixin, CreateView):
     model = Post  # Especifica el modelo relacionado
     form_class = PostForm  # Usa form_class para asociar el formulario personalizado
     template_name = 'home/article_create.html'  # Especifica la plantilla para la vista
     success_url = reverse_lazy('home_app:home')
 
-class ArticleUpdateView(UpdateView):
+    def test_func(self):
+        return self.request.user.is_staff
+
+class ArticleUpdateView(UserPassesTestMixin, UpdateView):
     model = Post  # Especifica el modelo relacionado
     form_class = PostForm  # Usa form_class para asociar el formulario personalizado
     template_name = 'home/article_create.html'  # Especifica la plantilla para la vista
-    success_url = reverse_lazy('home_app:home') 
+    success_url = reverse_lazy('home_app:home')
+    
+    def test_func(self):
+        return self.request.user.is_staff
 
 def add_comment(request, post_id):
     post = Post.objects.get(id=post_id)
@@ -99,6 +105,7 @@ def add_comment(request, post_id):
         form = CommentForm()
     
     return render(request, 'comments/add_comment.html', {'form': form, 'post': post})
+
 
 
 

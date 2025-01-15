@@ -37,7 +37,7 @@
 {% block content %}
     <div class="container text-center elemento-a-ocultar bg-white">
         <div class="row">
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user.is_staff %}
         <div class="col-12 text-end">
         <a href="{% url 'home_app:article_update' article.id %}"><button class="btn bg-secondary mt-3 text-end text-white">Modificar</button></a>
         </div>
