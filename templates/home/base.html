@@ -1,0 +1,252 @@
+{% load static %}
+{% load i18n %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iñaki Retegi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/YOUR_API_KEY/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+      <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+
+
+
+
+.word {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0.8;
+  animation: moveWord linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveWord {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(var(--x-end), var(--y-end)) scale(var(--scale-end));
+    opacity: 0;
+  }
+}
+    </style>
+    {% block head %}
+    {% endblock %}
+</head>
+  <body style="background-image: url()">
+    <header class="p-1">
+        <div class="container bg-dark p-2 border">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li>
+  <a href="{% url 'home_app:home' %}" class="nav-link px-2 text-secondary text-white text-center">
+    <b class="inter-familia" id="animated-text" style="font-family: 'Courier New', monospace;">Iñaki Retegi</b>
+  </a>
+</li> </ul>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              
+              <li><a href="{% url 'home_app:home' %}" class="nav-link px-2 text-white">{% trans "Home" %}</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">{% trans "About" %}</a></li>
+            
+
+           {% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+{% get_available_languages as AVAILABLE_LANGUAGES %}
+{% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" 
+       style="color:white;" 
+       href="#" data-bs-toggle="dropdown" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
+  <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+</svg>
+    </a>
+    <ul class="dropdown-menu" style="z-index:500;">
+        {% for language in languages %}
+        <li>
+            <a class="dropdown-item" style="text-transform:uppercase;" 
+               href="/{{ language.code }}/{{ request.get_full_path|slice:'4:' }}">
+                {{ language.code }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</li>
+    
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control form-control-dark text-bg-dark text-light" placeholder="{% trans "Search..." %}" aria-label="Search">
+            </form>
+    
+            {% if user.is_authenticated %}
+            <div class="text-end">
+             <a href="{% url 'home_app:article_create' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "publish" %}</button></a>
+              <a href="#"><button type="button" class="btn btn-outline-light me-2">{{ user.username }}</button></a>
+            </div>
+            {% else %}
+            <div class="text-end">
+              <a href="{% url 'account_login' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "Login" %}</button></a>
+              <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-light">{% trans "Sign-up" %}</button></a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </header>
+
+      {% block content %}
+      {% endblock %}
+
+
+     
+    
+
+      <div class="container-fluid bg-dark p-3">
+        <div class="col">
+            <ul class="">
+                <li class="text-light footer-lista">Iñaki Retegi</li>
+                <li class="text-light footer-lista">Inicio</li>
+                <li class="text-light footer-lista">Sobre mi</li>
+                <li class="text-light footer-lista">info@retegi.eus</li>
+                <li class="text-light footer-lista">www.retegi.eus</li>
+              </ul>
+        </div>
+      </div>
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const textElement = document.getElementById("text");
+        const fullText = "¿Creamos algo juntos? ;)";
+        let index = 0;
+        let deleting = false;
+
+        function typeEffect() {
+            if (!deleting) {
+                // Escribir
+                textElement.textContent = fullText.slice(0, index);
+                index++;
+                if (index > fullText.length) {
+                    deleting = true;
+                    setTimeout(typeEffect, 1000); // Pausa antes de borrar
+                    return;
+                }
+            } else {
+                // Borrar
+                textElement.textContent = fullText.slice(0, index);
+                index--;
+                if (index < 0) {
+                    deleting = false;
+                    setTimeout(typeEffect, 500); // Pausa antes de escribir de nuevo
+                    return;
+                }
+            }
+            setTimeout(typeEffect, 150); // Velocidad de escribir/borrar
+        }
+
+        typeEffect();
+    </script>
+
+  <script>
+const words = [
+    {% for technology in technology_list %}
+        "{{ technology.name }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+];
+const container = document.getElementById("word-container");
+
+let maxElements = 50; // Límite máximo de elementos en movimiento
+let currentElements = 0; // Contador de elementos actuales
+
+function createWord() {
+  // Verificar si ya hay demasiados elementos
+  if (currentElements >= maxElements) {
+    return;
+  }
+
+  const wordElement = document.createElement("div");
+  wordElement.textContent = words[Math.floor(Math.random() * words.length)];
+  wordElement.className = "word";
+
+  // Posiciones iniciales y finales
+  const startX = Math.random() * window.innerWidth;
+  const startY = Math.random() * window.innerHeight;
+  const endX = Math.random() * 200 - 100 + "vw";
+  const endY = Math.random() * 200 - 100 + "vh";
+  const scaleStart = Math.random() * 1.2 + 0.8; // Escala inicial
+  const scaleEnd = Math.random() * 2 + 1; // Escala final
+
+  wordElement.style.left = `${startX}px`;
+  wordElement.style.top = `${startY}px`;
+  wordElement.style.fontSize = `${Math.random() * 20 + 15}px`;
+  wordElement.style.setProperty("--x-end", endX);
+  wordElement.style.setProperty("--y-end", endY);
+  wordElement.style.setProperty("--scale-end", scaleEnd);
+
+  // Animación más lenta
+  wordElement.style.animationDuration = `${Math.random() * 10 + 8}s`;
+
+  container.appendChild(wordElement);
+  currentElements++; // Incrementar el contador
+
+  // Remover elemento después de la animación
+  wordElement.addEventListener("animationend", () => {
+    container.removeChild(wordElement);
+    currentElements--; // Decrementar el contador
+  });
+}
+
+// Generar palabras continuamente
+setInterval(createWord, 500);
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const targetText = "Iñaki Retegi ;)"; // El texto final deseado
+    const element = document.getElementById("animated-text");
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Solo caracteres uniformes
+    const duration = 5000; // Duración total de la animación en ms
+    const interval = 50; // Intervalo de actualización en ms
+    const steps = duration / interval; // Número total de pasos
+    let iterations = 0; // Contador de iteraciones
+
+    function randomizeText() {
+      const randomizedText = targetText.split("").map((char, i) => {
+        if (char === "\n") return "<br>"; // Manejo del salto de línea
+        if (iterations > (steps / targetText.length) * i) return char; // Fija la letra si se cumple el tiempo
+        return characters[Math.floor(Math.random() * characters.length)]; // Letra aleatoria
+      });
+
+      element.innerHTML = randomizedText.join("");
+
+      if (iterations < steps) {
+        iterations++;
+        setTimeout(randomizeText, interval); // Llama a la función en cada intervalo
+      } else {
+        setTimeout(() => {
+          iterations = 0; // Reinicia las iteraciones
+          randomizeText(); // Vuelve a iniciar el efecto
+        }, 1000); // Pausa antes de repetir
+      }
+    }
+
+    randomizeText(); // Inicia la animación
+  });
+</script>
+
+  </body>
+</html>

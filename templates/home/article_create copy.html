@@ -1,0 +1,175 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iñaki Retegi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/YOUR_API_KEY/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/2j2ya02wdq6mdhmgizz8hdn82mtkk38ahs0gl3rwdw6dnyws/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+</head>
+  <body>
+    <header class="p-1">
+        <div class="container bg-dark p-2 border">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{% url 'home_app:home' %}" class="nav-link px-2 text-secondary text-white text-center"><b class="inter-familia">Iñaki<br>Retegi</b></a></li>
+            </ul>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              
+              <li><a href="{% url 'home_app:home' %}" class="nav-link px-2 text-white">Inicio</a></li>
+              <li><a href="#" class="nav-link px-2 text-white">Sobre mi</a></li>
+            </ul>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              
+                <li><a href="#" class="nav-link px-2 text-white">EUS</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">ES</a></li>
+              </ul>
+    
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control form-control-dark text-bg-dark text-light" placeholder="Search..." aria-label="Search">
+            </form>
+    
+            {% if user.is_authenticated %}
+            <div class="text-end">
+             <a href="{% url 'home_app:article_create' %}"><button type="button" class="btn btn-outline-light me-2">Publicar</button></a>
+              <a href="#"><button type="button" class="btn btn-outline-light me-2">{{ user.username }}</button></a>
+            </div>
+            {% else %}
+            <div class="text-end">
+              <a href="{% url 'account_login' %}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+              <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-light">Sign-up</button></a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </header>
+     
+      
+      
+
+    <div class="container text-center elemento-a-ocultar bg-light">
+
+        <div class="row">         
+            <div class="col-12">
+             <h1>Crear un nuevo Post</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-dark w-100 m-3" type="submit">Guardar</button>
+    </form>
+
+            </div>
+            
+                
+                
+
+
+                
+           
+        </div>
+    </div>
+
+
+      <!--Footer-->
+      <div class="container-fluid bg-dark p-3 mt-5">
+        <div class="col">
+            <ul class="">
+                <li class="text-light footer-lista">Iñaki Retegi</li>
+                <li class="text-light footer-lista">Inicio</li>
+                <li class="text-light footer-lista">Sobre mi</li>
+                <li class="text-light footer-lista">info@retegi.eus</li>
+                <li class="text-light footer-lista">www.retegi.eus</li>
+              </ul>
+        </div>
+      </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const textElement = document.getElementById("text");
+        const fullText = "hacking... ;)";
+        let index = 0;
+        let deleting = false;
+
+        function typeEffect() {
+            if (!deleting) {
+                // Escribir
+                textElement.textContent = fullText.slice(0, index);
+                index++;
+                if (index > fullText.length) {
+                    deleting = true;
+                    setTimeout(typeEffect, 1000); // Pausa antes de borrar
+                    return;
+                }
+            } else {
+                // Borrar
+                textElement.textContent = fullText.slice(0, index);
+                index--;
+                if (index < 0) {
+                    deleting = false;
+                    setTimeout(typeEffect, 500); // Pausa antes de escribir de nuevo
+                    return;
+                }
+            }
+            setTimeout(typeEffect, 150); // Velocidad de escribir/borrar
+        }
+
+        typeEffect();
+    </script>
+
+
+<script>
+  tinymce.init({
+    selector: '#id_content',
+    plugins: 'advlist autolink link image lists charmap print preview anchor searchreplace visualblocks code fullscreen insertdatetime media table emoticons paste help wordcount',
+    toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | table | emoticons | code preview fullscreen',
+    menubar: 'file edit view insert format tools table help',
+    height: 1200,
+    content_css: '//www.tiny.cloud/css/codepen.min.css',  // Añade estilos si deseas un diseño diferente
+    codesample_languages: [
+        {text: 'HTML/XML', value: 'markup'},
+        {text: 'JavaScript', value: 'javascript'},
+        {text: 'Python', value: 'python'},
+        {text: 'CSS', value: 'css'},
+        {text: 'PHP', value: 'php'}
+    ],
+    branding: false,
+    contextmenu: 'link image table',  // Menú contextual al hacer clic derecho
+    content_style: `
+    code {
+      background-color: #f5f5f5; /* Fondo gris claro */
+      color: #212529; /* Texto negro */
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+  `,
+  });
+</script>
+
+  <script>
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#id_content',  // Selector basado en el ID del campo
+        plugins: 'code',
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | code',
+    });
+</script>
+  </script>
+  </body>
+</html>

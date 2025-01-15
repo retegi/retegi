@@ -1,0 +1,182 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block head %}
+<style>
+    pre {
+        position: relative; /* Necesario para que el botón se posicione relativo a este contenedor */
+        overflow-x: auto; /* Permite desplazamiento horizontal si el contenido es largo */
+        padding: 1rem; /* Espaciado interno */
+        border: 1px solid #ddd; /* Estilo del borde */
+        border-radius: 5px; /* Bordes redondeados */
+        background-color: #f8f9fa; /* Fondo claro */
+    }
+
+    .copy-code-btn {
+        position: absolute; /* Posiciona el botón relativo al contenedor <pre> */
+        top: 5px; /* Ajusta el margen superior */
+        right: 5px; /* Ajusta el margen derecho */
+        background-color: #6c757d; /* Color de fondo */
+        color: #ffffff; /* Color del texto */
+        border: none;
+        padding: 5px 10px; /* Espaciado interno */
+        border-radius: 5px; /* Bordes redondeados */
+        cursor: pointer;
+        z-index: 10; /* Asegura que el botón esté por encima del contenido */
+        font-size: 0.875rem; /* Tamaño de texto más pequeño */
+    }
+
+    .copy-code-btn:hover {
+        background-color: #5a6268; /* Color al pasar el mouse */
+    }
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="container text-center elemento-a-ocultar bg-white">
+        <div class="row">
+        {% if user.is_authenticated %}
+        <div class="col-12 text-end">
+        <a href="{% url 'home_app:article_update' article.id %}"><button class="btn bg-secondary mt-3 text-end text-white">Modificar</button></a>
+        </div>
+        {% endif %}    
+            <!--fin de los anuncios de el apartadoi de articulo completo-->
+            <div class="col-3 txt-right pt-5" style="border-right: 1px solid #ccc">
+              <p class="text-right w-100" style="color:gray; text-align:right;">
+                                {{ article.date_time|date:"Y/m/d" }} | {{ article.author }}</p>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Buscar</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </div>
+            <div class="col-9 pt-5">
+
+            <div class="container mt-4">
+              <div class=" text-start article-content p-2">
+                  <h1 class="display-3" style="text-align: left;"><b>{{ article.title }}</b></h1>
+              </div>
+
+              <div class="">
+                  <!-- Imagen alineada a la izquierda -->
+                  <img src="{{ article.image.url }}" alt="Descripción de la imagen" class="w-50" style="float:left; margin-right:20px;">
+                  <!-- Texto fluido -->
+                  <p style="" class="">{{ article.content|safe }}</p>
+              </div>
+              
+            </div>
+
+                
+                <!--<div class="container mt-5">
+                  <h2 class="bg-dark text-white w-25 p-2">Comentarios</h2>
+                  <div class="row">
+                    <div class="col-1">
+                      <div class="w-100" style="background-color:gray;">sdgf</div>
+                      <img src="">
+                    </div>
+                    <div class="col-11">
+                        <div class="w-25 text-white bg-dark p-1" style="float:left;">#001</div><br><br><label class="ml-3" style="color:gray;"> Juan Garcia </label><label style=""> 2 de Noviembre de 2024</label><br>
+                        <p class="" style="text-align:left;">
+                          {% lorem 1 %}
+                        </p>
+                    </div>
+                  </div>
+                </div>--> 
+
+
+                <div class="mt-5 text-left">
+                <div class="bg-dark m-0">
+                <h3 class="text-white m-0">Comentarios</h3>
+                </div>
+
+                <div class="row">
+                {% for comment in comments %}
+                <div class="col-2 p-3 bg-light">
+                  <b>{{ comment.user }}</b><br>{{ comment.date_time|date:"M d, Y"}}
+                  </div>
+                  <div class="col-10 p-3 text-left">
+                  <p class="" style="text-align:left"><b>{{ comment.content2 }}</b></p>
+                  </div>
+                
+                {% endfor %}
+                </div>
+             
+                
+                   <form method="POST" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.content2.label_tag }}
+                {{ form.content2 }}
+                {% if form.content2.errors %}
+                    <div class="text-danger">
+                        {{ form.content2.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn bg-dark text-light m-3">Enviar comentario</button>
+        </form>
+                </div> 
+               
+               
+             
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+
+    <script>
+    tinymce.init({
+      selector: '#editor',
+      plugins: 'codesample',
+      toolbar: 'codesample',
+      menubar: false,     
+      codesample_languages: [
+        {text: 'HTML/XML', value: 'markup'},
+        {text: 'JavaScript', value: 'javascript'},
+        {text: 'Python', value: 'python'},
+        {text: 'CSS', value: 'css'},
+        {text: 'PHP', value: 'php'},
+      ],
+      height: 400,
+    });
+  </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const codeBlocks = document.querySelectorAll('pre');
+
+    codeBlocks.forEach((block) => {
+        // Crea el botón "Copiar"
+        const button = document.createElement('button');
+        button.className = 'copy-code-btn';
+        button.textContent = 'Copiar';
+
+        // Añade el botón dentro del bloque <pre>
+        block.appendChild(button);
+
+        // Ajusta el estilo del contenedor <pre> para soportar posición relativa
+        block.style.position = 'relative';
+
+        // Evento para copiar contenido
+        button.addEventListener('click', () => {
+            const code = block.querySelector('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                button.textContent = '¡Copiado!';
+                setTimeout(() => (button.textContent = 'Copiar'), 2000);
+            });
+        });
+    });
+});
+
+
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+
+{% endblock %}

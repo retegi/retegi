@@ -1,0 +1,423 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+
+
+{% block head %}
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+.word {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0.8;
+  animation: moveWord linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveWord {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(var(--x-end), var(--y-end)) scale(var(--scale-end));
+    opacity: 0;
+  }
+}
+
+        .radar-circle {
+            animation: expand 2s linear infinite;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes expand {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+
+
+   
+    .fullscreen-btn {
+        position: absolute;
+        top: 6vh; /* Distancia desde la parte superior del contenedor */
+        right: 51vw; /* Distancia desde la parte derecha del contenedor */
+        z-index: 1000; /* Para que quede encima del mapa */
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        width:auto;
+    }
+
+    .fullscreen-btn:hover {
+        background: #f0f0f0;
+    }
+
+    /* Pantalla completa para el mapa */
+    .fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+    }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+      <div class="container bg-white">
+        <div class="row">
+            <div class="col-lg-6 col-md-12" id="map">
+              
+                
+            </div>
+            
+                <button id="fullscreen-btn" class="fullscreen-btn">Pantalla Completa</button>
+            
+            <div class="col-lg-6 col-md-12 text-center p-2" style="background-image:url('{% static 'img/inaki_retegi_3.webp' %}'); background-size:cover;height:50vh;">
+                <!--<img class="w-100" id="picture-1" src="{% static 'img/inaki_retegi_3.webp' %}">-->
+                <label class="display-4" id="text" style="color:white; position:relative;top:250px; text-shadow: 2px 2px 8px #000;font-family:Arial-black"></label>
+            </div>
+        </div>
+      </div>
+      
+      <div class="container bg-white">
+        <div class="row">
+            <div class="col-lg-10 col-md-12">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        {% for post in post_list %}
+                        <div class="col-lg-4 col-md-6 col-sm-12 p-3 mb-1">
+                        {% if post.image %}
+                        <a href="{% url 'home_app:article_detail' post.id %}"><img class="w-100" src="{{ post.image.url }}"></a>
+                        {% endif %}
+
+                        <div class="w-100" style="background-image: url('{{ post.image }}');"></div>
+                            <div class="" style="background-color:#f0f0f0;">
+                                <div class="p-3">
+                                <a href="{% url 'home_app:article_detail' post.id %}" class="text-dark" style="text-decoration:none;"><h3 class="card-title" style="font-family: WF Visual Sans Text,Arial,sans-serif;"><b>{{ post.title }}</b></h3></a>
+                                <a href="{% url 'home_app:article_detail' post.id %}" class="text-dark" style="text-decoration:none;"><p class="card-text" style="float:left;">{{ post.summary|safe }}</p></a>
+                                <p class="text-secondary mt-3">
+                                    {% for tech in post.technology.all %}
+                                      {% if forloop.last %}
+                                        {{ tech.name }}
+                                      {% else %}
+                                        {{ tech.name }},
+                                      {% endif %} 
+                                    {% endfor %}
+                                    </p>
+                                
+                                    <a href="{% url 'home_app:article_detail' post.id %}" class="card-link" style="text-decoration: none;">
+                                        <button class="btn btn-sm bg-white">
+                                            <svg class="text-dark" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                                            </svg>
+                                        </button>
+                                    </a>
+
+                                    {% if post.github %}
+                                    <a href="#" class="card-link" style="text-decoration: none;">
+                                        <button class="btn btn-sm bg-white">
+                                            <svg class="text-dark"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                                              </svg>
+                                        </button>
+                                    </a>
+                                    {% endif %}
+                                    {% if user.is_authenticated %}
+                                    <a href="{% url 'home_app:article_update' post.id %}" class="card-link" style="text-decoration: none;">
+                                        <button class="btn btn-sm bg-white">
+                                            <svg class="text-dark" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
+                                              </svg>
+                                        </button>
+                                    </a>
+                                    {% endif %}
+
+                                    {% if post.video %}
+                                    <a href="{% url 'home_app:article_update' post.id %}" class="card-link" style="text-decoration: none;">
+                                        <button class="btn btn-sm bg-white">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>
+                                          </svg>
+                                        </button>
+                                    </a>
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>    
+                </div>
+
+                
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12">
+                
+                <label class="w-100 text-center mt-3">Mes</label>
+
+                <ul class="mt-2" style="list-style-type: none; ">
+                {% for technology in technology_list %}
+                    <a style="text-decoration:none;" href="#"><li class="technologies"><b class="technologies">Enero 2023</b></li></a>
+                {% endfor %}
+               </ul>
+                
+                <hr>
+
+                <label class="w-100 text-center mt-3">Technologies</label>
+
+                <ul class="mt-2" style="list-style-type: none; ">
+                {% for technology in technology_list %}
+                    <a style="text-decoration:none;"  href="#"><li class="technologies"><b class="technologies">{{ technology.name }}</b></li></a>
+                    
+                {% endfor %}
+                    
+                    
+                </ul>
+
+            </div>
+        </div>
+      </div>
+
+      <div class="container-fluid bg-dark p-3">
+        <div class="row">
+            <div class="col-12 text-light">
+            {% for technology in technology_list %}
+                <label class="p-5" style="text-transform: uppercase;">{{ technology.name }}</label>
+            {% endfor %}
+            </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+            <div class="col-12 bg-light">
+
+            </div>
+        </div>
+      </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const textElement = document.getElementById("text");
+        const fullText = "¿Creamos algo juntos? ;)";
+        let index = 0;
+        let deleting = false;
+
+        function typeEffect() {
+            if (!deleting) {
+                // Escribir
+                textElement.textContent = fullText.slice(0, index);
+                index++;
+                if (index > fullText.length) {
+                    deleting = true;
+                    setTimeout(typeEffect, 1000); // Pausa antes de borrar
+                    return;
+                }
+            } else {
+                // Borrar
+                textElement.textContent = fullText.slice(0, index);
+                index--;
+                if (index < 0) {
+                    deleting = false;
+                    setTimeout(typeEffect, 500); // Pausa antes de escribir de nuevo
+                    return;
+                }
+            }
+            setTimeout(typeEffect, 150); // Velocidad de escribir/borrar
+        }
+
+        typeEffect();
+    </script>
+
+  <script>
+const words = [
+    {% for technology in technology_list %}
+        "{{ technology.name }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+];
+const container = document.getElementById("word-container");
+
+let maxElements = 50; // Límite máximo de elementos en movimiento
+let currentElements = 0; // Contador de elementos actuales
+
+function createWord() {
+  // Verificar si ya hay demasiados elementos
+  if (currentElements >= maxElements) {
+    return;
+  }
+
+  const wordElement = document.createElement("div");
+  wordElement.textContent = words[Math.floor(Math.random() * words.length)];
+  wordElement.className = "word";
+
+  // Posiciones iniciales y finales
+  const startX = Math.random() * window.innerWidth;
+  const startY = Math.random() * window.innerHeight;
+  const endX = Math.random() * 200 - 100 + "vw";
+  const endY = Math.random() * 200 - 100 + "vh";
+  const scaleStart = Math.random() * 1.2 + 0.8; // Escala inicial
+  const scaleEnd = Math.random() * 2 + 1; // Escala final
+
+  wordElement.style.left = `${startX}px`;
+  wordElement.style.top = `${startY}px`;
+  wordElement.style.fontSize = `${Math.random() * 20 + 15}px`;
+  wordElement.style.setProperty("--x-end", endX);
+  wordElement.style.setProperty("--y-end", endY);
+  wordElement.style.setProperty("--scale-end", scaleEnd);
+
+  // Animación más lenta
+  wordElement.style.animationDuration = `${Math.random() * 10 + 8}s`;
+
+  container.appendChild(wordElement);
+  currentElements++; // Incrementar el contador
+
+  // Remover elemento después de la animación
+  wordElement.addEventListener("animationend", () => {
+    container.removeChild(wordElement);
+    currentElements--; // Decrementar el contador
+  });
+}
+
+// Generar palabras continuamente
+setInterval(createWord, 500);
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const targetText = "Iñaki Retegi ;)"; // El texto final deseado
+    const element = document.getElementById("animated-text");
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Solo caracteres uniformes
+    const duration = 5000; // Duración total de la animación en ms
+    const interval = 50; // Intervalo de actualización en ms
+    const steps = duration / interval; // Número total de pasos
+    let iterations = 0; // Contador de iteraciones
+
+    function randomizeText() {
+      const randomizedText = targetText.split("").map((char, i) => {
+        if (char === "\n") return "<br>"; // Manejo del salto de línea
+        if (iterations > (steps / targetText.length) * i) return char; // Fija la letra si se cumple el tiempo
+        return characters[Math.floor(Math.random() * characters.length)]; // Letra aleatoria
+      });
+
+      element.innerHTML = randomizedText.join("");
+
+      if (iterations < steps) {
+        iterations++;
+        setTimeout(randomizeText, interval); // Llama a la función en cada intervalo
+      } else {
+        setTimeout(() => {
+          iterations = 0; // Reinicia las iteraciones
+          randomizeText(); // Vuelve a iniciar el efecto
+        }, 1000); // Pausa antes de repetir
+      }
+    }
+
+    randomizeText(); // Inicia la animación
+  });
+</script>
+
+
+<!--Leaflet-->
+<script>// Coordenadas iniciales (Donostia)
+
+   // Crear un icono personalizado para el marcador
+        var customIcon = L.icon({
+            iconUrl: '{% static "img/icon/hacked-icon.png" %}', // URL de la imagen del icono
+            iconSize: [40, 50], // Tamaño del icono [ancho, alto]
+            iconAnchor: [20, 50], // Punto de anclaje del icono (centro inferior)
+            popupAnchor: [0, -40] // Punto de anclaje del popup relativo al icono
+        });
+
+        // Inicializar el mapa centrado en Donostia
+        var mymap = L.map('map').setView([42.962639022585655, -2.1666468138861066], 8); // Centrado en Donostia
+        L.tileLayer('https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=vC1SXUhzjRrMT4wJ7sPcrgAWkXGJKUs9YcqLWu3IHDgAY7iIsej2pZegVEor052X', {}).addTo(mymap);
+        mymap.attributionControl.addAttribution("<a href=\"https://www.jawg.io?utm_medium=map&utm_source=attribution\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org?utm_medium=map-attribution&utm_source=jawg\" target=\"_blank\">&copy; OpenStreetMap</a>&nbsp;contributors");
+
+        // Crear un array para almacenar las coordenadas de los marcadores
+        const markers = [];
+
+        // Añadir los marcadores al mapa
+        {% for victim in hacked_victims %}
+            var marker = L.marker([{{ victim.latitude }}, {{ victim.longitude }}], { icon: customIcon }).addTo(mymap);
+            markers.push(marker.getLatLng()); // Guardar la posición del marcador
+        {% endfor %}
+
+        // Función para añadir un círculo animado en el mapa
+        function addRadarEffect(latlng) {
+            const radarCircle = L.circle(latlng, {
+                color: 'rgba(255, 255, 255, 0.5)',
+                weight: 1,
+                fillColor: 'transparent',
+                fillOpacity: 0,
+                radius: 0
+            }).addTo(mymap);
+
+            let currentRadius = 0;
+            const maxRadius = 50000;
+            const animationSpeed = 1000;
+            const interval = setInterval(() => {
+                currentRadius += animationSpeed;
+                radarCircle.setRadius(currentRadius);
+
+                if (currentRadius >= maxRadius) {
+                    clearInterval(interval);
+                    mymap.removeLayer(radarCircle);
+                }
+            }, 50);
+        }
+
+        setInterval(() => {
+            markers.forEach((latlng) => {
+                addRadarEffect(latlng);
+            });
+        }, 1000);
+
+        // Funcionalidad de pantalla completa
+        const mapDiv = document.getElementById('map');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+        let isFullscreen = false;
+
+        fullscreenBtn.addEventListener('click', () => {
+            if (!isFullscreen) {
+                // Activar pantalla completa
+                mapDiv.classList.add('fullscreen');
+                fullscreenBtn.textContent = 'Salir Pantalla Completa';
+                isFullscreen = true;
+                mymap.invalidateSize();
+            } else {
+                // Salir de pantalla completa
+                mapDiv.classList.remove('fullscreen');
+                fullscreenBtn.textContent = 'Pantalla Completa';
+                isFullscreen = false;
+                mymap.invalidateSize();
+            }
+        });
+</script>
+{% endblock %}
