@@ -22,7 +22,7 @@ class HomePageView(ListView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the books
-        context["post_list"] = Post.objects.all()
+        context["post_list"] = Post.objects.all().order_by('-date_time')
         context["technology_list"] = Technology.objects.all()
         context["hacked_victims"] = Hacked.objects.all()
         posts_by_month = (
