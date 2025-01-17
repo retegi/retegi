@@ -4,8 +4,7 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
-    UpdateView,
-    FormView
+    UpdateView
 )
 from .models import Post, Technology, Comment, Hacked
 from django.urls import reverse_lazy
@@ -14,7 +13,6 @@ from django.db.models.functions import TruncMonth
 from django.db.models import Count
 from django.utils.dateformat import format
 from django.contrib.auth.mixins import UserPassesTestMixin
-from .forms import ContactForm
 
 class HomePageView(ListView):
     template_name = "home/index.html"
@@ -113,30 +111,6 @@ def add_comment(request, post_id):
 
 class ContactView(TemplateView):
     template_name = 'home/contact.html'
-
-    
-class ContactView(FormView):
-    template_name = 'home/contact.html'  # Nombre de tu plantilla
-    form_class = ContactForm
-    success_url = reverse_lazy('contacto_exito')  # Redirige a una página de éxito
-
-    def form_valid(self, form):
-        # Procesar el formulario (por ejemplo, enviar un correo)
-        nombre = form.cleaned_data['nombre']
-        email = form.cleaned_data['email']
-        mensaje = form.cleaned_data['mensaje']
-
-        # Opcional: enviar un correo electrónico
-        send_mail(
-            subject=f'Mensaje de {nombre}',  # Asunto del correo
-            message=mensaje,
-            from_email=settings.DEFAULT_FROM_EMAIL,  # Correo configurado en settings
-            recipient_list=[settings.CONTACT_EMAIL],  # Destinatario (correo de contacto)
-            fail_silently=False,
-        )
-
-        return super().form_valid(form)
-
 
 class AboutView(TemplateView):
     template_name = 'home/about.html'

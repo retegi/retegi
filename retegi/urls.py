@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 urlpatterns = [
     path('', lambda request: HttpResponseRedirect(f'/{settings.LANGUAGE_CODE.split("-")[0]}/')),
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
+    
 ]
 
 # Incluye las rutas de Rosetta si está en INSTALLED_APPS
@@ -21,6 +21,7 @@ if 'rosetta' in settings.INSTALLED_APPS:
 urlpatterns += i18n_patterns(
     path('i18n/', include('django.conf.urls.i18n')),  # Para cambiar idioma
     path('', include('applications.home.urls')),  # Ruta de la aplicación principal
+    path('accounts/', include('allauth.urls')),
 )
 
 # Opcional: Manejo de archivos estáticos si estás en modo DEBUG

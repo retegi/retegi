@@ -93,70 +93,11 @@
         <div class="row">
         <div class="col-2"></div>
         <div class="col-lg-8 col-md-12 bg-white p-5">
-              <form>
-                <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row mb-4">
-                    <div class="col">
-                    <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="form6Example1" class="form-control" />
-                        <label class="form-label" for="form6Example1">{% trans 'First name' %}</label>
-                    </div>
-                    </div>
-                    <div class="col">
-                    <div data-mdb-input-init class="form-outline">
-                        <input type="text" id="form6Example2" class="form-control" />
-                        <label class="form-label" for="form6Example2">{% trans 'Last name' %}</label>
-                    </div>
-                    </div>
-                </div>
-
-                <!-- Text input -->
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="text" id="form6Example3" class="form-control" />
-                    <label class="form-label" for="form6Example3">{% trans 'Company name' %}</label>
-                </div>
-
-                <!-- Text input -->
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="text" id="form6Example4" class="form-control" />
-                    <label class="form-label" for="form6Example4">{% trans 'Address' %}</label>
-                </div>
-
-                <!-- Email input -->
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="form6Example5" class="form-control" />
-                    <label class="form-label" for="form6Example5">{% trans 'Email' %}</label>
-                </div>
-
-                <!-- Number input -->
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="number" id="form6Example6" class="form-control" />
-                    <label class="form-label" for="form6Example6">{% trans 'Phone' %}</label>
-                </div>
-
-                <!-- Message input -->
-                <div data-mdb-input-init class="form-outline mb-4">
-                    <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-                    <label class="form-label" for="form7Example7">{% trans 'Additional information' %}</label>
-                </div>
-
-                <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-center mb-4">
-                    <input
-                    class="form-check-input me-2 bg-dark"
-                    type="checkbox"
-                    value=""
-                    id="form6Example8"
-                    checked
-                    />
-                    <label class="form-check-label" for="form6Example8"> Create an account? </label>
-                </div>
-                <div class="w-100">
-                <!-- Submit button -->
-                <button data-mdb-ripple-init type="button" class="btn btn-dark btn-block mb-4 w-100 text-center">{% trans 'Send' %}</button>
-                </div>
-                </form>
-        </div>
+             <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Renderiza el formulario -->
+        <button type="submit">Enviar</button>
+    </form>
         <div class="col-2"></div>
           
         </div>

@@ -1,6 +1,10 @@
 from django import forms
 from .models import Post, Technology, Comment
 from tinymce.widgets import TinyMCE
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV2Checkbox
+
+
 
 class PostForm(forms.ModelForm):
     technology = forms.ModelMultipleChoiceField(
@@ -69,3 +73,28 @@ class CommentForm(forms.ModelForm):
                 'maxlength': 500,  # Máxima longitud del comentario
             }),
         }
+
+class ContactForm(forms.Form):
+    nombre = forms.CharField(
+        max_length=100,
+        label='Nombre',
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Nombre',
+            'class': 'form-control form-control-lg border-success'
+        })
+    )
+    email = forms.EmailField(
+        label='Correo Electrónico',
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Correo electrónico',
+            'class': 'form-control form-control-lg border-success'
+        })
+    )
+    mensaje = forms.CharField(
+        label='Mensaje',
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Escribe tu mensaje aquí...',
+            'class': 'form-control form-control-lg border-success'
+        })
+    )
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
