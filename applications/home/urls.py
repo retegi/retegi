@@ -3,6 +3,7 @@ from django.urls import include, path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import PruebaEmail 
 
 app_name = 'home_app'
 
@@ -46,6 +47,8 @@ urlpatterns = [
          views.LegalPoliciesView.as_view(),
          name='legal_policies',
     ),
+     path('mail/', PruebaEmail.as_view(), name='mail'),
+     path('trigger-task/', views.trigger_task, name='trigger_task'),
 ]
 
 if settings.DEBUG:

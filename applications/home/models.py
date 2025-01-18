@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from tinymce.models import HTMLField
 
-# Create your models here.
 
 
 class Technology(models.Model):

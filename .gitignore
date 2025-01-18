@@ -12,4 +12,5 @@ settings.py
 migrations/
 
 staticfiles/
-media/
+media/sendgrid.env
+sendgrid.env

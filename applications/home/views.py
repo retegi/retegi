@@ -15,6 +15,13 @@ from django.db.models import Count
 from django.utils.dateformat import format
 from django.contrib.auth.mixins import UserPassesTestMixin
 from .forms import ContactForm
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+import os
+from django.http import HttpResponse
+#celery
+from django.http import JsonResponse
+from .tasks import example_task
 
 class HomePageView(ListView):
     template_name = "home/index.html"
@@ -138,6 +145,26 @@ class ContactView(FormView):
         return super().form_valid(form)
 
 
+class PruebaEmail(FormView):
+    def get(self, request, *args, **kwargs):
+        message = Mail(
+            from_email='from_email@example.com',
+            to_emails='to@example.com',
+            subject='Sending with Twilio SendGrid is Fun',
+            html_content='<strong>and easy to do anywhere, even with Python</strong>'
+        )
+        try:
+            sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+            response = sg.send(message)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+            return HttpResponse("Correo enviado exitosamente.")  # Respuesta exitosa
+        except Exception as e:
+            print(str(e))
+            return HttpResponse("Error al enviar el correo.", status=500) 
+
+
 class AboutView(TemplateView):
     template_name = 'home/about.html'
 
@@ -149,5 +176,15 @@ class ProvacyPolicyView(TemplateView):
 
 class LegalPoliciesView(TemplateView):
     template_name = 'home/legal_policies.html'
+
+
+#celery
+# applications/home/views.py
+
+
+def trigger_task(request):
+    result = example_task.delay(4, 6)  # Ejecuta la tarea en segundo plano
+    return JsonResponse({'task_id': result.id, 'status': 'Task triggered!'})
+
 
   
