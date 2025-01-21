@@ -55,6 +55,11 @@ class HomePageView(ListView):
         context["post_by_month"] = post_by_month_list
         return context
     
+class HackingMapView(ListView):
+    model = Hacked
+    template_name = 'home/hacking.html'
+    context_object_name = 'data'
+    
 class ArticleDetailView(DetailView):
     model = Post # Especifica el modelo Blog
     template_name = 'home/article_detail.html' # Define el template "articulo_completo.html"

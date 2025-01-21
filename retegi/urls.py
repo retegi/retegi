@@ -3,6 +3,8 @@ from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from django.http import HttpResponseRedirect
+from applications.assistant import consumers
+from applications.assistant import views
 
 # Redirige desde la raíz ('/') al idioma predeterminado
 urlpatterns = [
@@ -11,6 +13,9 @@ urlpatterns = [
     
 ]
 
+urlpatterns = [
+    path('assistant/', views.assistant_view, name='assistant'),
+]
 # Incluye las rutas de Rosetta si está en INSTALLED_APPS
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [

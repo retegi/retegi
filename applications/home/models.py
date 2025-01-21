@@ -44,17 +44,24 @@ class Comment(models.Model):
         return str(self.id)
     
 class Hacked(models.Model):
+    image = models.ImageField(upload_to='img/hacking/victims/', blank=True, null=True)
     victim = models.CharField(max_length=255,null=True, blank=True)
     date_time = models.DateTimeField(null=True, blank=True)
+    date_time2 = models.DateTimeField(null=True, blank=True)
     visible = models.BooleanField(default=True)
     latitude = models.CharField(max_length=255,null=True, blank=True)
     longitude = models.CharField(max_length=255,null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    technique = models.TextField(null=True, blank=True)
+    hacker_name = models.CharField(max_length=255,null=True, blank=True)
+    hacker_captured = models.TextField(null=True, blank=True)
     address = models.CharField(max_length=255,null=True, blank=True)
     locality = models.CharField(max_length=255,null=True, blank=True)
     province = models.CharField(max_length=255,null=True, blank=True)
     autonomous_comumnity = models.CharField(max_length=255,null=True, blank=True)
     country = models.CharField(max_length=255,null=True, blank=True)
+    hacker_locality_latitude = models.CharField(max_length=255,null=True, blank=True)
+    hacker_locality_longitude= models.CharField(max_length=255,null=True, blank=True)
 
     def __stre__(self):
         return str(self.victim)
