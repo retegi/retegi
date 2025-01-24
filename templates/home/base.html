@@ -327,6 +327,15 @@ setInterval(createWord, 500);
         }
     });
 </script>
+<script src="https://cdn.tiny.cloud/1/2j2ya02wdq6mdhmgizz8hdn82mtkk38ahs0gl3rwdw6dnyws/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+  });
+</script>
 
 
   </body>
