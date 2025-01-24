@@ -114,7 +114,7 @@
                         <div class="w-100" style="background-image: url('{{ post.image }}');"></div>
                             <div class="" style="background-color:#f0f0f0;">
                                 <div class="p-3">
-                                <a href="{% url 'home_app:article_detail' post.id %}" class="text-dark" style="text-decoration:none;"><h3 class="card-title" style="font-family: WF Visual Sans Text,Arial,sans-serif;"><b>{{ post.title }}</b></h3></a>
+                                <a href="{% url 'home_app:article_detail' post.id %}" class="text-dark" style="text-decoration:none;"><h4 class="card-title" style="font-family: WF Visual Sans Text,Arial,sans-serif;"><b>{{ post.title }}</b></h4></a>
                                 <a href="{% url 'home_app:article_detail' post.id %}" class="text-dark" style="text-decoration:none;"><p class="card-text" style="float:left;">{{ post.summary|safe }}</p></a>
                                 <p class="text-secondary mt-3">
                                     {% for tech in post.technology.all %}
@@ -426,6 +426,38 @@ setInterval(createWord, 500);
         document.getElementById('message').value = '';
     }
 </script>
+
+<script>
+async function sendMessage() {
+    const message = document.getElementById('userMessage').value;
+
+    try {
+        const response = await fetch('/assistant/api/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: new URLSearchParams({ message })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json(); // Aquí se espera que la respuesta sea JSON
+        document.getElementById('response').innerText = data.response || data.error;
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('response').innerText = 'Hubo un error procesando la solicitud.';
+    }
+}
+
+</script>
+<script>
+    const csrftoken = "{{ csrf_token }}";
+</script>
+
 
 
 {% endblock %}
