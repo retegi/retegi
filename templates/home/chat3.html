@@ -1,18 +1,18 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Asistente Virtual</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat con el Asistente Virtual</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* Estilos personalizados */
         #chat-container {
             width: 50vw;
-            height: 50vh;
-            margin: auto;
-            margin-top: 10vh;
+            height: 70vh;
+            margin: 20px auto;
             border: 1px solid #ccc;
             border-radius: 8px;
             overflow: hidden;
@@ -67,7 +67,7 @@
         <div id="chat-box">
             <!-- Mensajes del chat se mostrarán aquí -->
         </div>
-        <form id="message-form">
+        <form id="message-form" method="post">
             <input type="text" id="user-message" class="form-control" placeholder="Escribe tu mensaje">
             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
             <button type="button" id="send-button" class="btn btn-primary">Enviar</button>
@@ -76,9 +76,11 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Enviar mensaje al hacer clic en el botón
+            // Función para enviar mensaje
             function sendMessage() {
                 let userMessage = $('#user-message').val();
                 if (userMessage.trim() !== '') {
@@ -98,7 +100,6 @@
                         success: function (response) {
                             if (response.reply) {
                                 $('#chat-box').append(`<p class="bot-message"><strong>Bot:</strong> ${response.reply}</p>`);
-                                // Desplazarse automáticamente al final del chat
                                 $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
                             } else {
                                 $('#chat-box').append('<p class="bot-message"><strong>Error:</strong> Algo salió mal.</p>');
@@ -111,6 +112,11 @@
                 }
             }
 
+            // Enviar mensaje al hacer clic en el botón
+            $('#send-button').click(function () {
+                sendMessage();
+            });
+
             // Enviar mensaje al presionar Enter
             $('#user-message').keypress(function (e) {
                 if (e.which === 13) {
@@ -118,13 +124,7 @@
                     sendMessage();
                 }
             });
-
-            // Enviar mensaje al hacer clic en el botón
-            $('#send-button').click(function () {
-                sendMessage();
-            });
         });
     </script>
 </body>
 </html>
-

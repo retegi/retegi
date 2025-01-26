@@ -131,7 +131,22 @@
 
 
 
-
+    <script>
+    tinymce.init({
+      selector: '#editor',
+      plugins: 'codesample',
+      toolbar: 'codesample',
+      menubar: false,     
+      codesample_languages: [
+        {text: 'HTML/XML', value: 'markup'},
+        {text: 'JavaScript', value: 'javascript'},
+        {text: 'Python', value: 'python'},
+        {text: 'CSS', value: 'css'},
+        {text: 'PHP', value: 'php'},
+      ],
+      height: 400,
+    });
+  </script>
   <script>
 document.addEventListener('DOMContentLoaded', function () {
     const codeBlocks = document.querySelectorAll('pre');

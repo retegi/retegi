@@ -151,8 +151,8 @@ input[type="search"]:focus {
               <li><a href="{% url 'home_app:contact' %}" class="nav-link px-2 text-white">{% trans "Contact" %}</a></li>
               <li class="text-light footer-lista">
                
-                 <button type="button" class="nav-link btn btn-sm bg-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      reteBot
+                 <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      indartBot
                   </button>
                 
               </li>
@@ -277,12 +277,12 @@ input[type="search"]:focus {
 
       <!-- Encabezado del modal -->
       <div class="modal-header text-center w-100">
-        <h5 class="modal-title text-center w-100" id="exampleModalLabel">reteBot</h5>
+        <h5 class="modal-title text-center w-100" id="exampleModalLabel">indartBot!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <!-- Contenedor del chat -->
-      <div id="chat-container" class="bg-white px-3 py-4" style="max-height: 80vh; overflow-y: auto;">
+      <div id="chat-container" class="bg-white px-3 py-2" style="max-height: 40vh; overflow-y: auto;">
         <div id="chat-box">
           <!-- Los mensajes del chat se mostrarán aquí -->
         </div>
@@ -291,9 +291,9 @@ input[type="search"]:focus {
       <!-- Zona de entrada fija -->
       <div id="input-container" class="px-3 py-2 bg-light">
         <form id="message-form" method="post">
-          <input type="text" id="user-message" class="form-control mb-2" placeholder="Escribe tu pregunta a reteBot">
+          <input type="text" id="user-message" class="form-control mb-2" placeholder="Escribe tu pregunta a indartBot">
           <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-          <button type="button" id="send-button" class="btn btn-success w-100">Enviar</button>
+          <button type="button" id="send-button" class="btn btn-primary w-100">Enviar</button>
         </form>
       </div>
 
@@ -441,7 +441,7 @@ setInterval(createWord, 500);
 
 <script>
   tinymce.init({
-    selector: '#editor',
+    selector: 'textarea',
     plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
   });

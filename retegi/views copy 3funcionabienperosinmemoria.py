@@ -13,7 +13,7 @@ def chat_view(request):
     return render(request, 'home/chat.html')
 
 def load_instructions():
-    instructions_path = os.path.join(settings.BASE_DIR, 'applications','assistant','indications', 'instructions.txt')
+    instructions_path = os.path.join(settings.BASE_DIR, 'indications', 'instructions.txt')
     try:
         with open(instructions_path, 'r', encoding='utf-8') as file:
             return file.read()
@@ -53,5 +53,3 @@ def end_conversation(request):
     if 'conversation_history' in request.session:
         del request.session['conversation_history']
     return JsonResponse({'status': 'Conversación finalizada'})
-
-

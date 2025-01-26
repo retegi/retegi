@@ -9,10 +9,9 @@ from . import views
 urlpatterns = [
     path('', lambda request: HttpResponseRedirect(f'/{settings.LANGUAGE_CODE.split("-")[0]}/')),
     path('admin/', admin.site.urls),
+    path('assistant/', include('applications.assistant.urls')),
     #openai
-    path('chat/', views.chat_view, name='chat_view'),
-    path('api/get_response/', views.get_bot_response, name='get_bot_response'),
-    
+
 ]
 # Incluye las rutas de Rosetta si está en INSTALLED_APPS
 if 'rosetta' in settings.INSTALLED_APPS:
@@ -24,6 +23,7 @@ if 'rosetta' in settings.INSTALLED_APPS:
 urlpatterns += i18n_patterns(
     path('i18n/', include('django.conf.urls.i18n')),  # Para cambiar idioma
     path('', include('applications.home.urls')),  # Ruta de la aplicación principal
+     
     path('accounts/', include('allauth.urls')),
 )
 

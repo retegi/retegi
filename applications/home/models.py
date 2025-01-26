@@ -19,7 +19,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to='img/', blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = HTMLField()
-    summary = HTMLField( blank=True,null=True)
+    summary = models.TextField(max_length=500, null=True, blank=True)
     technology = models.ManyToManyField(Technology, blank=True)
     github = models.URLField(max_length=300, blank=True,null=True)
     #video = models.URLField(max_length=300, blank=True,null=True)

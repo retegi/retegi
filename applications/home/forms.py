@@ -18,15 +18,11 @@ class PostForm(forms.ModelForm):
         'cols': 80,
         'rows': 30,
         'class': 'form-control',  # Clase adicional para estilo Bootstrap
+        'id':'editor'
     }),
     label="Contenido del post",
 )
 
-    summary = forms.CharField(
-        widget=TinyMCE(attrs={'cols': 80, 'rows': 10}),
-        required=False,
-        label="Resumen del post",
-    )
 
     class Meta:
         model = Post
@@ -71,6 +67,8 @@ class CommentForm(forms.ModelForm):
                 'placeholder': 'Escribe tu comentario aquí...',
                 'rows': 4,  # Número de filas del textarea
                 'maxlength': 500,  # Máxima longitud del comentario
+                'id':'coment',
+                
             }),
         }
 

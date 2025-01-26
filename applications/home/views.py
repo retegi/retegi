@@ -82,7 +82,7 @@ class ArticleDetailView(DetailView):
             return redirect('home_app:article_detail', pk=self.object.pk)  # Redirige al detalle del artículo
         # Si el formulario no es válido, vuelve a renderizar la página con el formulario
         context = self.get_context_data()
-        context['form'] = form
+        context['form2'] = form
         return self.render_to_response(context)
 
 
