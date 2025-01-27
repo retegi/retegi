@@ -218,16 +218,16 @@ input[type="search"]:focus {
             <div class="col-lg-4 col-md-12">
                 <ul class="list-unstyled">
                     <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:home' %}" class="text-light">{% trans 'Home' %}</a>
+                        <a href="{% url 'home_app:home' %}" class="text-light" style="text-decoration:none;">{% trans 'Home' %}</a>
                     </li>
                     <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:about' %}" class="text-light">{% trans 'About' %}</a>
+                        <a href="{% url 'home_app:about' %}" class="text-light" style="text-decoration:none;">{% trans 'About' %}</a>
                     </li>
                     <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:contact' %}" class="text-light">{% trans 'Contact' %}</a>
+                        <a href="{% url 'home_app:contact' %}" class="text-light" style="text-decoration:none;">{% trans 'Contact' %}</a>
                     </li>
                     <li class="text-light footer-lista">
-                        <a href="" class="text-light">reteBot</a>
+                        <a href="" class="text-light" style="text-decoration:none;">reteBot</a>
                     </li>
                 </ul>
             </div>
@@ -237,9 +237,13 @@ input[type="search"]:focus {
                 <ul class="list-unstyled">
                     <li class="text-light footer-lista">Iñaki Retegi</li>
                     <li class="text-light footer-lista">
-                        <a href="https://github.com/yourprofile" class="text-light">Github</a>
+                        <a href="https://github.com/yourprofile" class="text-light" style="text-decoration:none;">Github</a>
                     </li>
-                    <li class="text-light footer-lista">info@retegi.eus</li>
+                    <li class="text-light footer-lista">
+                    <a href="mailto:retegi84@gmail.com" style="text-decoration:none;" class="text-white">
+                    info@retegi.eus
+                    </a>
+                    </li>
                     <li class="text-light footer-lista">www.retegi.eus</li>
                 </ul>
             </div>
@@ -248,13 +252,13 @@ input[type="search"]:focus {
             <div class="col-lg-4 col-md-12">
                 <ul class="list-unstyled">
                     <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:cookies_policy' %}" class="text-light">Cookies Policy</a>
+                        <a href="{% url 'home_app:cookies_policy' %}" class="text-light" style="text-decoration:none;">Cookies Policy</a>
                     </li>
                     <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:privacy_policy' %}" class="text-light">Privacy Policy</a>
+                        <a href="{% url 'home_app:privacy_policy' %}" class="text-light" style="text-decoration:none;">Privacy Policy</a>
                     </li>
                     <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:legal_policies' %}" class="text-light">Legal Policies</a>
+                        <a href="{% url 'home_app:legal_policies' %}" class="text-light" style="text-decoration:none;">Legal Policies</a>
                     </li>
                 </ul>
             </div>
