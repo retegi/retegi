@@ -3,6 +3,24 @@
 {% load i18n %}
 {% block head %}
 <title>{{ article.title }}</title>
+
+    
+    <!-- Meta Open Graph -->
+    <meta property="og:title" content="{{ article.title }}">
+    <meta property="og:description" content="{{ article.content|truncatewords:30|safe }}">
+    <meta property="og:image" content="{{ article.image.url }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="article">
+    
+    <!-- Meta Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ article.title }}">
+    <meta name="twitter:description" content="{{ article.content|truncatewords:30|safe }}">
+    <meta name="twitter:image" content="{{ article.image.url }}">
+
+    <!-- Otros metadatos -->
+    <meta name="description" content="{{ article.content|truncatewords:30|safe }}">
+
 <style>
     pre {
         position: relative; /* Necesario para que el botón se posicione relativo a este contenedor */

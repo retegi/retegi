@@ -149,7 +149,7 @@ input[type="search"]:focus {
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               
               <li><a href="{% url 'home_app:home' %}" class="nav-link px-2 text-white">{% trans "Home" %}</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">{% trans "About" %}</a></li>
+              <li><a href="{% url 'home_app:about' %}" class="nav-link px-2 text-white">{% trans "About" %}</a></li>
               <li><a href="{% url 'home_app:contact' %}" class="nav-link px-2 text-white">{% trans "Contact" %}</a></li>
               <li class="text-light footer-lista">
                
@@ -208,15 +208,8 @@ input[type="search"]:focus {
         </div>
       </header>
 
-
-
-
-
       {% block content %}
       {% endblock %}
-
-
-     
     
 <div class="bg-dark">
     <div class="container bg-dark p-3">
@@ -270,7 +263,6 @@ input[type="search"]:focus {
 </div>
 
 <!-- Modal -->
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="min-height:80vh;">
@@ -310,8 +302,7 @@ input[type="search"]:focus {
 
 
 
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!--Efecto creamos algo juntos-->
     <script>
         const textElement = document.getElementById("text");
         const fullText = "¿Creamos algo juntos? ;)";
@@ -344,59 +335,8 @@ input[type="search"]:focus {
         typeEffect();
     </script>
 
-  <script>
-const words = [
-    {% for technology in technology_list %}
-        "{{ technology.name }}"{% if not forloop.last %},{% endif %}
-    {% endfor %}
-];
-const container = document.getElementById("word-container");
 
-let maxElements = 50; // Límite máximo de elementos en movimiento
-let currentElements = 0; // Contador de elementos actuales
-
-function createWord() {
-  // Verificar si ya hay demasiados elementos
-  if (currentElements >= maxElements) {
-    return;
-  }
-
-  const wordElement = document.createElement("div");
-  wordElement.textContent = words[Math.floor(Math.random() * words.length)];
-  wordElement.className = "word";
-
-  // Posiciones iniciales y finales
-  const startX = Math.random() * window.innerWidth;
-  const startY = Math.random() * window.innerHeight;
-  const endX = Math.random() * 200 - 100 + "vw";
-  const endY = Math.random() * 200 - 100 + "vh";
-  const scaleStart = Math.random() * 1.2 + 0.8; // Escala inicial
-  const scaleEnd = Math.random() * 2 + 1; // Escala final
-
-  wordElement.style.left = `${startX}px`;
-  wordElement.style.top = `${startY}px`;
-  wordElement.style.fontSize = `${Math.random() * 20 + 15}px`;
-  wordElement.style.setProperty("--x-end", endX);
-  wordElement.style.setProperty("--y-end", endY);
-  wordElement.style.setProperty("--scale-end", scaleEnd);
-
-  // Animación más lenta
-  wordElement.style.animationDuration = `${Math.random() * 10 + 8}s`;
-
-  container.appendChild(wordElement);
-  currentElements++; // Incrementar el contador
-
-  // Remover elemento después de la animación
-  wordElement.addEventListener("animationend", () => {
-    container.removeChild(wordElement);
-    currentElements--; // Decrementar el contador
-  });
-}
-
-// Generar palabras continuamente
-setInterval(createWord, 500);
-</script>
-
+<!--Efecto nombre que corre letras-->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const targetText = "Iñaki Retegi ;)"; // El texto final deseado
@@ -431,13 +371,14 @@ setInterval(createWord, 500);
   });
 </script>
 
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+   /* document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.querySelector('input[type="search"]');
         if (searchInput) {
             searchInput.focus();
         }
-    });
+    });*/
 </script>
 <script src="https://cdn.tiny.cloud/1/2j2ya02wdq6mdhmgizz8hdn82mtkk38ahs0gl3rwdw6dnyws/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
@@ -503,27 +444,6 @@ setInterval(createWord, 500);
             }
         });
     });
-</script>
-
-    </script>
-<!--Para openai mantere el scrol del modal-->
-  <script>
-  // Función para desplazarse automáticamente al final del chat
-  function scrollToBottom() {
-    const chatContainer = document.getElementById('chat-container');
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-  }
-
-  // Desplazar al final al abrir el modal
-  const modal = document.getElementById('exampleModal');
-  modal.addEventListener('shown.bs.modal', function () {
-    scrollToBottom();
-  });
-
-  // Desplazar al final al enviar un mensaje
-  document.getElementById('send-button').addEventListener('click', function () {
-    setTimeout(scrollToBottom, 100); // Espera un momento para asegurar que el mensaje ya se agregó
-  });
 </script>
 
 

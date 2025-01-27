@@ -1,0 +1,504 @@
+{
+  "DjangoFactsAndProjects": [
+    {
+      "id": 1,
+      "type": "advantage",
+      "description": "Django es un framework altamente escalable, utilizado tanto por startups como por grandes empresas."
+    },
+    {
+      "id": 2,
+      "type": "curiosity",
+      "description": "Django fue desarrollado inicialmente para gestionar un sitio web de noticias llamado Lawrence Journal-World."
+    },
+    {
+      "id": 3,
+      "type": "example",
+      "description": "Instagram utiliza Django para manejar millones de usuarios y publicaciones diariamente."
+    },
+    {
+      "id": 4,
+      "type": "advantage",
+      "description": "Incluye autenticación lista para usar, como gestión de usuarios y contraseñas."
+    },
+    {
+      "id": 5,
+      "type": "curiosity",
+      "description": "El nombre 'Django' es un tributo al guitarrista de jazz Django Reinhardt."
+    },
+    {
+      "id": 6,
+      "type": "example",
+      "description": "Mozilla usa Django para algunos de sus servicios web, como Addons para Firefox."
+    },
+    {
+      "id": 7,
+      "type": "advantage",
+      "description": "Permite un desarrollo rápido gracias a su estructura basada en el principio DRY (Don't Repeat Yourself)."
+    },
+    {
+      "id": 8,
+      "type": "curiosity",
+      "description": "El ORM de Django permite a los desarrolladores trabajar con bases de datos sin escribir SQL directamente."
+    },
+    {
+      "id": 9,
+      "type": "example",
+      "description": "Pinterest adoptó Django para gestionar su plataforma de intercambio visual."
+    },
+    {
+      "id": 10,
+      "type": "advantage",
+      "description": "Django ofrece herramientas para construir APIs RESTful usando Django REST Framework."
+    },
+    {
+      "id": 11,
+      "type": "curiosity",
+      "description": "Django sigue el modelo de arquitectura MVT (Model-View-Template)."
+    },
+    {
+      "id": 12,
+      "type": "example",
+      "description": "Disqus, una plataforma de comentarios, está construida en Django."
+    },
+    {
+      "id": 13,
+      "type": "advantage",
+      "description": "Incluye una interfaz de administración lista para usar que simplifica la gestión de datos."
+    },
+    {
+      "id": 14,
+      "type": "curiosity",
+      "description": "La comunidad de Django organiza conferencias anuales como DjangoCon."
+    },
+    {
+      "id": 15,
+      "type": "example",
+      "description": "The Washington Post utiliza Django para sus aplicaciones de noticias."
+    },
+    {
+      "id": 16,
+      "type": "advantage",
+      "description": "Compatible con una amplia gama de bases de datos, incluyendo PostgreSQL, MySQL y SQLite."
+    },
+    {
+      "id": 17,
+      "type": "curiosity",
+      "description": "Django es conocido por su seguridad, incluyendo protección contra inyecciones SQL y CSRF."
+    },
+    {
+      "id": 18,
+      "type": "example",
+      "description": "Dropbox utilizó Django para desarrollar su interfaz de usuario inicial."
+    },
+    {
+      "id": 19,
+      "type": "advantage",
+      "description": "Ofrece soporte para internacionalización y localización de aplicaciones."
+    },
+    {
+      "id": 20,
+      "type": "curiosity",
+      "description": "La documentación de Django es considerada una de las mejores en el mundo del software libre."
+    },
+    {
+      "id": 21,
+      "type": "example",
+      "description": "Eventbrite usa Django para su plataforma de gestión de eventos."
+    },
+    {
+      "id": 22,
+      "type": "advantage",
+      "description": "Es código abierto y tiene una gran comunidad activa de desarrolladores."
+    },
+    {
+      "id": 23,
+      "type": "curiosity",
+      "description": "Django permite personalizar completamente su panel de administración."
+    },
+    {
+      "id": 24,
+      "type": "example",
+      "description": "National Geographic utiliza Django para gestionar su contenido en línea."
+    },
+    {
+      "id": 25,
+      "type": "advantage",
+      "description": "Incluye un sistema de enrutamiento de URLs muy flexible y legible."
+    },
+    {
+      "id": 26,
+      "type": "curiosity",
+      "description": "Django se actualiza regularmente para mantenerse al día con las mejores prácticas."
+    },
+    {
+      "id": 27,
+      "type": "example",
+      "description": "Udemy usa Django para algunas partes de su plataforma educativa."
+    },
+    {
+      "id": 28,
+      "type": "advantage",
+      "description": "Django permite implementar pruebas fácilmente, asegurando aplicaciones confiables."
+    },
+    {
+      "id": 29,
+      "type": "curiosity",
+      "description": "El sistema de plantillas de Django permite herencia para evitar duplicar código."
+    },
+    {
+      "id": 30,
+      "type": "example",
+      "description": "Spotify utiliza Django para gestionar servicios internos y APIs."
+    },
+    {
+      "id": 31,
+      "type": "advantage",
+      "description": "Ofrece herramientas avanzadas para la gestión de sesiones y cookies."
+    },
+    {
+      "id": 32,
+      "type": "curiosity",
+      "description": "Puedes usar Django Channels para manejar aplicaciones en tiempo real."
+    },
+    {
+      "id": 33,
+      "type": "example",
+      "description": "Bitbucket utiliza Django como base para su plataforma de gestión de código."
+    },
+    {
+      "id": 34,
+      "type": "advantage",
+      "description": "Django simplifica la implementación de sistemas de carga y almacenamiento de archivos."
+    },
+    {
+      "id": 35,
+      "type": "curiosity",
+      "description": "Django se utiliza en el backend de muchas aplicaciones móviles híbridas."
+    },
+    {
+      "id": 36,
+      "type": "example",
+      "description": "NASA utiliza Django para algunas de sus herramientas internas."
+    },
+    {
+      "id": 37,
+      "type": "advantage",
+      "description": "Ofrece una manera intuitiva de manejar formularios HTML y validación."
+    },
+    {
+      "id": 38,
+      "type": "curiosity",
+      "description": "Django tiene soporte nativo para mapas con bibliotecas como Leaflet o Google Maps."
+    },
+    {
+      "id": 39,
+      "type": "example",
+      "description": "OpenStreetMap utiliza Django para gestionar partes de su infraestructura."
+    },
+    {
+      "id": 40,
+      "type": "advantage",
+      "description": "Django permite construir proyectos monolíticos y desacoplados según sea necesario."
+    },
+    {
+      "id": 41,
+      "type": "curiosity",
+      "description": "Puedes integrar Django con sistemas de cache como Redis para mejorar el rendimiento."
+    },
+    {
+      "id": 42,
+      "type": "example",
+      "description": "Coursera utiliza Django para manejar contenido educativo y usuarios."
+    },
+    {
+      "id": 43,
+      "type": "advantage",
+      "description": "Facilita la creación de proyectos multi-tenant y aplicaciones SaaS."
+    },
+    {
+      "id": 44,
+      "type": "curiosity",
+      "description": "Django se usa comúnmente en la construcción de APIs con GraphQL."
+    },
+    {
+      "id": 45,
+      "type": "example",
+      "description": "Zapier utiliza Django para construir partes de su plataforma de automatización."
+    },
+    {
+      "id": 46,
+      "type": "advantage",
+      "description": "Soporta integración con sistemas de mensajería y colas como Celery."
+    },
+    {
+      "id": 47,
+      "type": "curiosity",
+      "description": "Django tiene soporte para sistemas GIS a través de GeoDjango."
+    },
+    {
+      "id": 48,
+      "type": "example",
+      "description": "Raspberry Pi Foundation utiliza Django para su sitio web educativo."
+    },
+    {
+      "id": 49,
+      "type": "advantage",
+      "description": "Ofrece migraciones automáticas para gestionar cambios en el modelo de datos."
+    },
+    {
+      "id": 50,
+      "type": "curiosity",
+      "description": "Django tiene un sistema de señales para facilitar la comunicación entre componentes."
+    },
+    {
+      "id": 51,
+      "type": "example",
+      "description": "BBC utiliza Django para gestionar sus contenidos digitales."
+    },
+    {
+      "id": 52,
+      "type": "advantage",
+      "description": "Django facilita el desarrollo de aplicaciones multilingües y globales."
+    },
+    {
+      "id": 53,
+      "type": "curiosity",
+      "description": "Su enfoque modular lo hace ideal para proyectos de gran escala."
+    },
+    {
+      "id": 54,
+      "type": "example",
+      "description": "Todoist usa Django para gestionar su backend."
+    },
+    {
+      "id": 55,
+      "type": "advantage",
+      "description": "Ofrece integración nativa con servicios en la nube como AWS y GCP."
+    },
+    {
+      "id": 56,
+      "type": "curiosity",
+      "description": "Django tiene múltiples extensiones de terceros para expandir su funcionalidad."
+    },
+    {
+      "id": 57,
+      "type": "example",
+      "description": "The Onion utiliza Django para su portal de noticias satíricas."
+    },
+    {
+      "id": 58,
+      "type": "advantage",
+      "description": "Proporciona herramientas para el manejo seguro de datos sensibles."
+    },
+    {
+      "id": 59,
+      "type": "curiosity",
+      "description": "Django es compatible con Python 3 y sigue estándares modernos."
+    },
+    {
+      "id": 60,
+      "type": "example",
+      "description": "ProtonMail utiliza Django para algunos de sus servicios internos."
+    },
+    {
+      "id": 61,
+      "type": "advantage",
+      "description": "Incluye soporte para integración continua y despliegue automático."
+    },
+    {
+      "id": 62,
+      "type": "curiosity",
+      "description": "Django es utilizado frecuentemente en hackathons por su velocidad de desarrollo."
+    },
+    {
+      "id": 63,
+      "type": "example",
+      "description": "Yelp usa Django para su plataforma de reseñas locales."
+    },
+    {
+      "id": 64,
+      "type": "advantage",
+      "description": "Django simplifica la implementación de búsquedas avanzadas y filtrado de datos."
+    },
+    {
+      "id": 65,
+      "type": "curiosity",
+      "description": "El ecosistema Django incluye herramientas populares como Django REST Framework."
+    },
+    {
+      "id": 66,
+      "type": "example",
+      "description": "The Guardian utiliza Django para sus sistemas de publicación digital."
+    },
+    {
+      "id": 67,
+      "type": "advantage",
+      "description": "Soporta generación de gráficos y reportes dinámicos."
+    },
+    {
+      "id": 68,
+      "type": "curiosity",
+      "description": "Django tiene soporte integrado para pruebas unitarias y funcionales."
+    },
+    {
+      "id": 69,
+      "type": "example",
+      "description": "TestFreaks usa Django para manejar millones de reseñas de productos."
+    },
+    {
+      "id": 70,
+      "type": "advantage",
+      "description": "Django puede integrarse con herramientas de machine learning usando Python."
+    },
+    {
+      "id": 71,
+      "type": "curiosity",
+      "description": "Django es ideal para aplicaciones fintech por su seguridad robusta."
+    },
+    {
+      "id": 72,
+      "type": "example",
+      "description": "Envolve usa Django para construir aplicaciones colaborativas en tiempo real."
+    },
+    {
+      "id": 73,
+      "type": "advantage",
+      "description": "Django permite gestionar fácilmente bases de datos relacionales y no relacionales."
+    },
+    {
+      "id": 74,
+      "type": "curiosity",
+      "description": "Django incluye soporte para tareas periódicas con Celery."
+    },
+    {
+      "id": 75,
+      "type": "example",
+      "description": "Quizlet utiliza Django para su plataforma de aprendizaje interactivo."
+    },
+    {
+      "id": 76,
+      "type": "advantage",
+      "description": "Django es ampliamente compatible con contenedores como Docker."
+    },
+    {
+      "id": 77,
+      "type": "curiosity",
+      "description": "La modularidad de Django permite una gran personalización del proyecto."
+    },
+    {
+      "id": 78,
+      "type": "example",
+      "description": "Verizon utiliza Django para gestionar servicios internos."
+    },
+    {
+      "id": 79,
+      "type": "advantage",
+      "description": "Ofrece una arquitectura robusta para aplicaciones en tiempo real."
+    },
+    {
+      "id": 80,
+      "type": "curiosity",
+      "description": "Django está diseñado para escalar horizontalmente con facilidad."
+    },
+    {
+      "id": 81,
+      "type": "example",
+      "description": "NASA usa Django para proyectos educativos y herramientas internas."
+    },
+    {
+      "id": 82,
+      "type": "advantage",
+      "description": "Permite un flujo de trabajo ágil desde el desarrollo hasta el despliegue."
+    },
+    {
+      "id": 83,
+      "type": "curiosity",
+      "description": "Django es compatible con múltiples servicios de correo electrónico."
+    },
+    {
+      "id": 84,
+      "type": "example",
+      "description": "YouTube utiliza Django para algunas de sus herramientas internas."
+    },
+    {
+      "id": 85,
+      "type": "advantage",
+      "description": "Django permite implementar rápidamente MVPs para startups."
+    },
+    {
+      "id": 86,
+      "type": "curiosity",
+      "description": "Django tiene múltiples plugins para comercio electrónico como Oscar."
+    },
+    {
+      "id": 87,
+      "type": "example",
+      "description": "Reddit utiliza Django para desarrollar herramientas y servicios adicionales."
+    },
+    {
+      "id": 88,
+      "type": "advantage",
+      "description": "Es altamente personalizable gracias a su diseño modular."
+    },
+    {
+      "id": 89,
+      "type": "curiosity",
+      "description": "Django permite realizar despliegues en la nube fácilmente."
+    },
+    {
+      "id": 90,
+      "type": "example",
+      "description": "Vimeo usa Django para manejar partes de su plataforma de video."
+    },
+    {
+      "id": 91,
+      "type": "advantage",
+      "description": "Django facilita la integración con servicios de terceros como Stripe y PayPal."
+    },
+    {
+      "id": 92,
+      "type": "curiosity",
+      "description": "El ecosistema de Django incluye herramientas para optimización SEO."
+    },
+    {
+      "id": 93,
+      "type": "example",
+      "description": "Spotify utiliza Django para algunas herramientas de análisis interno."
+    },
+    {
+      "id": 94,
+      "type": "advantage",
+      "description": "Django es ideal para gestionar sistemas complejos de permisos."
+    },
+    {
+      "id": 95,
+      "type": "curiosity",
+      "description": "La API de Django puede extenderse utilizando GraphQL."
+    },
+    {
+      "id": 96,
+      "type": "example",
+      "description": "Instagram usa Django para garantizar la escalabilidad de sus servicios."
+    },
+    {
+      "id": 97,
+      "type": "advantage",
+      "description": "Ofrece integración avanzada con servicios de CDN para contenido estático y multimedia."
+    },
+    {
+      "id": 98,
+      "type": "curiosity",
+      "description": "Django tiene soporte para sistemas de colas y notificaciones en tiempo real."
+    },
+    {
+      "id": 99,
+      "type": "example",
+      "description": "NASA utiliza Django en proyectos colaborativos y educativos."
+    },
+    {
+      "id": 100,
+      "type": "advantage",
+      "description": "Django es ideal para construir aplicaciones seguras y robustas rápidamente."
+    }
+  ]
+}

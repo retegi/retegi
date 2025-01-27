@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 14:38+0100\n"
-"PO-Revision-Date: 2025-01-15 14:39+0100\n"
+"POT-Creation-Date: 2025-01-27 15:55+0100\n"
+"PO-Revision-Date: 2025-01-27 15:57+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,90 +19,108 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: templates/home/about.html:22 templates/home/base.html:88
-#: templates/home/base.html:158
+#: templates/home/about.html:25 templates/home/base copy.html:150
+#: copy.html:229 templates/home/base.html:152 templates/home/base.html:231
 msgid "About"
 msgstr "About"
 
-#: templates/home/about.html:29 templates/home/cookies_policy.html:29
-#: templates/home/legal_policies.html:29 templates/home/privacy_policy.html:29
-msgid "Page under construction"
-msgstr "Page under construction"
+#: templates/home/about.html:33
+msgid ""
+"Hi there! I'm a curious, creative, and passionate individual from the "
+"picturesque valley of Oiartzun, nestled in the heart of the Basque Country. "
+"My journey has been a blend of musical notes and lines of code. I started by"
+" studying music, delving into piano and jazz, which taught me the beauty of "
+"improvisation and the importance of precision in every detail."
+msgstr ""
+"Hi there! I'm a curious, creative, and passionate individual from the "
+"picturesque valley of Oiartzun, nestled in the heart of the Basque Country. "
+"My journey has been a blend of musical notes and lines of code. I started by"
+" studying music, delving into piano and jazz, which taught me the beauty of "
+"improvisation and the importance of precision in every detail."
 
-#: templates/home/base.html:87 templates/home/base.html:155
+#: templates/home/about.html:34
+msgid ""
+"However, my love for technology led me to dive into the world of computer "
+"science and automation, where I discovered the joy of bringing ideas to life"
+" through logic and creativity. I'm an enthusiastic web developer, dedicated "
+"to crafting clean, secure, and well-structured code. I thrive on tackling "
+"new technological challenges and collaborating on projects that make a "
+"difference."
+msgstr ""
+"However, my love for technology led me to dive into the world of computer "
+"science and automation, where I discovered the joy of bringing ideas to life"
+" through logic and creativity. I'm an enthusiastic web developer, dedicated "
+"to crafting clean, secure, and well-structured code. I thrive on tackling "
+"new technological challenges and collaborating on projects that make a "
+"difference."
+
+#: templates/home/about.html:35
+msgid ""
+"If you have an idea or a project in mind, I’m all ears and excited to "
+"explore how we can bring it to life together.For any proposals or "
+"collaborations, feel free to reach out via email. I'd be delighted to hear "
+"about your project, and if you’d like, we can discuss it over a good black "
+"coffee – no sugar."
+msgstr ""
+"If you have an idea or a project in mind, I’m all ears and excited to "
+"explore how we can bring it to life together.For any proposals or "
+"collaborations, feel free to reach out via email. I'd be delighted to hear "
+"about your project, and if you’d like, we can discuss it over a good black "
+"coffee – no sugar."
+
+#: templates/home/about.html:36
+msgid "Looking forward to hearing from you!"
+msgstr "Looking forward to hearing from you!"
+
+#: templates/home/base copy.html:149 copy.html:226
+#: templates/home/base.html:151 templates/home/base.html:228
 msgid "Home"
 msgstr "Home"
 
-#: templates/home/base.html:89 templates/home/base.html:161
+#: templates/home/base copy.html:151 copy.html:232
+#: templates/home/base.html:153 templates/home/base.html:234
 #: templates/home/contact.html:89
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/home/base.html:118
+#: templates/home/base copy.html:187 templates/home/base.html:189
 msgid "Search..."
 msgstr "Search..."
 
-#: templates/home/base.html:123
+#: templates/home/base copy.html:193 templates/home/base.html:195
 msgid "publish"
 msgstr "Publish"
 
-#: templates/home/base.html:125
+#: templates/home/base copy.html:197 templates/home/base.html:199
 msgid "log out"
 msgstr "Log out"
 
-#: templates/home/base.html:129
+#: templates/home/base copy.html:200 templates/home/base.html:202
 msgid "Login"
 msgstr "Login"
 
-#: templates/home/base.html:130
+#: templates/home/base copy.html:201 templates/home/base.html:203
 msgid "Sign-up"
 msgstr "Sign-up"
-
-#: templates/home/contact.html:102
-msgid "First name"
-msgstr "First name"
-
-#: templates/home/contact.html:108
-msgid "Last name"
-msgstr "Last name"
-
-#: templates/home/contact.html:116
-msgid "Company name"
-msgstr "Company name"
-
-#: templates/home/contact.html:122
-msgid "Address"
-msgstr "Address"
-
-#: templates/home/contact.html:128
-msgid "Email"
-msgstr "Email"
-
-#: templates/home/contact.html:134
-msgid "Phone"
-msgstr "Phone"
-
-#: templates/home/contact.html:140
-msgid "Additional information"
-msgstr "Additional information"
-
-#: templates/home/contact.html:156
-msgid "Send"
-msgstr "Send"
 
 #: templates/home/cookies_policy.html:22
 msgid "Cookies Policy"
 msgstr "Cookies Policy"
 
-#: templates/home/index.html:180
+#: templates/home/cookies_policy.html:29 templates/home/legal_policies.html:29
+#: templates/home/privacy_policy.html:29
+msgid "Page under construction"
+msgstr "Page under construction"
+
+#: templates/home/index.html:260
 msgid "Month"
 msgstr "Month"
 
-#: templates/home/index.html:190
+#: templates/home/index.html:270
 msgid "Technologies"
 msgstr "Technologies"
 
-#: templates/home/index.html:228
+#: templates/home/index.html:380
 msgid "¿Creamos algo juntos? ;)"
 msgstr "Shall we create something together? ;)"
 
@@ -113,3 +131,27 @@ msgstr "Legal Policy"
 #: templates/home/privacy_policy.html:22
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
+
+#~ msgid "First name"
+#~ msgstr "First name"
+
+#~ msgid "Last name"
+#~ msgstr "Last name"
+
+#~ msgid "Company name"
+#~ msgstr "Company name"
+
+#~ msgid "Address"
+#~ msgstr "Address"
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "Phone"
+#~ msgstr "Phone"
+
+#~ msgid "Additional information"
+#~ msgstr "Additional information"
+
+#~ msgid "Send"
+#~ msgstr "Send"
