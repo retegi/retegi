@@ -112,6 +112,23 @@
         );
     }
 
+
+    #inteligenciaartificial {
+    color: #28a745; /* Color del texto (verde) */
+    font-weight: bold;
+    text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+    animation: radioactive-effect 2.5s infinite ease-in-out;
+}
+
+@keyframes radioactive-effect {
+    0%, 100% {
+        text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
+    }
+    50% {
+        text-shadow: 0 0 10px white, 0 0 20px white, 0 0 25px white;
+    }
+}
+
     </style>
 {% endblock %}
 
@@ -147,6 +164,44 @@
           <div class="col-12 text-center h3 text-light">
         {% trans 'web & android/ios app developer' %}
           </div>
+        </div>
+      </div>
+      <div class="container bg-dark">
+        <div class="row">
+          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
+            HTML/CSS
+          </div>
+          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
+            Javascript
+          </div>
+          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
+            Python
+          </div>
+          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
+            Django
+          </div>
+          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
+            SQL
+          </div>
+          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
+            Git/Github
+          </div>
+          <div id="inteligenciaartificial" class="col-lg-2 col-md-6 text-center h6 text-success"data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      {% trans 'Inteligencia Artificial' %}
+          </div>
+          <div class="col-lg-1 col-md-6 text-center h6 text-secondary">
+            Leaflet
+          </div>
+          <div class="col-lg-1 col-md-6 text-center h6 text-secondary">
+            Linux
+          </div>
+          <div class="col-lg-1 col-md-6 text-center h6 text-secondary">
+            Gunicorn
+          </div>
+          <div class="col-lg-1 col-md-6 text-center h6 text-secondary">
+            Nginx
+          </div>
+          
         </div>
       </div>
       

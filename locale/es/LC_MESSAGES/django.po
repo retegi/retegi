@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-29 10:09+0100\n"
-"PO-Revision-Date: 2025-01-29 10:09+0100\n"
+"POT-Creation-Date: 2025-01-29 12:14+0100\n"
+"PO-Revision-Date: 2025-01-29 12:15+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -115,21 +115,25 @@ msgstr "Política de Cookies"
 msgid "Page under construction"
 msgstr "Página en construcción"
 
-#: templates/home/index copy 3.html:218 templates/home/index.html:226
+#: templates/home/index copy 3.html:218 templates/home/index.html:285
 msgid "Month"
 msgstr "Mes"
 
-#: templates/home/index copy 3.html:228 templates/home/index.html:236
+#: templates/home/index copy 3.html:228 templates/home/index.html:295
 msgid "Technologies"
 msgstr "Tecnologías"
 
-#: templates/home/index copy 3.html:269 templates/home/index.html:277
+#: templates/home/index copy 3.html:269 templates/home/index.html:336
 msgid "¿Creamos algo juntos? ;)"
 msgstr "¿Creamos algo juntos? ;)"
 
-#: templates/home/index.html:144
+#: templates/home/index.html:165
 msgid "web & android/ios app developer"
 msgstr "desarrollador web y app android/ios"
+
+#: templates/home/index.html:190
+msgid "Inteligencia Artificial"
+msgstr "Inteligencia Artificial"
 
 #: templates/home/legal_policies.html:22
 msgid "Legal Policy"
