@@ -76,7 +76,7 @@ input[type="search"]:focus {
 
   /* Limitar la altura del modal */
   .modal-content {
-    max-height: 50vh; /* Altura máxima del modal */
+    max-height: 60vh; /* Altura máxima del modal */
     overflow: hidden; /* Evitar que el contenido desborde */
   }
 
@@ -94,23 +94,14 @@ input[type="search"]:focus {
   }
 
 
-  /* Limitar la altura del modal */
-  .modal-content {
-    max-height: 50vh; /* Altura máxima del modal */
-    overflow: hidden; /* Prevenir desbordes */
-  }
-
-  /* Hacer el área de chat desplazable */
-  #chat-container {
-    max-height: 40vh; /* Altura máxima del área de chat */
-    overflow-y: auto; /* Activar scroll vertical */
-  }
 
   /* Mantener el área de entrada fija */
   #input-container {
     position: relative; /* Asegura que sea independiente del área de chat */
     bottom: 0;
     width: 100%;
+    max-height: 40vh; /* Altura máxima del área del chat */
+    overflow-y: auto; 
   }
 
   /* Scroll automático al final del chat */
@@ -118,14 +109,6 @@ input[type="search"]:focus {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-  }
-
-  
-
-  /* Contenedor del chat desplazable */
-  #chat-container {
-    max-height: 40vh; /* Altura máxima del área del chat */
-    overflow-y: auto; /* Activar scroll vertical */
   }
 
 
@@ -269,7 +252,7 @@ input[type="search"]:focus {
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="min-height:80vh;">
+    <div class="modal-content" style="min-height:30vh;">
       <!-- Icono del bot -->
       <img class="w-50 mx-auto d-block mt-3" src="{% static 'img/indartbot.gif' %}" alt="Bot Icon">
 
@@ -280,8 +263,8 @@ input[type="search"]:focus {
       </div>
 
       <!-- Contenedor del chat -->
-      <div id="chat-container" class="bg-white px-3 py-4" style="max-height: 80vh; overflow-y: auto;">
-        <div id="chat-box" style="min-height:80vh;">
+      <div id="chat-container" class="bg-white px-3 py-4" style="max-height:800vh; overflow-y: auto;">
+        <div id="chat-box" style="min-height:30vh;">
           <!-- Los mensajes del chat se mostrarán aquí -->
         </div>
       </div>
@@ -303,7 +286,31 @@ input[type="search"]:focus {
   </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var chatContainer = document.getElementById("chat-container");
 
+    function scrollToBottom() {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    // Monitorear cambios en el chat-box
+    var chatBox = document.getElementById("chat-box");
+    var observer = new MutationObserver(function () {
+        scrollToBottom(); // Hacer scroll automáticamente cuando hay cambios
+    });
+
+    observer.observe(chatBox, { childList: true }); // Observar adiciones o eliminaciones en el chat-box
+
+    // También hacer scroll cuando el modal se muestra
+    var exampleModal = document.getElementById('exampleModal');
+    exampleModal.addEventListener('shown.bs.modal', function () {
+        scrollToBottom();
+    });
+});
+
+
+</script>
 
 
     <!--Efecto creamos algo juntos-->
@@ -405,7 +412,7 @@ input[type="search"]:focus {
             let userMessage = $('#user-message').val();
             if (userMessage.trim() !== '') {
                 // Limpiar el chat-box antes de agregar nuevos mensajes
-                $('#chat-box').empty();
+                //$('#chat-box').empty();
 
                 $('#chat-box').append(`<p class="user-message"><strong>Tú:</strong> ${userMessage}</p>`);
                 $('#user-message').val('');
