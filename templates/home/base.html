@@ -76,13 +76,13 @@ input[type="search"]:focus {
 
   /* Limitar la altura del modal */
   .modal-content {
-    max-height: 60vh; /* Altura máxima del modal */
+    max-height: 80vh; /* Altura máxima del modal */
     overflow: hidden; /* Evitar que el contenido desborde */
   }
 
   /* Hacer el contenedor del chat desplazable */
   #chat-container {
-    max-height: 40vh; /* Altura máxima del chat */
+    height: 20vh; /* Altura máxima del chat */
     overflow-y: auto; /* Habilitar el desplazamiento vertical */
   }
 
@@ -264,7 +264,7 @@ input[type="search"]:focus {
 
       <!-- Contenedor del chat -->
       <div id="chat-container" class="bg-white px-3 py-4" style="max-height:800vh; overflow-y: auto;">
-        <div id="chat-box" style="min-height:30vh;">
+        <div id="chat-box" style="min-height:20vh;">
           <!-- Los mensajes del chat se mostrarán aquí -->
         </div>
       </div>
@@ -272,7 +272,7 @@ input[type="search"]:focus {
       <!-- Zona de entrada fija -->
       <div id="input-container" class="px-3 py-2 bg-light">
         <form id="message-form" method="post">
-          <input type="text" id="user-message" class="form-control mb-2" placeholder="Escribe tu pregunta a reteBot">
+          <input type="text" id="user-message" class="form-control mb-2" placeholder="{% trans 'Write your question in any language' %}">
           <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
           <button type="button" id="send-button" class="btn btn-success w-100">Enviar</button>
         </form>

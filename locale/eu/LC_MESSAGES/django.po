@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-29 09:20+0100\n"
-"PO-Revision-Date: 2025-01-29 09:24+0100\n"
+"POT-Creation-Date: 2025-01-29 10:09+0100\n"
+"PO-Revision-Date: 2025-01-29 10:10+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
 #: templates/home/about.html:19 templates/home/base copy.html:150
-#: copy.html:229 templates/home/base.html:152 templates/home/base.html:224
+#: copy.html:229 templates/home/base.html:135 templates/home/base.html:207
 msgid "About"
 msgstr "Ni neu"
 
@@ -73,35 +73,39 @@ msgid "Looking forward to hearing from you!"
 msgstr "Zure berri izateko irrikitan nago!"
 
 #: templates/home/base copy.html:149 copy.html:226
-#: templates/home/base.html:151 templates/home/base.html:221
+#: templates/home/base.html:134 templates/home/base.html:204
 msgid "Home"
 msgstr "Hasiera"
 
 #: templates/home/base copy.html:151 copy.html:232
-#: templates/home/base.html:153 templates/home/base.html:227
+#: templates/home/base.html:136 templates/home/base.html:210
 #: templates/home/contact.html:15
 msgid "Contact"
 msgstr "Kontaktatu"
 
-#: templates/home/base copy.html:187 templates/home/base.html:189
+#: templates/home/base copy.html:187 templates/home/base.html:172
 msgid "Search..."
 msgstr "Bilatu"
 
-#: templates/home/base copy.html:193 templates/home/base.html:195
+#: templates/home/base copy.html:193 templates/home/base.html:178
 msgid "publish"
 msgstr "Argitaratu"
 
-#: templates/home/base copy.html:197 templates/home/base.html:199
+#: templates/home/base copy.html:197 templates/home/base.html:182
 msgid "log out"
 msgstr "Irten"
 
-#: templates/home/base copy.html:200 templates/home/base.html:202
+#: templates/home/base copy.html:200 templates/home/base.html:185
 msgid "Login"
 msgstr "Saioa hasi"
 
-#: templates/home/base copy.html:201 templates/home/base.html:203
+#: templates/home/base copy.html:201 templates/home/base.html:186
 msgid "Sign-up"
 msgstr "Erregistratu"
+
+#: templates/home/base.html:275
+msgid "Write your question in any language"
+msgstr "Idatzi zure galdera edozein hizkuntzatan"
 
 #: templates/home/cookies_policy.html:22
 msgid "Cookies Policy"
