@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-29 10:09+0100\n"
-"PO-Revision-Date: 2025-01-29 10:10+0100\n"
+"PO-Revision-Date: 2025-01-29 10:21+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -130,7 +130,7 @@ msgstr "Elkarrekin zerbait sortuko dugu? ;)"
 
 #: templates/home/index.html:144
 msgid "web & android/ios app developer"
-msgstr "web, eta android/ios app garapena"
+msgstr "web, eta android/ios app garatzailea"
 
 #: templates/home/legal_policies.html:22
 msgid "Legal Policy"
