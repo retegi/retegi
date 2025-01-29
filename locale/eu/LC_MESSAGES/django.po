@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-27 15:55+0100\n"
-"PO-Revision-Date: 2025-01-27 16:01+0100\n"
+"POT-Creation-Date: 2025-01-29 09:20+0100\n"
+"PO-Revision-Date: 2025-01-29 09:24+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: templates/home/about.html:25 templates/home/base copy.html:150
-#: copy.html:229 templates/home/base.html:152 templates/home/base.html:231
+#: templates/home/about.html:19 templates/home/base copy.html:150
+#: copy.html:229 templates/home/base.html:152 templates/home/base.html:224
 msgid "About"
 msgstr "Ni neu"
 
-#: templates/home/about.html:33
+#: templates/home/about.html:27
 msgid ""
 "Hi there! I'm a curious, creative, and passionate individual from the "
 "picturesque valley of Oiartzun, nestled in the heart of the Basque Country. "
@@ -41,7 +41,7 @@ msgstr ""
 " munduan murgiltzera eraman ninduen, eta ideiei logika eta sormenaren bidez "
 "bizia emateko poza aurkitu nuen."
 
-#: templates/home/about.html:34
+#: templates/home/about.html:28
 msgid ""
 "However, my love for technology led me to dive into the world of computer "
 "science and automation, where I discovered the joy of bringing ideas to life"
@@ -56,7 +56,7 @@ msgstr ""
 "Buruan ideia edo proiekturen bat baduzu, gustura entzungo dizut eta "
 "elkarrekin nola gauzatu dezakegun aztertuko dugu."
 
-#: templates/home/about.html:35
+#: templates/home/about.html:29
 msgid ""
 "If you have an idea or a project in mind, I’m all ears and excited to "
 "explore how we can bring it to life together.For any proposals or "
@@ -68,18 +68,18 @@ msgstr ""
 "elektronikoz. Zure proiektua ezagutzea gustatuko litzaidake, eta nahi izanez"
 " gero, azukrerik gabeko kafe beltz batekin hitz egin dezakegu."
 
-#: templates/home/about.html:36
+#: templates/home/about.html:30
 msgid "Looking forward to hearing from you!"
 msgstr "Zure berri izateko irrikitan nago!"
 
 #: templates/home/base copy.html:149 copy.html:226
-#: templates/home/base.html:151 templates/home/base.html:228
+#: templates/home/base.html:151 templates/home/base.html:221
 msgid "Home"
 msgstr "Hasiera"
 
 #: templates/home/base copy.html:151 copy.html:232
-#: templates/home/base.html:153 templates/home/base.html:234
-#: templates/home/contact.html:89
+#: templates/home/base.html:153 templates/home/base.html:227
+#: templates/home/contact.html:15
 msgid "Contact"
 msgstr "Kontaktatu"
 
@@ -112,17 +112,21 @@ msgstr "Cookien politika"
 msgid "Page under construction"
 msgstr "Orria eraikitzen ari da"
 
-#: templates/home/index.html:260
+#: templates/home/index copy 3.html:218 templates/home/index.html:226
 msgid "Month"
 msgstr "Hilabetea"
 
-#: templates/home/index.html:270
+#: templates/home/index copy 3.html:228 templates/home/index.html:236
 msgid "Technologies"
 msgstr "Teknologiak"
 
-#: templates/home/index.html:380
+#: templates/home/index copy 3.html:269 templates/home/index.html:277
 msgid "¿Creamos algo juntos? ;)"
 msgstr "Elkarrekin zerbait sortuko dugu? ;)"
+
+#: templates/home/index.html:144
+msgid "web & android/ios app developer"
+msgstr "web, eta android/ios app garapena"
 
 #: templates/home/legal_policies.html:22
 msgid "Legal Policy"

@@ -1,10 +1,1 @@
-Nombre de la empresa: TiendaTech
-Descripción: Vendemos productos de tecnología como laptops, smartphones y accesorios. Ofrecemos soporte técnico y asesoramiento personalizado.
-Productos:
-- Laptop HP ProBook - Precio: $900
-- iPhone 14 - Precio: $1200
-- Audífonos Sony WH-1000XM4 - Precio: $300
-- Monitor Samsung 27" - Precio: $400
-Políticas:
-- Devoluciones dentro de 30 días.
-- Garantía de 1 año en todos los productos.
+
