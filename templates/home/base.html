@@ -24,7 +24,9 @@
 
     <style>
 
-
+  body{
+    padding-top: 56px;
+  }
 
 
 .word {
@@ -120,15 +122,28 @@ input[type="search"]:focus {
     flex-direction: column;
     justify-content: flex-end;
   }
+@media (max-width: 576px) {
+        header {
+            padding: 8px; /* Reducir padding en pantallas pequeñas */
+        }
 
+        header .nav {
+            font-size: 14px; /* Reducir tamaño de texto del menú */
+        }
+
+        header .btn {
+            padding: 4px 8px; /* Reducir botones */
+            font-size: 12px;
+        }
+    }
 
     </style>
     {% block head %}
     {% endblock %}
 </head>
   <body style="background-image: url()">
-    <header class="">
-        <div class="container bg-dark p-2 border">
+    <header class="fixed-top">
+        <div class="container bg-dark p-2">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
               <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
@@ -179,9 +194,9 @@ input[type="search"]:focus {
                   </ul>
               </li>
               <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="GET">
-   <input type="text" name="q" id="searchInput" placeholder="{% trans 'Search' %}..." class="form-control rounded-pill bg-dark text-light" 
-       style="border: 1px solid #eee; font-size: 16px;">
-</form>
+                <input type="text" name="q" id="searchInput" placeholder="{% trans 'Search' %}..." class="form-control rounded-pill bg-dark text-light" 
+                    style="border: 1px solid #eee; font-size: 16px;">
+              </form>
 
       
               
