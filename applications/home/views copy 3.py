@@ -32,47 +32,29 @@ from django.db.models.functions import TruncMonth
 from django.views.generic import ListView
 from .models import Post, Technology, Hacked
 
-from django.db.models import Q
-from django.db.models.functions import TruncMonth
-from django.db.models import Count
-from django.conf import settings
-import os
-import json
-import random
-from django.views.generic import ListView
-from .models import Post, Technology, Hacked
-
 class HomePageView(ListView):
     template_name = "home/index.html"
     model = Post
     context_object_name = 'entradas_blog'
 
-    def get_queryset(self):
-        """Filtra los posts según la búsqueda en el título"""
-        queryset = Post.objects.all().order_by('-date_time')
-        search_query = self.request.GET.get('q')  # Obtener el parámetro de búsqueda
-
-        if search_query:
-            queryset = queryset.filter(Q(title__icontains=search_query))
-
-        return queryset
-
     def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
 
-        context["post_list"] = self.get_queryset()  # Utilizar la búsqueda aquí
+        # Obtener posts y datos relacionados
+        context["post_list"] = Post.objects.all().order_by('-date_time')
         context["technology_list"] = Technology.objects.all()
         context["hacked_victims"] = Hacked.objects.all()
-        context["search_query"] = self.request.GET.get('q', '')  # Mantener el término de búsqueda en el template
 
         # Procesar publicaciones por mes
         posts_by_month = (
-            Post.objects.annotate(month=TruncMonth('date_time'))
-            .values('month')
-            .annotate(count=Count('id'))
-            .order_by('-month')
+            Post.objects.annotate(month=TruncMonth('date_time'))  # Trunca la fecha por mes
+            .values('month')  # Agrupa por mes
+            .annotate(count=Count('id'))  # Cuenta las publicaciones en ese mes
+            .order_by('-month')  # Ordena por mes descendente
         )
 
+        # Crear una lista de meses con publicaciones
         month_names = {
             1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
             7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
@@ -82,24 +64,27 @@ class HomePageView(ListView):
             for post in posts_by_month
         ]
 
+        # Añadir la lista de meses al contexto
         context["post_by_month"] = post_by_month_list
 
-        # Leer archivos JSON de curiosidades
+        # Leer el archivo JSON de curiosidades
         json_path = os.path.join(settings.BASE_DIR, 'static/json/curiosidades-hacking.json')
         try:
             with open(json_path, 'r', encoding='utf-8') as file:
                 curiosities = json.load(file).get("curiosidades", [])
+                # Seleccionar una curiosidad al azar
                 context["curiosity_hacking"] = random.choice(curiosities) if curiosities else "No hay curiosidades hacking disponibles."
-        except (FileNotFoundError, json.JSONDecodeError):
+        except (FileNotFoundError, json.JSONDecodeError) as e:
             context["curiosity_hacking"] = "No se pudo cargar la curiosidad debido a un error."
 
         json_path2 = os.path.join(settings.BASE_DIR, 'static/json/curiosidades-django.json')
         try:
             with open(json_path2, 'r', encoding='utf-8') as file:
                 djangoFactsAndProjects = json.load(file).get("DjangoFactsAndProjects", [])
+                # Seleccionar una curiosidad al azar
                 context["curiosity_django"] = random.choice(djangoFactsAndProjects) if djangoFactsAndProjects else "No hay curiosidades disponibles."
-        except (FileNotFoundError, json.JSONDecodeError):
-            context["curiosity_django"] = "No se pudo cargar la curiosidad debido a un error."
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            context["curiosity_django"] = "No se pudo cargar la curiosidad debido a un error."    
 
         return context
 

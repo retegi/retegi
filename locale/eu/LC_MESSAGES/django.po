@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-29 12:15+0100\n"
+"POT-Creation-Date: 2025-02-01 21:06+0100\n"
 "PO-Revision-Date: 2025-01-29 12:16+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: templates/home/about.html:19 templates/home/base copy.html:150
-#: copy.html:229 templates/home/base.html:135 templates/home/base.html:207
+#: templates/home/about.html:19 templates/home/base copy 2.html:135 2.html:207
+#: copy.html:150 copy.html:229 templates/home/base.html:145
+#: templates/home/base.html:219
 msgid "About"
 msgstr "Ni neu"
 
@@ -28,30 +29,30 @@ msgstr "Ni neu"
 msgid ""
 "Hi there! I'm a curious, creative, and passionate individual from the "
 "picturesque valley of Oiartzun, nestled in the heart of the Basque Country. "
-"My journey has been a blend of musical notes and lines of code. I started by"
-" studying music, delving into piano and jazz, which taught me the beauty of "
+"My journey has been a blend of musical notes and lines of code. I started by "
+"studying music, delving into piano and jazz, which taught me the beauty of "
 "improvisation and the importance of precision in every detail."
 msgstr ""
-"Kaixo! Oiartzungo haran zoragarrian jaiotako eta hazitako pertsona jakin-min"
-" handikoa, sortzailea eta sutsua naiz, Euskal Herriaren bihotzean. Nire "
+"Kaixo! Oiartzungo haran zoragarrian jaiotako eta hazitako pertsona jakin-min "
+"handikoa, sortzailea eta sutsua naiz, Euskal Herriaren bihotzean. Nire "
 "ibilbidea musika-noten eta kode-lerroen nahasketa izan da. Musika ikasten "
 "hasi nintzen, pianoa eta jazza arakatuz, eta horrek inprobisazioaren "
 "edertasuna eta xehetasun bakoitzean zehaztasunaren garrantzia erakutsi "
-"zizkidan. Hala ere, teknologiaren maitasunak informatika eta automatismoaren"
-" munduan murgiltzera eraman ninduen, eta ideiei logika eta sormenaren bidez "
+"zizkidan. Hala ere, teknologiaren maitasunak informatika eta automatismoaren "
+"munduan murgiltzera eraman ninduen, eta ideiei logika eta sormenaren bidez "
 "bizia emateko poza aurkitu nuen."
 
 #: templates/home/about.html:28
 msgid ""
 "However, my love for technology led me to dive into the world of computer "
-"science and automation, where I discovered the joy of bringing ideas to life"
-" through logic and creativity. I'm an enthusiastic web developer, dedicated "
+"science and automation, where I discovered the joy of bringing ideas to life "
+"through logic and creativity. I'm an enthusiastic web developer, dedicated "
 "to crafting clean, secure, and well-structured code. I thrive on tackling "
 "new technological challenges and collaborating on projects that make a "
 "difference."
 msgstr ""
-"Web programazioan zale sutsua naiz, kode garbia, segurua eta ondo egituratua"
-" sortzeari eskainia. Teknologiaren erronka berriei aurre egitea eta "
+"Web programazioan zale sutsua naiz, kode garbia, segurua eta ondo egituratua "
+"sortzeari eskainia. Teknologiaren erronka berriei aurre egitea eta "
 "diferentzia markatzen duten proiektuetan lankidetzan aritzea maite dut. "
 "Buruan ideia edo proiekturen bat baduzu, gustura entzungo dizut eta "
 "elkarrekin nola gauzatu dezakegun aztertuko dugu."
@@ -65,47 +66,57 @@ msgid ""
 "coffee – no sugar."
 msgstr ""
 "Proposamen edo lankidetza baterako, jar zaitez nirekin harremanetan posta "
-"elektronikoz. Zure proiektua ezagutzea gustatuko litzaidake, eta nahi izanez"
-" gero, azukrerik gabeko kafe beltz batekin hitz egin dezakegu."
+"elektronikoz. Zure proiektua ezagutzea gustatuko litzaidake, eta nahi izanez "
+"gero, azukrerik gabeko kafe beltz batekin hitz egin dezakegu."
 
 #: templates/home/about.html:30
 msgid "Looking forward to hearing from you!"
 msgstr "Zure berri izateko irrikitan nago!"
 
-#: templates/home/base copy.html:149 copy.html:226
-#: templates/home/base.html:134 templates/home/base.html:204
+#: templates/home/base copy 2.html:134 2.html:204 copy.html:149 copy.html:226
+#: templates/home/base.html:144 templates/home/base.html:216
 msgid "Home"
 msgstr "Hasiera"
 
-#: templates/home/base copy.html:151 copy.html:232
-#: templates/home/base.html:136 templates/home/base.html:210
+#: templates/home/base copy 2.html:136 2.html:210 copy.html:151 copy.html:232
+#: templates/home/base.html:146 templates/home/base.html:222
 #: templates/home/contact.html:15
 msgid "Contact"
 msgstr "Kontaktatu"
 
-#: templates/home/base copy.html:187 templates/home/base.html:172
+#: templates/home/base copy 2.html:172 copy.html:187
 msgid "Search..."
 msgstr "Bilatu"
 
-#: templates/home/base copy.html:193 templates/home/base.html:178
+#: templates/home/base copy 2.html:178 copy.html:193
+#: templates/home/base.html:190
 msgid "publish"
 msgstr "Argitaratu"
 
-#: templates/home/base copy.html:197 templates/home/base.html:182
+#: templates/home/base copy 2.html:182 copy.html:197
+#: templates/home/base.html:194
 msgid "log out"
 msgstr "Irten"
 
-#: templates/home/base copy.html:200 templates/home/base.html:185
+#: templates/home/base copy 2.html:185 copy.html:200
+#: templates/home/base.html:197
 msgid "Login"
 msgstr "Saioa hasi"
 
-#: templates/home/base copy.html:201 templates/home/base.html:186
+#: templates/home/base copy 2.html:186 copy.html:201
+#: templates/home/base.html:198
 msgid "Sign-up"
 msgstr "Erregistratu"
 
-#: templates/home/base.html:275
+#: templates/home/base copy 2.html:275 templates/home/base.html:287
 msgid "Write your question in any language"
 msgstr "Idatzi zure galdera edozein hizkuntzatan"
+
+#: templates/home/base.html:182
+#, fuzzy
+#| msgid "Search..."
+msgid "Search"
+msgstr "Bilatu"
 
 #: templates/home/cookies_policy.html:22
 msgid "Cookies Policy"

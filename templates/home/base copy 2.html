@@ -71,17 +71,7 @@ input[type="search"]:focus {
     border-color: gray; /* Cambia el color del borde */
 }
 
-#searchInput {
-        border: 1px solid #eee; /* Borde normal */
-        border-radius: 25px; /* Forma redondeada */
-        outline: none; /* Elimina el borde azul del navegador */
-        font-size: 16px;
-    }
 
-    #searchInput:focus {
-        border: 2px solid #28a745; /* Borde verde al enfocar */
-        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Efecto de sombra verde */
-    }
 
 
   /* Limitar la altura del modal */
@@ -178,11 +168,9 @@ input[type="search"]:focus {
                       {% endfor %}
                   </ul>
               </li>
-              <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="GET">
-   <input type="text" name="q" id="searchInput" placeholder="{% trans 'Search' %}..." class="form-control rounded-pill bg-dark text-light" 
-       style="border: 1px solid #eee; font-size: 16px;">
-</form>
-
+              <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control text-light bg-dark" placeholder="{% trans 'Search...' %}" aria-label="Search" autofocus>
+              </form>
       
               
               <div class="text-end">
@@ -297,11 +285,6 @@ input[type="search"]:focus {
     </div>
   </div>
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("searchInput").focus();
-    });
-</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {

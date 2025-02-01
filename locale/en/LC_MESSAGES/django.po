@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-29 12:15+0100\n"
-"PO-Revision-Date: 2025-01-29 12:16+0100\n"
+"POT-Creation-Date: 2025-02-01 21:06+0100\n"
+"PO-Revision-Date: 2025-02-01 21:09+0100\n"
 "Last-Translator:   <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,8 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: templates/home/about.html:19 templates/home/base copy.html:150
-#: copy.html:229 templates/home/base.html:135 templates/home/base.html:207
+#: templates/home/about.html:19 templates/home/base copy 2.html:135 2.html:207
+#: copy.html:150 copy.html:229 templates/home/base.html:145
+#: templates/home/base.html:219
 msgid "About"
 msgstr "About"
 
@@ -72,40 +73,50 @@ msgstr ""
 msgid "Looking forward to hearing from you!"
 msgstr "Looking forward to hearing from you!"
 
-#: templates/home/base copy.html:149 copy.html:226
-#: templates/home/base.html:134 templates/home/base.html:204
+#: templates/home/base copy 2.html:134 2.html:204 copy.html:149 copy.html:226
+#: templates/home/base.html:144 templates/home/base.html:216
 msgid "Home"
 msgstr "Home"
 
-#: templates/home/base copy.html:151 copy.html:232
-#: templates/home/base.html:136 templates/home/base.html:210
+#: templates/home/base copy 2.html:136 2.html:210 copy.html:151 copy.html:232
+#: templates/home/base.html:146 templates/home/base.html:222
 #: templates/home/contact.html:15
 msgid "Contact"
 msgstr "Contact"
 
-#: templates/home/base copy.html:187 templates/home/base.html:172
+#: templates/home/base copy 2.html:172 copy.html:187
 msgid "Search..."
-msgstr "Search..."
+msgstr "Search"
 
-#: templates/home/base copy.html:193 templates/home/base.html:178
+#: templates/home/base copy 2.html:178 copy.html:193
+#: templates/home/base.html:190
 msgid "publish"
 msgstr "Publish"
 
-#: templates/home/base copy.html:197 templates/home/base.html:182
+#: templates/home/base copy 2.html:182 copy.html:197
+#: templates/home/base.html:194
 msgid "log out"
 msgstr "Log out"
 
-#: templates/home/base copy.html:200 templates/home/base.html:185
+#: templates/home/base copy 2.html:185 copy.html:200
+#: templates/home/base.html:197
 msgid "Login"
 msgstr "Login"
 
-#: templates/home/base copy.html:201 templates/home/base.html:186
+#: templates/home/base copy 2.html:186 copy.html:201
+#: templates/home/base.html:198
 msgid "Sign-up"
 msgstr "Sign-up"
 
-#: templates/home/base.html:275
+#: templates/home/base copy 2.html:275 templates/home/base.html:287
 msgid "Write your question in any language"
 msgstr "Write your question in any language"
+
+#: templates/home/base.html:182
+#, fuzzy
+#| msgid "Search..."
+msgid "Search"
+msgstr "Search..."
 
 #: templates/home/cookies_policy.html:22
 msgid "Cookies Policy"
