@@ -1,12 +1,9 @@
 from django import forms
 from .models import Post, Technology, Comment
 from tinymce.widgets import TinyMCE
-from django_recaptcha.fields import ReCaptchaField
-from django_recaptcha.widgets import ReCaptchaV2Checkbox
+from parler.forms import TranslatableModelForm
 
-
-
-class PostForm(forms.ModelForm):
+class PostForm(TranslatableModelForm):  # ✅ Usar TranslatableModelForm en vez de ModelForm
     technology = forms.ModelMultipleChoiceField(
         queryset=Technology.objects.all(),
         widget=forms.CheckboxSelectMultiple,  # Widget para selección múltiple con checkboxes
@@ -14,20 +11,19 @@ class PostForm(forms.ModelForm):
         label="Tecnologías relacionadas",
     )
     content = forms.CharField(
-    widget=TinyMCE(attrs={
-        'cols': 80,
-        'rows': 30,
-        'class': 'form-control',  # Clase adicional para estilo Bootstrap
-        'id':'editor'
-    }),
-    label="Contenido del post",
-)
-
+        widget=TinyMCE(attrs={
+            'cols': 80,
+            'rows': 30,
+            'class': 'form-control',  # Clase adicional para estilo Bootstrap
+            'id': 'editor'
+        }),
+        label="Contenido del post",
+    )
 
     class Meta:
         model = Post
         fields = [
-            'title',
+            'title',  # ✅ Parler maneja los campos traducibles
             'image',
             'author',
             'content',
@@ -41,18 +37,17 @@ class PostForm(forms.ModelForm):
             'author': 'Autor',
             'content': 'Contenido',
             'summary': 'Resumen',
-            'technology': 'Tecnologia',
+            'technology': 'Tecnología',
             'github': 'Enlace a GitHub',
         }
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'author': forms.Select(attrs={'class': 'form-control'}),
-            'content': forms.TextInput(attrs={'class': 'form-control'}),
-            'summary': forms.TextInput(attrs={'class': 'form-control'}),
-            'technology': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}),
+            'summary': forms.Textarea(attrs={'class': 'form-control'}),  # ✅ Corregido a Textarea
             'github': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -78,21 +73,21 @@ class ContactForm(forms.Form):
         label='Nombre',
         widget=forms.TextInput(attrs={
             'placeholder': 'Nombre',
-            'class': 'form-control form-control-lg border-success'
+            'class': 'form-control form-control-lg border border-2 rounded-4'
         })
     )
     email = forms.EmailField(
         label='Correo Electrónico',
         widget=forms.EmailInput(attrs={
             'placeholder': 'Correo electrónico',
-            'class': 'form-control form-control-lg border-success'
+            'class': 'form-control form-control-lg border border-2 rounded-4'
         })
     )
     mensaje = forms.CharField(
         label='Mensaje',
         widget=forms.Textarea(attrs={
             'placeholder': 'Escribe tu mensaje aquí...',
-            'class': 'form-control form-control-lg border-success'
+            'class': 'form-control form-control-lg border border-2 rounded-4',
+            'rows': 6,
         })
     )
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)

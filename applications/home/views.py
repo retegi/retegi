@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib import messages
 from django.views.generic import (
     TemplateView,
     ListView,
@@ -9,16 +11,13 @@ from django.views.generic import (
 )
 from .models import Post, Technology, Comment, Hacked
 from django.urls import reverse_lazy
-from .forms import PostForm, CommentForm
-from django.db.models.functions import TruncMonth
-from django.db.models import Count
-from django.utils.dateformat import format
-from django.contrib.auth.mixins import UserPassesTestMixin
-from .forms import ContactForm
+from .forms import PostForm, CommentForm, ContactForm
+from .contact_email import send_contact_email
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
 from django.http import HttpResponse
+from django.utils.translation import gettext as _
 #celery
 from django.http import JsonResponse
 from .tasks import example_task
@@ -172,31 +171,37 @@ def add_comment(request, post_id):
 
 
 
-class ContactView(TemplateView):
-    template_name = 'home/contact.html'
+class ContactSuccessView(TemplateView):
+    template_name = 'home/contact_success.html'
 
-    
+
 class ContactView(FormView):
     template_name = 'home/contact.html'  # Nombre de tu plantilla
     form_class = ContactForm
-    success_url = reverse_lazy('contacto_exito')  # Redirige a una página de éxito
+    success_url = reverse_lazy('home_app:contact_success')
 
     def form_valid(self, form):
-        # Procesar el formulario (por ejemplo, enviar un correo)
         nombre = form.cleaned_data['nombre']
         email = form.cleaned_data['email']
         mensaje = form.cleaned_data['mensaje']
 
-        # Opcional: enviar un correo electrónico
-        send_mail(
-            subject=f'Mensaje de {nombre}',  # Asunto del correo
-            message=mensaje,
-            from_email=settings.DEFAULT_FROM_EMAIL,  # Correo configurado en settings
-            recipient_list=[settings.CONTACT_EMAIL],  # Destinatario (correo de contacto)
-            fail_silently=False,
-        )
+        if send_contact_email(nombre, email, mensaje):
+            messages.success(
+                self.request,
+                _(
+                    "Your message has been sent successfully. "
+                    "I'll reply as soon as I can."
+                ),
+            )
+            return super().form_valid(form)
 
-        return super().form_valid(form)
+        messages.error(
+            self.request,
+            _(
+                "We could not send your message. Please try again later."
+            ),
+        )
+        return self.render_to_response(self.get_context_data(form=form))
 
 
 class PruebaEmail(FormView):

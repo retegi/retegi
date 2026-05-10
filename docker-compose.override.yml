@@ -1,0 +1,14 @@
+# Desarrollo local: Docker Compose combina este archivo con docker-compose.yml.
+# Incluye el código en caliente y runserver. No usar en producción.
+services:
+  web:
+    environment:
+      DATABASE_URL: sqlite:////app/data/db.sqlite3
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./media:/app/media
+      - ./staticfiles:/app/staticfiles
+    ports:
+      - "8090:8000"
+    command: python manage.py runserver 0.0.0.0:8000

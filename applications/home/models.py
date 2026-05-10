@@ -1,7 +1,9 @@
 from django.db import models
+from parler.models import TranslatableModel, TranslatedFields
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from tinymce.models import HTMLField
+from django.utils.translation import gettext_lazy as _
 
 
 
@@ -13,25 +15,24 @@ class Technology(models.Model):
         """Devuelve el título del post como representación en cadena."""
         return self.name     
 
-class Post(models.Model):
+class Post(TranslatableModel):  # ✅ Hereda de TranslatableModel
+    translations = TranslatedFields(
+        title=models.CharField(max_length=255),
+        content=HTMLField(),
+        summary=models.TextField(max_length=500, null=True, blank=True),
+    )
     date_time = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='img/', blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = HTMLField()
-    summary = models.TextField(max_length=500, null=True, blank=True)
     technology = models.ManyToManyField(Technology, blank=True)
-    github = models.URLField(max_length=300, blank=True,null=True)
-    #video = models.URLField(max_length=300, blank=True,null=True)
-    video = models.URLField(max_length=300, blank=True,null=True)
+    github = models.URLField(max_length=300, blank=True, null=True)
+    video = models.URLField(max_length=300, blank=True, null=True)
 
     def __str__(self):
-        """Devuelve el título del post como representación en cadena."""
-        return self.title
+        return self.safe_translation_getter('_title', any_language=True)
 
     def get_summary(self):
-        """Devuelve un resumen del cuerpo del post (primeras 200 palabras)."""
-        return self.summary[:200]
+        return self.safe_translation_getter('_summary', any_language=True)[:200]
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)

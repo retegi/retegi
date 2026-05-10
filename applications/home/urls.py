@@ -1,4 +1,3 @@
-from os import name
 from django.urls import include, path
 from . import views
 from django.conf import settings
@@ -29,6 +28,10 @@ urlpatterns = [
     path('contact/',
          views.ContactView.as_view(),
          name='contact',
+    ),
+    path('contact/thanks/',
+         views.ContactSuccessView.as_view(),
+         name='contact_success',
     ),
     path('about/',
          views.AboutView.as_view(),

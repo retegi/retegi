@@ -3,463 +3,392 @@
 {% load i18n %}
 
 {% block head %}
-<title>Iñaki Retegi - Desarrollador Web y App en Donostia | Soluciones para toda España</title>
-<meta name="description" content="Desarrollador web y de aplicaciones móviles en Android e iOS en Donostia y Euskadi. Ofrezco soluciones personalizadas para clientes en toda España.">
-<meta name="keywords" content="desarrollo web, aplicaciones móviles, Android, iOS, Donostia, Euskadi, diseño web, programación, servicios tecnológicos, clientes España">
-<meta name="author" content="Iñaki Retegi">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
-
-
-
-<style>
-.word {
-  position: absolute;
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.9);
-  opacity: 0.8;
-  animation: moveWord linear infinite;
-  z-index: -1;
-}
-
-@keyframes moveWord {
-  from {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.9;
-  }
-  to {
-    transform: translate(var(--x-end), var(--y-end)) scale(var(--scale-end));
-    opacity: 0;
-  }
-}
-
-        .radar-circle {
-            animation: expand 2s linear infinite;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-
-        @keyframes expand {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0;
-            }
-        }
-
-
-
-   
-    .fullscreen-btn {
-        position: absolute;
-        top: 6vh; /* Distancia desde la parte superior del contenedor */
-        right: 51vw; /* Distancia desde la parte derecha del contenedor */
-        z-index: 1000; /* Para que quede encima del mapa */
-        background: rgba(255, 255, 255, 0.8);
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        padding: 5px 10px;
-        font-size: 12px;
-        cursor: pointer;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-        width:auto;
-    }
-
-    .fullscreen-btn:hover {
-        background: #f0f0f0;
-    }
-
-    /* Pantalla completa para el mapa */
-    .fullscreen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 9999;
-    }
-    .terminal{
-        background-color: black;
-        background-image: radial-gradient(
-          rgba(0, 150, 0, 0.75), black 120%
-        );
-        color: white;
-        font: 1.3rem Inconsolata, monospace;
-        text-shadow: 0 0 20px #C8C8C8;
-    }
-
-    .terminal{
-        color: white;
-        font: 1.3rem Inconsolata, monospace;
-    }
-
-    .terminal::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: repeating-linear-gradient(
-          0deg,
-          rgba(black, 0.15),
-          rgba(black, 0.15) 1px,
-          transparent 1px,
-          transparent 2px
-        );
-    }
-
-
-    #inteligenciaartificial {
-    color: #28a745; /* Color del texto (verde) */
-    font-weight: bold;
-    text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
-    animation: radioactive-effect 2.5s infinite ease-in-out;
-}
-
-@keyframes radioactive-effect {
-    0%, 100% {
-        text-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
-    }
-    50% {
-        text-shadow: 0 0 10px white, 0 0 20px white, 0 0 25px white;
-    }
-}
-
-    </style>
+<title>{% trans "Retegi · retegi.eus — Web development, automation & AI" %}</title>
+<meta name="description" content="{% blocktrans trimmed %}Useful web software, automation and AI for real-world projects — Django servers, Docker, and tools that save time.{% endblocktrans %}">
 {% endblock %}
 
 {% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+<main id="home-top">
 
+  <section class="hero-ai-section section-rete position-relative d-flex flex-column">
+    <div class="hero-ai-bg position-absolute top-0 start-0 w-100 h-100" aria-hidden="true">
+      <canvas class="hero-ai-canvas position-absolute top-0 start-0 w-100 h-100" id="hero-ai-network" width="300" height="150" aria-hidden="true"></canvas>
+      <div class="hero-grid-overlay position-absolute top-0 start-0 w-100 h-100" aria-hidden="true"></div>
+    </div>
 
-
-      <div class="container bg-white">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 p-5 terminal workspace" id="">
-  
-              <div class="curiosity-container w-100">
-                  <h2 class="d-none" id="title-hacking" style="font-family: 'VT323', serif;font-weight: 400;font-style: normal;">Curiosidad hacking</h2>
-                  <p class="h1 d-none"style="font-family: 'VT323', serif;font-weight: 400;font-style: normal;">{{ curiosity_hacking|escapejs }}</p>
-              </div>
-                  
-              <div class="curiosity-container w-100 mt-5">
-                  <h2 class="d-none" id="title-django"style="font-family: 'VT323', serif;font-weight: 400;font-style: normal;">Curiosidad django</h2>
-                  <p class="h1 d-none"style="font-family: 'VT323', serif;font-weight: 400;font-style: normal;">{{ curiosity_django.description|escapejs }}</p>
-              </div>
-                
-            </div>
-            
-            <div class="col-lg-6 col-md-12 text-center p-2" style="background-image:url('{% static 'img/inaki_retegi_3.webp' %}'); background-size:cover;height:50vh;">
-                <!--<img class="w-100" id="picture-1" src="{% static 'img/inaki_retegi_3.webp' %}">-->
-                <label class="display-4" id="text" style="color:white; position:relative;top:250px; text-shadow: 2px 2px 8px #000;font-family:Arial-black"></label>
-            </div>
+    <div class="container-xl position-relative z-3 hero-ai-container">
+      <div class="row g-5 gx-lg-4 flex-grow-1 align-items-center align-items-lg-stretch hero-ai-row">
+        <div class="col-lg-7 order-1 order-lg-1 d-flex flex-column justify-content-lg-center">
+          <p class="small fw-semibold text-uppercase text-muted mb-3 hero-ai-kicker" style="letter-spacing: .14em;"><span class="rete-pixel-dot"></span>{% blocktrans trimmed %}Retegi · retegi.eus{% endblocktrans %}</p>
+          <h1 class="display-rete-lg mb-4 position-relative">
+            {% blocktrans trimmed %}Web development, apps and digital solutions with modern technologies.{% endblocktrans %}
+          </h1>
+          <p class="lead-rete mb-4">
+            {% blocktrans trimmed %}I create custom digital tools for businesses, projects and professionals: modern websites, internal applications, automations, AI assistants and connected systems.{% endblocktrans %}
+          </p>
+          <div class="d-flex flex-wrap gap-3 mb-5">
+            <a class="btn btn-rete-dark rounded-pill btn-rete-pill px-4" href="#proyectos">{% trans "View projects" %}</a>
+            <a class="btn btn-rete-outline rounded-pill btn-rete-pill px-4 text-dark border-2" href="{% url 'home_app:contact' %}">{% trans "Talk about an idea" %}</a>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge rounded-pill bg-white border text-muted px-3 py-2 fw-normal">{% trans "Django · Python" %}</span>
+            <span class="badge rounded-pill bg-white border text-muted px-3 py-2 fw-normal">{% trans "Web apps" %}</span>
+            <span class="badge rounded-pill bg-white border text-muted px-3 py-2 fw-normal">{% trans "Automation" %}</span>
+            <span class="badge rounded-pill bg-white border text-muted px-3 py-2 fw-normal">{% trans "Artificial intelligence" %}</span>
+            <span class="badge rounded-pill bg-white border text-muted px-3 py-2 fw-normal">{% trans "Robotics" %}</span>
+          </div>
         </div>
-      </div> 
-
-      <div class="container bg-dark pt-1">
-        <div class="row">
-          <div class="col-12 text-center h3 text-light">
-        {% trans 'web & android/ios app developer' %}
+        <div class="col-lg-5 order-2 order-lg-2 d-flex flex-column justify-content-lg-end align-items-lg-stretch">
+          <div class="hero-photo-wrapper w-100 d-flex flex-column flex-grow-1 justify-content-lg-end align-items-center align-items-lg-end">
+            <div class="hero-photo-glow" aria-hidden="true"></div>
+            <div class="hero-visual">
+              <img
+                src="{% static 'img/inaki-retegi-developer.png' %}"
+                alt="{% trans 'Retegi — software developer, automation and artificial intelligence' %}"
+                class="hero-profile-img"
+                loading="eager"
+                decoding="async"
+                style="filter:grayscale(50%);opacity: 1;">
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="container bg-dark">
-        <div class="row">
-          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
-            HTML/CSS
-          </div>
-          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
-            Javascript
-          </div>
-          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
-            Python
-          </div>
-          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
-            Django
-          </div>
-          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
-            SQL
-          </div>
-          <div class="col-lg-1 col-md-4 text-center h6 text-secondary">
-            Git/Github
-          </div>
-          <div id="inteligenciaartificial" class="col-lg-2 col-md-6 text-center h6 text-success"data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      {% trans 'Inteligencia Artificial' %}
-          </div>
-          <div class="col-lg-1 col-md-6 text-center h6 text-secondary">
-            Leaflet
-          </div>
-          <div class="col-lg-1 col-md-6 text-center h6 text-secondary">
-            Linux
-          </div>
-          <div class="col-lg-1 col-md-6 text-center h6 text-secondary">
-            Gunicorn
-          </div>
-          <div class="col-lg-1 col-md-6 text-center h6 text-secondary">
-            Nginx
-          </div>
-          
         </div>
       </div>
-      
-      <div class="container bg-white">
-        <div class="row">
-            <div class="col-lg-10 col-md-12">
-                <div class="container-fluid">
-                    <div class="row">
+    </div>
+    <script defer src="{% static 'js/hero-ai.js' %}"></script>
+  </section>
 
-                        {% for post in post_list %}
-                        <div class="col-lg-4 col-md-6 col-sm-12 p-3 mb-1">
-                        {% if post.image %}
-                        <a href="{% url 'home_app:article_detail' post.id %}"><img class="w-100" src="{{ post.image.url }}"></a>
-                        {% endif %}
-
-                        <div class="w-100" style="background-image: url('{{ post.image }}');"></div>
-                            <div class="" style="background-color:#f0f0f0;">
-                                <div class="p-3">
-                                <a href="{% url 'home_app:article_detail' post.id %}" class="text-dark" style="text-decoration:none;"><h4 class="card-title" style="font-family: WF Visual Sans Text,Arial,sans-serif;"><b>{{ post.title }}</b></h4></a>
-                                <a href="{% url 'home_app:article_detail' post.id %}" class="text-dark" style="text-decoration:none;"><p class="card-text" style="float:left;">{{ post.summary|safe }}</p></a>
-                                <p class="text-secondary mt-3">
-                                    {% for tech in post.technology.all %}
-                                      {% if forloop.last %}
-                                        {{ tech.name }}
-                                      {% else %}
-                                        {{ tech.name }},
-                                      {% endif %} 
-                                    {% endfor %}
-                                    </p>
-                                
-                                    <a href="{% url 'home_app:article_detail' post.id %}" class="card-link" style="text-decoration: none;">
-                                        <button class="btn btn-sm bg-white">
-                                            <svg class="text-dark" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-                                            </svg>
-                                        </button>
-                                    </a>
-
-                                    {% if post.github %}
-                                    <a href="{{ post.github }}"target="_blank" class="card-link" style="text-decoration: none;">
-                                        <button class="btn btn-sm bg-white">
-                                            <svg class="text-dark"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                                              </svg>
-                                        </button>
-                                    </a>
-                                    {% endif %}
-                                    {% if user.is_authenticated %}
-                                    <a href="{% url 'home_app:article_update' post.id %}" class="card-link" style="text-decoration: none;">
-                                        <button class="btn btn-sm bg-white">
-                                            <svg class="text-dark" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-                                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
-                                              </svg>
-                                        </button>
-                                    </a>
-                                    {% endif %}
-
-                                    {% if post.video %}
-                                    <a href="{% url 'home_app:article_update' post.id %}" class="card-link" style="text-decoration: none;">
-                                        <button class="btn btn-sm bg-white">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1z"/>
-                                          </svg>
-                                        </button>
-                                    </a>
-                                    {% endif %}
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-
-                    </div>    
-                </div>
-
-                
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-12">
-                
-                <label class="w-100 text-center mt-3">{% trans 'Month' %}</label>
-
-                <ul class="mt-2" style="list-style-type: none; ">
-                {% for month in post_by_month %}
-                  <a href="#" style="text-decoration:none;"><li><b style="color:black; text-decoration:none;">{{ month }}</b></li></a>
+  <section id="presentacion" class="section-rete section-rete-alt border-top border-bottom" style="border-color: rgba(17,24,39,0.06) !important;">
+    <div class="container-xl">
+      <div class="row justify-content-between g-5 align-items-start">
+        <div class="col-lg-7">
+          <p class="text-uppercase small fw-semibold text-muted mb-2">{% trans "Intro" context "heading" %}</p>
+          <h2 class="fw-bold mb-4" style="font-size: clamp(1.5rem, 2vw + 1rem, 2.35rem); color: var(--rete-text); letter-spacing: -0.03em;">
+            {% blocktrans trimmed %}I develop web software, applications and AI-assisted solutions with a practical mindset.{% endblocktrans %}
+          </h2>
+          <p class="lead-rete mb-3">
+            {% blocktrans trimmed %}Day to day it’s Django and Python deployed for real workloads: containers, owned servers and maintainable operations. AI only when it really helps (RAG, assistants and automation of grunt work); side projects vet ideas before they ever reach collaborators.{% endblocktrans %}
+          </p>
+          <p class="lead-rete mb-0">
+            {% blocktrans trimmed %}Clean code, incremental delivery and someone who respects both engineers and stakeholders — that combination usually clicks.{% endblocktrans %}
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <div class="rete-card p-4 rounded-5">
+            <h3 class="h6 fw-bold text-muted text-uppercase mb-3" style="letter-spacing: .08em;">{% trans "Daily stack" %}</h3>
+            <ul class="list-unstyled small mb-0 text-muted">
+              <li class="pb-2">→ {% trans "Python · Django · Bootstrap" %}</li>
+              <li class="pb-2">→ {% trans "Docker · nginx · Gunicorn" %}</li>
+              <li class="pb-2">→ {% trans "PostgreSQL · SQLite" %}</li>
+              <li class="pb-2">→ {% blocktrans trimmed %}AI · RAG · embeddings{% endblocktrans %}</li>
+              <li class="pb-2">→ {% blocktrans trimmed %}Automation (scripts, pipelines){% endblocktrans %}</li>
+              <li>→ {% blocktrans trimmed %}Linux servers · backups · TLS{% endblocktrans %}</li>
+            </ul>
+            {% if technology_list %}
+              <hr class="my-3 opacity-50">
+              <p class="small text-muted fw-semibold mb-2">{% trans "Referenced in posts" context "technologies" %}</p>
+              <div class="d-flex flex-wrap gap-1">
+                {% for tech in technology_list %}
+                  <span class="rete-chip mb-1">{{ tech.name }}</span>
                 {% endfor %}
-               </ul>
-                
-                <hr>
-
-                <label class="w-100 text-center mt-3">{% trans 'Technologies' %}</label>
-
-                <ul class="mt-2" style="list-style-type: none; ">
-                {% for technology in technology_list %}
-                    <a style="text-decoration:none;"  href="#"><li class=""><b style="color:black;" class="">{{ technology.name }}</b></li></a>
-                    
-                {% endfor %}
-                    
-                    
-                </ul>
-
-            </div>
+              </div>
+            {% endif %}
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="container-fluid bg-dark p-3">
-        <div class="row">
-            <div class="col-12 text-light">
-            {% for technology in technology_list %}
-                <label class="p-5" style="text-transform: uppercase;">{{ technology.name }}</label>
-            {% endfor %}
-            </div>
+  <section id="comic-prozesua" class="comic-section border-top border-bottom" style="border-color: rgba(17,24,39,0.06) !important;" aria-labelledby="comic-prozesua-title">
+    <div class="container-xl position-relative z-1">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p class="section-kicker text-uppercase small fw-semibold text-muted mb-2">{% trans "The process" %}</p>
+          <div class="comic-section-header">
+            <h2 id="comic-prozesua-title" class="fw-bold mb-0">{% trans "A clear, close way of working with clients" %}</h2>
+            <p class="mt-3 mb-0">{% trans "From idea to a useful tool: listen, understand, design, develop and improve." %}</p>
+          </div>
+          <div class="comic-image-frame" tabindex="0">
+            {% if LANGUAGE_CODE == "eu" %}
+              <img src="{% static 'img/retegi-web-app-comic-eus.png' %}"
+                   alt="{% trans 'Comic explaining how we collaborate with clients' %}"
+                   class="comic-process-img"
+                   loading="lazy"
+                   decoding="async">
+            {% elif LANGUAGE_CODE == "es" %}
+              <img src="{% static 'img/retegi-web-app-comic-es.png' %}"
+                   alt="{% trans 'Comic explaining how we collaborate with clients' %}"
+                   class="comic-process-img"
+                   loading="lazy"
+                   decoding="async">
+            {% elif LANGUAGE_CODE == "en" %}
+              <img src="{% static 'img/retegi-web-app-comic-en.png' %}"
+                   alt="{% trans 'Comic explaining how we collaborate with clients' %}"
+                   class="comic-process-img"
+                   loading="lazy"
+                   decoding="async">
+            {% else %}
+              <img src="{% static 'img/retegi-web-app-comic-eus.png' %}"
+                   alt="{% trans 'Comic explaining how we collaborate with clients' %}"
+                   class="comic-process-img"
+                   loading="lazy"
+                   decoding="async">
+            {% endif %}
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="container">
-        <div class="row">
-            <div class="col-12 bg-light">
+  <section id="servicios" class="section-rete bg-white border-bottom" style="border-color: rgba(17,24,39,0.06) !important;">
+    <div class="container-xl">
+      <p class="text-uppercase small fw-semibold text-muted mb-2">{% trans "What I do" %}</p>
+      <h2 class="fw-bold mb-2" style="font-size: clamp(1.5rem, 2vw + 1rem, 2.35rem); color: var(--rete-text); letter-spacing: -0.03em;">{% trans "From idea to stable service in production." %}</h2>
+      <p class="lead-rete mb-5 col-lg-8">{% blocktrans trimmed %}No corporate fluff: deliverables you can actually run, observe and iterate when it's time to scale.{% endblocktrans %}</p>
 
-            </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="rete-card p-4 p-lg-5">
+            <div class="rete-card-emoji mb-3" aria-hidden="true">🌐</div>
+            <h3 class="h5 fw-bold mb-3">{% trans "Web development" %}</h3>
+            <p class="text-muted mb-0">{% blocktrans trimmed %}Responsive sites and Django apps engineered for readability, uptime and sane releases.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="rete-card p-4 p-lg-5">
+            <div class="rete-card-emoji mb-3" aria-hidden="true">⚙️</div>
+            <h3 class="h5 fw-bold mb-3">{% trans "Custom software" %}</h3>
+            <p class="text-muted mb-0">{% blocktrans trimmed %}Back-office dashboards, invoicing stacks, bookings, terminals and workflows tailored to messy reality.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="rete-card p-4 p-lg-5">
+            <div class="rete-card-emoji mb-3" aria-hidden="true">✨</div>
+            <h3 class="h5 fw-bold mb-3">{% trans "AI & automation" %}</h3>
+            <p class="text-muted mb-0">{% blocktrans trimmed %}Assistants grounded on your corpus, ingestion pipelines and automation that survives Monday mornings.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="rete-card p-4 p-lg-5">
+            <div class="rete-card-emoji mb-3" aria-hidden="true">🖥️</div>
+            <h3 class="h5 fw-bold mb-3">{% trans "Servers & deployments" %}</h3>
+            <p class="text-muted mb-0">{% trans "Docker, nginx, Gunicorn, hardened Linux hosts, HTTPS, snapshots and repeatable deploys." %}</p>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
+  <section id="proyectos" class="section-rete section-rete-alt bg-rete-grid">
+    <div class="container-xl">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5">
+        <div>
+          <p class="text-uppercase small fw-semibold text-muted mb-2">{% trans "Highlights" %}</p>
+          <h2 class="fw-bold mb-0" style="font-size: clamp(1.5rem, 2vw + 1rem, 2.35rem); color: var(--rete-text); letter-spacing: -0.03em;">{% trans "Featured projects" %}</h2>
+        </div>
+        <span class="text-muted small d-none d-md-inline">{% blocktrans trimmed %}Official URLs arriving soon wherever noted.{% endblocktrans %}</span>
+      </div>
 
+      <div class="row g-4">
 
+        <div class="col-md-6 col-xl-4">
+          <div class="rete-card h-100 p-4 d-flex flex-column">
+            <h3 class="h5 fw-bold mb-3">Testope</h3>
+            <p class="text-muted small flex-grow-1">{% blocktrans trimmed %}Exam prep cockpit with bilingual assets, granular progress and thoughtful PRO tiers.{% endblocktrans %}</p>
+            <div class="mb-3">
+              <span class="rete-chip">Django</span><span class="rete-chip">PostgreSQL</span><span class="rete-chip">{% trans "AI" %}</span>
+            </div>
+            {# Pending public landing — reuse pattern on siblings #}
+            <a href="#" class="btn btn-outline-dark rounded-pill align-self-start">{% trans "View project" %}</a>
+          </div>
+        </div>
 
+        
 
+        <div class="col-md-6 col-xl-4">
+          <div class="rete-card h-100 p-4 d-flex flex-column">
+            <h3 class="h5 fw-bold mb-3">Sendaoroi</h3>
+            <p class="text-muted small flex-grow-1">{% blocktrans trimmed %}Experiments marrying geodata, humane interfaces and pragmatic AI-assisted workflows.{% endblocktrans %}</p>
+            <div class="mb-3">
+              <span class="rete-chip">Django</span><span class="rete-chip">PostgreSQL</span><span class="rete-chip">{% trans "AI" %}</span>
+            </div>
+            <a href="#" class="btn btn-outline-dark rounded-pill align-self-start">{% trans "Explore" %}</a>
+          </div>
+        </div>
 
+        
 
-  <script>
-        const textElement = document.getElementById("text");
-        const fullText = "{% trans '¿Creamos algo juntos? ;)' %}";
-        let index = 0;
-        let deleting = false;
+        <div class="col-md-6 col-xl-4">
+          <div class="rete-card h-100 p-4 d-flex flex-column">
+            <h3 class="h5 fw-bold mb-3">Bizardia</h3>
+            <p class="text-muted small flex-grow-1">{% blocktrans trimmed %}Creative outlet mixing playful culture geekery with serious shipping discipline behind the curtain.{% endblocktrans %}</p>
+            <div class="mb-3">
+              <span class="rete-chip">Django</span><span class="rete-chip">Docker</span>
+            </div>
+            <a href="#" class="btn btn-outline-dark rounded-pill align-self-start">{% trans "View project" %}</a>
+          </div>
+        </div>
 
-        function typeEffect() {
-            if (!deleting) {
-                // Escribir
-                textElement.textContent = fullText.slice(0, index);
-                index++;
-                if (index > fullText.length) {
-                    deleting = true;
-                    setTimeout(typeEffect, 1000); // Pausa antes de borrar
-                    return;
-                }
-            } else {
-                // Borrar
-                textElement.textContent = fullText.slice(0, index);
-                index--;
-                if (index < 0) {
-                    deleting = false;
-                    setTimeout(typeEffect, 500); // Pausa antes de escribir de nuevo
-                    return;
-                }
-            }
-            setTimeout(typeEffect, 150); // Velocidad de escribir/borrar
-        }
+        
+      </div>
+    </div>
+  </section>
 
-        typeEffect();
-    </script>
+  <section id="laboratorio" class="section-rete bg-white border-bottom" style="border-color: rgba(17,24,39,0.06) !important;">
+    <div class="container-xl">
+      <p class="text-uppercase small fw-semibold text-muted mb-2">{% trans "Playground" %}</p>
+      <h2 class="fw-bold mb-3" style="font-size: clamp(1.5rem, 2vw + 1rem, 2.35rem); letter-spacing: -0.03em;">{% trans "Retegi Lab" %}</h2>
+      <p class="lead-rete mb-5 col-lg-10">
+        {% blocktrans trimmed %}Hands-on tinkering bench: autonomous agents, tactile robots, choropleths, scraped-but-respectful pipelines and pragmatic analytics you can rerun next week with coffee in hand.{% endblocktrans %}
+      </p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="rete-card p-4 h-100 rounded-5">
+            <div class="rete-card-emoji mb-3">🤖</div>
+            <h3 class="h6 fw-bold mb-2">{% trans "Local assistants" %}</h3>
+            <p class="small text-muted mb-0">{% blocktrans trimmed %}Tiny models glued to notebooks, scripted wake words and repeatable evaluation harnesses.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="rete-card p-4 h-100 rounded-5">
+            <div class="rete-card-emoji mb-3">🗺️</div>
+            <h3 class="h6 fw-bold mb-2">{% trans "Maps · data viz" %}</h3>
+            <p class="small text-muted mb-0">{% blocktrans trimmed %}Composable layers, ingestion scripts and humane defaults for exploratory storytelling.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="rete-card p-4 h-100 rounded-5">
+            <div class="rete-card-emoji mb-3">🔧</div>
+            <h3 class="h6 fw-bold mb-2">{% trans "Robotics / Raspberry Pi prototypes" %}</h3>
+            <p class="small text-muted mb-0">{% blocktrans trimmed %}Breadboard bravery: GPIO experiments, kiosk boards and reproducible BOM notes.{% endblocktrans %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script>
-const words = [
-    {% for technology in technology_list %}
-        "{{ technology.name }}"{% if not forloop.last %},{% endif %}
-    {% endfor %}
-];
-const container = document.getElementById("word-container");
+  <section id="manifiesto-digital" class="values-collage-section section-rete pb-0" aria-labelledby="manifiesto-digital-heading">
+    <div class="container-xl">
+      <div class="values-collage-header text-center text-lg-start mx-auto mx-lg-0 mb-4 mb-lg-5" style="max-width: 48rem;">
+        <p class="values-collage-eyebrow text-uppercase mb-3">{% trans "Digital manifesto" %}</p>
+        <h2 id="manifiesto-digital-heading" class="values-collage-title fw-bold mb-3">
+          {% trans "Values for ethical, sustainable and human technology." %}
+        </h2>
+        <p class="values-collage-lead mx-auto mx-lg-0 mb-0">
+          {% blocktrans trimmed %}A digital community is not only defined by the tools it uses, but by the principles with which it builds, shares and maintains them.{% endblocktrans %}
+        </p>
+      </div>
 
-let maxElements = 50; // Límite máximo de elementos en movimiento
-let currentElements = 0; // Contador de elementos actuales
+      <div class="values-collage-frame position-relative">
+        <div class="values-collage-deco values-collage-deco--tl" aria-hidden="true"></div>
+        <div class="values-collage-deco values-collage-deco--br" aria-hidden="true"></div>
 
-function createWord() {
-  // Verificar si ya hay demasiados elementos
-  if (currentElements >= maxElements) {
-    return;
-  }
+        <div class="values-collage-meta d-flex flex-wrap justify-content-center justify-content-lg-start gap-2 mb-4" aria-hidden="true">
+          <span class="values-meta-tag">{% trans "ethics" %}</span>
+          <span class="values-meta-tag">{% trans "data" %}</span>
+          <span class="values-meta-tag">{% trans "human" %}</span>
+          <span class="values-meta-tag">{% trans "open" %}</span>
+        </div>
 
-  const wordElement = document.createElement("div");
-  wordElement.textContent = words[Math.floor(Math.random() * words.length)];
-  wordElement.className = "word";
+        <ul class="values-collage list-unstyled mb-0" aria-label="{% trans 'Retegi digital values' %}">
+          <li class="value-chip value-chip-lg value-chip-accent value-chip-tilt-n1"><span class="value-chip__text">{% trans "Ethical artificial intelligence" %}</span></li>
+          <li class="value-chip value-chip-md value-chip-dark value-chip-tilt-p1"><span class="value-chip__text">{% trans "Digital sovereignty" %}</span></li>
+          <li class="value-chip value-chip-sm value-chip-outline"><span class="value-chip__text">{% trans "Privacy by design" %}</span></li>
+          <li class="value-chip value-chip-md value-chip-dotted"><span class="value-chip__text">{% trans "Sustainable technology" %}</span></li>
+          <li class="value-chip value-chip-md value-chip-accent value-chip-tilt-p1"><span class="value-chip__text">{% trans "Useful and human software" %}</span></li>
+          <li class="value-chip value-chip-lg value-chip-outline value-chip-tilt-n1"><span class="value-chip__text">{% trans "Universal accessibility" %}</span></li>
+          <li class="value-chip value-chip-sm value-chip-dark"><span class="value-chip__text">{% trans "Algorithmic transparency" %}</span></li>
+          <li class="value-chip value-chip-md"><span class="value-chip__text">{% trans "Meaningful human control" %}</span></li>
+          <li class="value-chip value-chip-md value-chip-accent"><span class="value-chip__text">{% trans "Open and collaborative culture" %}</span></li>
+          <li class="value-chip value-chip-sm value-chip-outline"><span class="value-chip__text">{% trans "Responsible security" %}</span></li>
+          <li class="value-chip value-chip-md value-chip-dark value-chip-tilt-n1"><span class="value-chip__text">{% trans "Linguistic and cultural inclusion" %}</span></li>
+          <li class="value-chip value-chip-lg value-chip-outline"><span class="value-chip__text">{% trans "Independence from digital monopolies" %}</span></li>
+          <li class="value-chip value-chip-sm value-chip-accent value-chip-tilt-p15"><span class="value-chip__text">{% trans "Critical digital literacy" %}</span></li>
+          <li class="value-chip value-chip-md value-chip-dotted"><span class="value-chip__text">{% trans "Data for the common good" %}</span></li>
+          <li class="value-chip value-chip-sm"><span class="value-chip__text">{% trans "Technological minimalism" %}</span></li>
+          <li class="value-chip value-chip-md value-chip-accent value-chip-tilt-n05"><span class="value-chip__text">{% trans "Interoperability" %}</span></li>
+          <li class="value-chip value-chip-sm value-chip-outline"><span class="value-chip__text">{% trans "Repairability and maintenance" %}</span></li>
+          <li class="value-chip value-chip-lg value-chip-dark value-chip-tilt-p1"><span class="value-chip__text">{% trans "Smart decentralization" %}</span></li>
+          <li class="value-chip value-chip-md value-chip-accent"><span class="value-chip__text">{% trans "Digital wellbeing" %}</span></li>
+          <li class="value-chip value-chip-lg value-chip-outline value-chip-tilt-n1"><span class="value-chip__text">{% trans "Technological social responsibility" %}</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  // Posiciones iniciales y finales
-  const startX = Math.random() * window.innerWidth;
-  const startY = Math.random() * window.innerHeight;
-  const endX = Math.random() * 200 - 100 + "vw";
-  const endY = Math.random() * 200 - 100 + "vh";
-  const scaleStart = Math.random() * 1.2 + 0.8; // Escala inicial
-  const scaleEnd = Math.random() * 2 + 1; // Escala final
+  <section id="blog-tecnico" class="section-rete section-rete-alt">
+    <div class="container-xl">
+      <div class="d-flex flex-wrap justify-content-between gap-3 mb-5">
+        <div>
+          <p class="text-uppercase small fw-semibold text-muted mb-2">{% trans "Blog" %}</p>
+          <h2 class="fw-bold mb-0" style="font-size: clamp(1.5rem, 2vw + 1rem, 2.35rem); letter-spacing: -0.03em;">{% trans "Technical blog" %}</h2>
+        </div>
+        <a href="{% url 'home_app:home' %}#home-top" class="btn btn-rete-outline rounded-pill px-4 align-self-center">{% trans "Back to top" %}</a>
+      </div>
 
-  wordElement.style.left = `${startX}px`;
-  wordElement.style.top = `${startY}px`;
-  wordElement.style.fontSize = `${Math.random() * 20 + 15}px`;
-  wordElement.style.setProperty("--x-end", endX);
-  wordElement.style.setProperty("--y-end", endY);
-  wordElement.style.setProperty("--scale-end", scaleEnd);
+      <div class="row g-4">
+      {% if entradas_blog %}
+        {% for post in entradas_blog|slice:":3" %}
+          <div class="col-md-6 col-xl-4">
+            <article class="rete-blog-card">
+              <a href="{% url 'home_app:article_detail' post.pk %}">
+                <p class="rete-blog-meta mb-2">{{ post.date_time|date:"j M · Y" }}</p>
+                <h3 class="h5 fw-bold mb-3" style="color: var(--rete-text);">{{ post.title }}</h3>
+                <span class="text-decoration-none fw-semibold small" style="color: var(--rete-accent);">{% blocktrans trimmed %}Read article →{% endblocktrans %}</span>
+              </a>
+            </article>
+          </div>
+        {% endfor %}
+      {% endif %}
 
-  // Animación más lenta
-  wordElement.style.animationDuration = `${Math.random() * 10 + 8}s`;
+      {% if not entradas_blog %}
+        {% comment %}Static samples until curated posts populate the database{% endcomment %}
+        <div class="col-md-6 col-xl-4">
+          <article class="rete-blog-card">
+            <span class="rete-chip mb-2">{% trans "Deploy" %}</span>
+            <h3 class="h5 fw-bold mb-3 mt-3" style="color: var(--rete-text);">{% trans "Shipping Django behind Docker, Gunicorn & nginx" %}</h3>
+            <p class="small text-muted mb-3">{% blocktrans trimmed %}Operational checklist from zero-ish to TLS with backups you can swear by.{% endblocktrans %}</p>
+            <a href="#" class="fw-semibold small" style="color: var(--rete-accent);">{% blocktrans trimmed %}Continue reading →{% endblocktrans %}</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-xl-4">
+          <article class="rete-blog-card">
+            <span class="rete-chip mb-2">{% blocktrans trimmed %}Local IA{% endblocktrans %}</span>
+            <h3 class="h5 fw-bold mb-3 mt-3" style="color: var(--rete-text);">{% blocktrans trimmed %}Responsible local AI workflows you can iterate on nightly{% endblocktrans %}</h3>
+            <p class="small text-muted mb-3">{% blocktrans trimmed %}Thinking through when modest models outperform giant APIs without leaking payloads.{% endblocktrans %}</p>
+            <a href="#" class="fw-semibold small" style="color: var(--rete-accent);">{% blocktrans trimmed %}Continue reading →{% endblocktrans %}</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-xl-4">
+          <article class="rete-blog-card">
+            <span class="rete-chip mb-2">{% trans "Productivity" %}</span>
+            <h3 class="h5 fw-bold mb-3 mt-3" style="color: var(--rete-text);">{% trans "Automating small chores that secretly eat half your roadmap" %}</h3>
+            <p class="small text-muted mb-3">{% blocktrans trimmed %}Email triage helpers, politely scoped scrapers and sleepy cronfriends that amortize infra.{% endblocktrans %}</p>
+            <a href="#" class="fw-semibold small" style="color: var(--rete-accent);">{% blocktrans trimmed %}Continue reading →{% endblocktrans %}</a>
+          </article>
+        </div>
+      {% endif %}
+      </div>
+    </div>
+  </section>
 
-  container.appendChild(wordElement);
-  currentElements++; // Incrementar el contador
+  <section class="section-rete bg-dark text-white text-center px-3">
+    <div class="container-xl py-5">
+      <div class="col-lg-8 mx-auto py-lg-4">
+        <p class="text-uppercase small fw-semibold text-white-50 mb-3">{% trans "Next beat" context "cta" %}</p>
+        <h2 class="fw-bold mb-4" style="font-size: clamp(1.4rem, 2vw + 1rem, 2.25rem); letter-spacing: -0.02em;">
+          {% trans "Do you have an idea or a process you want to improve?" %}
+        </h2>
+        <p class="mx-auto mb-5 text-white opacity-75" style="max-width: 36rem;">
+          {% blocktrans trimmed %}I can translate it into a web tool, automate the boring limbs or scaffold the whole dependable system.{% endblocktrans %}
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a class="btn btn-light rounded-pill btn-rete-pill px-5 text-dark" href="{% url 'home_app:contact' %}">{% trans "Contact me" %}</a>
+          <a class="btn btn-outline-light rounded-pill btn-rete-pill px-5" href="#proyectos">{% trans "View projects" %}</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // Remover elemento después de la animación
-  wordElement.addEventListener("animationend", () => {
-    container.removeChild(wordElement);
-    currentElements--; // Decrementar el contador
-  });
-}
-
-// Generar palabras continuamente
-setInterval(createWord, 500);
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const typeEffect = (element, text, delay = 100, callback = null) => {
-      // Quitar la clase d-none para hacer visible el elemento
-      element.classList.remove("d-none");
-
-      // Limpiar el contenido inicial antes de escribir
-      element.textContent = "";
-
-      let i = 0;
-      const interval = setInterval(() => {
-        if (i < text.length) {
-          element.textContent += text.charAt(i); // Añadir letra por letra
-          i++;
-        } else {
-          clearInterval(interval);
-          if (callback) callback(); // Llamar al siguiente efecto si se define un callback
-        }
-      }, delay);
-    };
-
-    // Obtener elementos
-    const titleHackingElement = document.querySelector("#title-hacking");
-    const hackingElement = document.querySelector(".curiosity-container:nth-child(1) .h1");
-    const titleDjangoElement = document.querySelector("#title-django");
-    const djangoElement = document.querySelector(".curiosity-container:nth-child(2) .h1");
-
-    // Textos a escribir
-    const titleHackingText = "Curiosidad hacking";
-    const hackingText = "{{ curiosity_hacking|escapejs }}";
-    const titleDjangoText = "Curiosidad django";
-    const djangoText = "{{ curiosity_django.description|escapejs }}";
-
-    // Efecto de escritura en orden
-    typeEffect(titleHackingElement, titleHackingText, 100, () => {
-      typeEffect(hackingElement, hackingText, 100, () => {
-        typeEffect(titleDjangoElement, titleDjangoText, 100, () => {
-          typeEffect(djangoElement, djangoText, 100);
-        });
-      });
-    });
-  });
-</script>
-
-
-
+</main>
 {% endblock %}

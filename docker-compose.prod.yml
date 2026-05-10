@@ -1,0 +1,22 @@
+# Producción: combinar con la base
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+# Variables: solo archivo .env (ver .env.example). Migraciones y collectstatic: README.
+#
+# Host :8090 → contenedor :8000 (Gunicorn)
+services:
+  web:
+    build: .
+    env_file: .env
+    working_dir: /app
+    ports:
+      - "8090:8000"
+    volumes:
+      - ./data:/app/data
+      - ./media:/app/media
+      - ./staticfiles:/app/staticfiles
+    command: >
+      gunicorn retegi.wsgi:application
+      --bind 0.0.0.0:8000
+      --workers 3
+      --timeout 120
+    restart: unless-stopped

@@ -8,20 +8,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-01 21:06+0100\n"
+"POT-Creation-Date: 2026-05-10 20:15+0200\n"
 "PO-Revision-Date: 2025-02-01 21:08+0100\n"
-"Last-Translator:   <retegi84@gmail.com>\n"
+"Last-Translator: <retegi84@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: templates/home/about.html:19 templates/home/base copy 2.html:135 2.html:207
-#: copy.html:150 copy.html:229 templates/home/base.html:145
-#: templates/home/base.html:219
+#: retegi/settings.py:231
+msgid "Euskara"
+msgstr "Euskara"
+
+#: retegi/settings.py:232
+msgid "Castellano"
+msgstr "Castellano"
+
+#: retegi/settings.py:233
+msgid "English"
+msgstr "Inglés"
+
+#: templates/home/about.html:19 ⁨templates/home/base copy.html⁩:160
+#: ⁨templates/home/base copy.html⁩:234 templates/home/base.html:99
 msgid "About"
 msgstr "Sobre mi"
 
@@ -72,50 +83,214 @@ msgstr ""
 msgid "Looking forward to hearing from you!"
 msgstr "¡Estoy deseando saber de ti!"
 
-#: templates/home/base copy 2.html:134 2.html:204 copy.html:149 copy.html:226
-#: templates/home/base.html:144 templates/home/base.html:216
+#: templates/home/about.html:30
+#| msgid "RetegiBot"
+msgid "Retegi"
+msgstr "Retegi"
+
+#: ⁨templates/home/base copy.html⁩:159 ⁨templates/home/base copy.html⁩:231
 msgid "Home"
 msgstr "Inicio"
 
-#: templates/home/base copy 2.html:136 2.html:210 copy.html:151 copy.html:232
-#: templates/home/base.html:146 templates/home/base.html:222
-#: templates/home/contact.html:15
+#: ⁨templates/home/base copy.html⁩:161 ⁨templates/home/base copy.html⁩:237
+#: templates/home/base.html:46 templates/home/base.html:100
+#: templates/home/base.html:113 templates/home/contact.html:6
+#: templates/home/contact.html:17
 msgid "Contact"
-msgstr "Contactar"
+msgstr "Contacto"
 
-#: templates/home/base copy 2.html:172 copy.html:187
-msgid "Search..."
+#: ⁨templates/home/base copy.html⁩:197
+msgid "Search"
 msgstr "Buscar"
 
-#: templates/home/base copy 2.html:178 copy.html:193
-#: templates/home/base.html:190
+#: ⁨templates/home/base copy.html⁩:205
 msgid "publish"
 msgstr "Publicar"
 
-#: templates/home/base copy 2.html:182 copy.html:197
-#: templates/home/base.html:194
+#: ⁨templates/home/base copy.html⁩:209
 msgid "log out"
 msgstr "Salir"
 
-#: templates/home/base copy 2.html:185 copy.html:200
-#: templates/home/base.html:197
+#: ⁨templates/home/base copy.html⁩:212
 msgid "Login"
 msgstr "Iniciar"
 
-#: templates/home/base copy 2.html:186 copy.html:201
-#: templates/home/base.html:198
+#: ⁨templates/home/base copy.html⁩:213
 msgid "Sign-up"
 msgstr "Registrarse"
 
-#: templates/home/base copy 2.html:275 templates/home/base.html:287
+#: ⁨templates/home/base copy.html⁩:302
 msgid "Write your question in any language"
 msgstr "Escribe tu pregunta en cualquier idioma"
 
-#: templates/home/base.html:182
-#, fuzzy
-#| msgid "Search..."
-msgid "Search"
-msgstr "Buscar..."
+#: templates/home/base.html:27 templates/home/base.html:85
+#: templates/home/base.html:125 templates/home/contact.html:6
+#: templates/home/contact_success.html:5
+msgid "retegi.eus"
+msgstr "retegi.eus"
+
+#: templates/home/base.html:28
+msgid "Main menu"
+msgstr "Menú principal"
+
+#: templates/home/base.html:34 templates/home/base.html:98
+msgid "Projects"
+msgstr "Proyectos"
+
+#: templates/home/base.html:37 templates/home/base.html:97
+msgid "Services"
+msgstr "Servicios"
+
+#: templates/home/base.html:40
+msgid "Lab"
+msgstr "Laboratorio"
+
+#: templates/home/base.html:43 templates/home/base.html:106
+#: templates/home/index.html:323
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/home/base.html:51 templates/home/base.html:54
+msgid "Choose language"
+msgstr "Elegir idioma"
+
+#: templates/home/base.html:70 templates/home/contact.html:15
+msgid "Let's talk"
+msgstr "Hablemos"
+
+#: templates/home/base.html:88
+msgid ""
+"Useful web software, automation and AI solutions. Real projects, your own "
+"infra, and a practical approach for teams that want to ship fast without "
+"losing control."
+msgstr ""
+"Software web útil, automatización e IA. Proyectos reales, tu propia "
+"infraestructura y un enfoque práctico para equipos que quieren entregar "
+"rápido sin perder el control."
+
+#: templates/home/base.html:92
+msgid "AI &amp; RAG"
+msgstr "IA y RAG"
+
+#: templates/home/base.html:95
+msgid "Navigation"
+msgstr "Navegación"
+
+#: templates/home/base.html:104
+msgid "Legal &amp; extras"
+msgstr "Legal y extras"
+
+#: templates/home/base.html:107
+msgid "Privacy"
+msgstr "Privacidad"
+
+#: templates/home/base.html:108
+msgid "Cookies"
+msgstr "Cookies"
+
+#: templates/home/base.html:109
+msgid "Legal"
+msgstr "Aviso legal"
+
+#: templates/home/base.html:114
+msgid "Ideas or collaborations? Message me via the form."
+msgstr "¿Ideas o colaboraciones? Escríbeme desde el formulario."
+
+#: templates/home/base.html:115
+msgid "Go to contact →"
+msgstr "Ir a contacto →"
+
+#: templates/home/base.html:116
+msgid "Social profiles"
+msgstr "Perfiles sociales"
+
+#: templates/home/base.html:119
+msgid "GitHub — coming soon"
+msgstr "GitHub — próximamente"
+
+#: templates/home/base.html:120
+msgid "LinkedIn — coming soon"
+msgstr "LinkedIn — próximamente"
+
+#: templates/home/base.html:126
+msgid "Made with Django and lots of ☕."
+msgstr "Hecho con Django y mucho ☕."
+
+#: templates/home/base.html:143 templates/home/base.html:186
+msgid "RetegiBot"
+msgstr "RetegiBot"
+
+#: templates/home/base.html:144
+msgid "Assistant · retegi.eus"
+msgstr "Asistente · retegi.eus"
+
+#: templates/home/base.html:148 templates/home/base.html:198
+msgid "Close RetegiBot"
+msgstr "Cerrar RetegiBot"
+
+#: templates/home/base.html:153
+msgid ""
+"Kaixo, I'm RetegiBot. I can help you with web projects, automation, AI or "
+"servers."
+msgstr ""
+"Kaixo, soy RetegiBot. Puedo ayudarte con proyectos web, automatizaciones, IA"
+" o servidores."
+
+#: templates/home/base.html:164
+msgid "Your message"
+msgstr "Tu mensaje"
+
+#: templates/home/base.html:171
+msgid "Type your question…"
+msgstr "Escribe tu consulta..."
+
+#: templates/home/base.html:172 templates/home/contact.html:40
+msgid "Send"
+msgstr "Enviar"
+
+#: templates/home/base.html:197
+msgid "Open RetegiBot"
+msgstr "Abrir RetegiBot"
+
+#: templates/home/base.html:276
+msgid "You:"
+msgstr "Tú:"
+
+#: templates/home/base.html:277
+msgid "Bot:"
+msgstr "Bot:"
+
+#: templates/home/base.html:278
+msgid "Something went wrong."
+msgstr "Algo salió mal."
+
+#: templates/home/base.html:279
+msgid "Could not reach the server."
+msgstr "No se pudo conectar con el servidor."
+
+#: templates/home/contact.html:19
+msgid "Tell me briefly what you need and I'll get back to you."
+msgstr "Cuéntame brevemente qué necesitas y te responderé."
+
+#: templates/home/contact_success.html:5
+msgid "Message sent"
+msgstr "Mensaje enviado"
+
+#: templates/home/contact_success.html:15
+msgid "Thank you"
+msgstr "Gracias"
+
+#: templates/home/contact_success.html:17
+msgid "Your message has been sent. I'll reply as soon as I can."
+msgstr "Tu mensaje se ha enviado. Contestaré lo antes posible."
+
+#: templates/home/contact_success.html:20
+msgid "Back to home"
+msgstr "Volver al inicio"
+
+#: templates/home/contact_success.html:21
+msgid "Send another message"
+msgstr "Enviar otro mensaje"
 
 #: templates/home/cookies_policy.html:22
 msgid "Cookies Policy"
@@ -126,25 +301,548 @@ msgstr "Política de Cookies"
 msgid "Page under construction"
 msgstr "Página en construcción"
 
-#: templates/home/index copy 3.html:218 templates/home/index.html:285
+#: ⁨templates/home/index copy 3.html⁩:218 ⁨templates/home/index copy
+#: 4.html⁩:285
 msgid "Month"
 msgstr "Mes"
 
-#: templates/home/index copy 3.html:228 templates/home/index.html:295
+#: ⁨templates/home/index copy 3.html⁩:228 ⁨templates/home/index copy
+#: 4.html⁩:295
 msgid "Technologies"
 msgstr "Tecnologías"
 
-#: templates/home/index copy 3.html:269 templates/home/index.html:336
+#: ⁨templates/home/index copy 3.html⁩:269 ⁨templates/home/index copy
+#: 4.html⁩:336
 msgid "¿Creamos algo juntos? ;)"
 msgstr "¿Creamos algo juntos? ;)"
 
-#: templates/home/index.html:165
+#: ⁨templates/home/index copy 4.html⁩:165
 msgid "web & android/ios app developer"
 msgstr "desarrollador web y app android/ios"
 
-#: templates/home/index.html:190
+#: ⁨templates/home/index copy 4.html⁩:190
 msgid "Inteligencia Artificial"
 msgstr "Inteligencia Artificial"
+
+#: templates/home/index.html:6
+#| msgid "Iñaki Retegi · retegi.eus — Web development, automation & AI"
+msgid "Retegi · retegi.eus — Web development, automation & AI"
+msgstr "Retegi · retegi.eus — Desarrollo web, automatización e IA"
+
+#: templates/home/index.html:7
+msgid ""
+"Useful web software, automation and AI for real-world projects — Django "
+"servers, Docker, and tools that save time."
+msgstr ""
+"Software útil, automatización e IA para proyectos reales: servidores Django,"
+" Docker y herramientas que ahorran tiempo."
+
+#: templates/home/index.html:23
+#| msgid "Iñaki Retegi · retegi.eus"
+msgid "Retegi · retegi.eus"
+msgstr "Retegi · retegi.eus"
+
+#: templates/home/index.html:25
+msgid "Web development, apps and digital solutions with modern technologies."
+msgstr "Desarrollo web, apps y soluciones digitales con tecnologías actuales."
+
+#: templates/home/index.html:28
+msgid ""
+"I create custom digital tools for businesses, projects and professionals: "
+"modern websites, internal applications, automations, AI assistants and "
+"connected systems."
+msgstr ""
+"Creo herramientas digitales a medida para empresas, proyectos y "
+"profesionales: webs modernas, aplicaciones internas, automatizaciones, "
+"asistentes IA y sistemas conectados."
+
+#: templates/home/index.html:31 templates/home/index.html:388
+msgid "View projects"
+msgstr "Ver proyectos"
+
+#: templates/home/index.html:32
+msgid "Talk about an idea"
+msgstr "Hablar de una idea"
+
+#: templates/home/index.html:35
+msgid "Django · Python"
+msgstr "Django · Python"
+
+#: templates/home/index.html:36
+msgid "Web apps"
+msgstr "Apps web"
+
+#: templates/home/index.html:37
+msgid "Automation"
+msgstr "Automatización"
+
+#: templates/home/index.html:38
+msgid "Artificial intelligence"
+msgstr "Inteligencia artificial"
+
+#: templates/home/index.html:39
+msgid "Robotics"
+msgstr "Robótica"
+
+#: templates/home/index.html:48
+#| msgid ""
+#| "Iñaki Retegi — software developer, automation and artificial intelligence"
+msgid "Retegi — software developer, automation and artificial intelligence"
+msgstr ""
+"Retegi — desarrollador de software, automatización e inteligencia artificial"
+
+#: templates/home/index.html:65
+msgctxt "heading"
+msgid "Intro"
+msgstr "Intro"
+
+#: templates/home/index.html:67
+msgid ""
+"I develop web software, applications and AI-assisted solutions with a "
+"practical mindset."
+msgstr ""
+"Desarrollo software web, aplicaciones y soluciones con IA aplicada, con "
+"mentalidad práctica."
+
+#: templates/home/index.html:70
+msgid ""
+"Day to day it’s Django and Python deployed for real workloads: containers, "
+"owned servers and maintainable operations. AI only when it really helps "
+"(RAG, assistants and automation of grunt work); side projects vet ideas "
+"before they ever reach collaborators."
+msgstr ""
+"El día a día es Django y Python desplegados para cargas reales: "
+"contenedores, servidores propios y operaciones mantenibles. IA solo cuando "
+"aporta de verdad (RAG, asistentes y automatización del trabajo pesado); los "
+"proyectos laterales validan ideas antes de llegar a colaboradores."
+
+#: templates/home/index.html:73
+msgid ""
+"Clean code, incremental delivery and someone who respects both engineers and"
+" stakeholders — that combination usually clicks."
+msgstr ""
+"Código limpio, entrega incremental y alguien que respeta a ingenierías y "
+"negocio; esa combinación suele funcionar."
+
+#: templates/home/index.html:78
+msgid "Daily stack"
+msgstr "Stack diario"
+
+#: templates/home/index.html:80
+msgid "Python · Django · Bootstrap"
+msgstr "Python · Django · Bootstrap"
+
+#: templates/home/index.html:81
+msgid "Docker · nginx · Gunicorn"
+msgstr "Docker · nginx · Gunicorn"
+
+#: templates/home/index.html:82
+msgid "PostgreSQL · SQLite"
+msgstr "PostgreSQL · SQLite"
+
+#: templates/home/index.html:83
+msgid "AI · RAG · embeddings"
+msgstr "IA · RAG · embeddings"
+
+#: templates/home/index.html:84
+msgid "Automation (scripts, pipelines)"
+msgstr "Automatización (scripts, pipelines)"
+
+#: templates/home/index.html:85
+msgid "Linux servers · backups · TLS"
+msgstr "Servidores Linux · copias de seguridad · TLS"
+
+#: templates/home/index.html:89
+msgctxt "technologies"
+msgid "Referenced in posts"
+msgstr "Mencionado en los artículos"
+
+#: templates/home/index.html:106
+msgid "The process"
+msgstr "El proceso"
+
+#: templates/home/index.html:108
+msgid "A clear, close way of working with clients"
+msgstr "Una forma clara y cercana de trabajar con el cliente"
+
+#: templates/home/index.html:109
+msgid ""
+"From idea to a useful tool: listen, understand, design, develop and improve."
+msgstr ""
+"De la idea a una herramienta útil: escuchar, entender, diseñar, desarrollar "
+"y mejorar."
+
+#: templates/home/index.html:114 templates/home/index.html:120
+#: templates/home/index.html:126 templates/home/index.html:132
+msgid "Comic explaining how we collaborate with clients"
+msgstr "Viñetas que explican el proceso de trabajo con el cliente"
+
+#: templates/home/index.html:145
+msgid "What I do"
+msgstr "Qué hago"
+
+#: templates/home/index.html:146
+msgid "From idea to stable service in production."
+msgstr "De la idea al servicio estable en producción."
+
+#: templates/home/index.html:147
+msgid ""
+"No corporate fluff: deliverables you can actually run, observe and iterate "
+"when it's time to scale."
+msgstr ""
+"Sin relleno corporativo: entregables que puedes ejecutar, observar e iterar "
+"cuando toque escalar."
+
+#: templates/home/index.html:153
+msgid "Web development"
+msgstr "Desarrollo web"
+
+#: templates/home/index.html:154
+msgid ""
+"Responsive sites and Django apps engineered for readability, uptime and sane"
+" releases."
+msgstr ""
+"Sitios responsivos y apps Django pensadas para legibilidad, disponibilidad y"
+" releases sensatas."
+
+#: templates/home/index.html:160
+msgid "Custom software"
+msgstr "Software a medida"
+
+#: templates/home/index.html:161
+msgid ""
+"Back-office dashboards, invoicing stacks, bookings, terminals and workflows "
+"tailored to messy reality."
+msgstr ""
+"Cuadros de mando internos, facturación, reservas, terminales y flujos de "
+"trabajo adaptados a la realidad caótica."
+
+#: templates/home/index.html:167
+msgid "AI & automation"
+msgstr "IA y automatización"
+
+#: templates/home/index.html:168
+msgid ""
+"Assistants grounded on your corpus, ingestion pipelines and automation that "
+"survives Monday mornings."
+msgstr ""
+"Asistentes anclados a tu corpus, tuberías de ingesta y automatización que "
+"aguantan los lunes por la mañana."
+
+#: templates/home/index.html:174
+msgid "Servers & deployments"
+msgstr "Servidores y despliegues"
+
+#: templates/home/index.html:175
+msgid ""
+"Docker, nginx, Gunicorn, hardened Linux hosts, HTTPS, snapshots and "
+"repeatable deploys."
+msgstr ""
+"Docker, nginx, Gunicorn, hosts Linux endurecidos, HTTPS, instantáneas y "
+"despliegues repetibles."
+
+#: templates/home/index.html:186
+msgid "Highlights"
+msgstr "Destacados"
+
+#: templates/home/index.html:187
+msgid "Featured projects"
+msgstr "Proyectos destacados"
+
+#: templates/home/index.html:189
+msgid "Official URLs arriving soon wherever noted."
+msgstr "Las URLs oficiales llegarán pronto donde se indique."
+
+#: templates/home/index.html:197
+msgid ""
+"Exam prep cockpit with bilingual assets, granular progress and thoughtful "
+"PRO tiers."
+msgstr ""
+"Cockpit de preparación de exámenes con recursos bilingües, progreso granular"
+" y niveles PRO bien pensados."
+
+#: templates/home/index.html:199 templates/home/index.html:213
+msgid "AI"
+msgstr "IA"
+
+#: templates/home/index.html:202 templates/home/index.html:228
+msgid "View project"
+msgstr "Ver proyecto"
+
+#: templates/home/index.html:211
+msgid ""
+"Experiments marrying geodata, humane interfaces and pragmatic AI-assisted "
+"workflows."
+msgstr ""
+"Experimentos que unen datos geográficos, interfaces humanas y flujos "
+"asistidos por IA pragmática."
+
+#: templates/home/index.html:215
+msgid "Explore"
+msgstr "Explorar"
+
+#: templates/home/index.html:224
+msgid ""
+"Creative outlet mixing playful culture geekery with serious shipping "
+"discipline behind the curtain."
+msgstr ""
+"Válvula creativa entre frikismo cultural y disciplina seria de producción "
+"tras el telón."
+
+#: templates/home/index.html:239
+msgid "Playground"
+msgstr "Zona experimental"
+
+#: templates/home/index.html:240
+msgid "Retegi Lab"
+msgstr "Laboratorio Retegi"
+
+#: templates/home/index.html:242
+msgid ""
+"Hands-on tinkering bench: autonomous agents, tactile robots, choropleths, "
+"scraped-but-respectful pipelines and pragmatic analytics you can rerun next "
+"week with coffee in hand."
+msgstr ""
+"Banco práctico: agentes autónomos, robots táctiles, coropletas, scraping "
+"respetuoso y analítica pragmática que puedes repetir la semana que viene con"
+" un café en la mano."
+
+#: templates/home/index.html:248
+msgid "Local assistants"
+msgstr "Asistentes locales"
+
+#: templates/home/index.html:249
+msgid ""
+"Tiny models glued to notebooks, scripted wake words and repeatable "
+"evaluation harnesses."
+msgstr ""
+"Modelos pequeños enlazados a notebooks, palabras de activación por script y "
+"suites de evaluación repetibles."
+
+#: templates/home/index.html:255
+msgid "Maps · data viz"
+msgstr "Mapas · visualización de datos"
+
+#: templates/home/index.html:256
+msgid ""
+"Composable layers, ingestion scripts and humane defaults for exploratory "
+"storytelling."
+msgstr ""
+"Capas componibles, scripts de ingesta y valores por defecto humanos para "
+"narrativa exploratoria."
+
+#: templates/home/index.html:262
+msgid "Robotics / Raspberry Pi prototypes"
+msgstr "Robótica / prototipos Raspberry Pi"
+
+#: templates/home/index.html:263
+msgid ""
+"Breadboard bravery: GPIO experiments, kiosk boards and reproducible BOM "
+"notes."
+msgstr ""
+"Valor en protoboard: experimentos GPIO, kioskos y listas de materiales "
+"reproducibles."
+
+#: templates/home/index.html:273
+msgid "Digital manifesto"
+msgstr "MANIFIESTO DIGITAL"
+
+#: templates/home/index.html:275
+msgid "Values for ethical, sustainable and human technology."
+msgstr "Valores para una tecnología ética, sostenible y humana."
+
+#: templates/home/index.html:278
+msgid ""
+"A digital community is not only defined by the tools it uses, but by the "
+"principles with which it builds, shares and maintains them."
+msgstr ""
+"Una comunidad digital no solo se define por las herramientas que usa, sino "
+"por los principios con los que las construye, comparte y mantiene."
+
+#: templates/home/index.html:287
+msgid "ethics"
+msgstr "ética"
+
+#: templates/home/index.html:288
+msgid "data"
+msgstr "datos"
+
+#: templates/home/index.html:289
+msgid "human"
+msgstr "humano"
+
+#: templates/home/index.html:290
+msgid "open"
+msgstr "abierto"
+
+#: templates/home/index.html:293
+msgid "Retegi digital values"
+msgstr "Valores digitales de Retegi"
+
+#: templates/home/index.html:294
+msgid "Ethical artificial intelligence"
+msgstr "Inteligencia artificial ética"
+
+#: templates/home/index.html:295
+msgid "Digital sovereignty"
+msgstr "Soberanía digital"
+
+#: templates/home/index.html:296
+msgid "Privacy by design"
+msgstr "Privacidad por diseño"
+
+#: templates/home/index.html:297
+msgid "Sustainable technology"
+msgstr "Tecnología sostenible"
+
+#: templates/home/index.html:298
+msgid "Useful and human software"
+msgstr "Software útil y humano"
+
+#: templates/home/index.html:299
+msgid "Universal accessibility"
+msgstr "Accesibilidad universal"
+
+#: templates/home/index.html:300
+msgid "Algorithmic transparency"
+msgstr "Transparencia algorítmica"
+
+#: templates/home/index.html:301
+msgid "Meaningful human control"
+msgstr "Control humano significativo"
+
+#: templates/home/index.html:302
+msgid "Open and collaborative culture"
+msgstr "Cultura abierta y colaborativa"
+
+#: templates/home/index.html:303
+msgid "Responsible security"
+msgstr "Seguridad responsable"
+
+#: templates/home/index.html:304
+msgid "Linguistic and cultural inclusion"
+msgstr "Inclusión lingüística y cultural"
+
+#: templates/home/index.html:305
+msgid "Independence from digital monopolies"
+msgstr "Independencia frente a monopolios digitales"
+
+#: templates/home/index.html:306
+msgid "Critical digital literacy"
+msgstr "Alfabetización digital crítica"
+
+#: templates/home/index.html:307
+msgid "Data for the common good"
+msgstr "Datos al servicio del bien común"
+
+#: templates/home/index.html:308
+msgid "Technological minimalism"
+msgstr "Minimalismo tecnológico"
+
+#: templates/home/index.html:309
+msgid "Interoperability"
+msgstr "Interoperabilidad"
+
+#: templates/home/index.html:310
+msgid "Repairability and maintenance"
+msgstr "Reparabilidad y mantenimiento"
+
+#: templates/home/index.html:311
+msgid "Smart decentralization"
+msgstr "Descentralización inteligente"
+
+#: templates/home/index.html:312
+msgid "Digital wellbeing"
+msgstr "Bienestar digital"
+
+#: templates/home/index.html:313
+msgid "Technological social responsibility"
+msgstr "Responsabilidad social tecnológica"
+
+#: templates/home/index.html:324
+msgid "Technical blog"
+msgstr "Blog técnico"
+
+#: templates/home/index.html:326
+msgid "Back to top"
+msgstr "Volver arriba"
+
+#: templates/home/index.html:337
+msgid "Read article →"
+msgstr "Leer artículo →"
+
+#: templates/home/index.html:349
+msgid "Deploy"
+msgstr "Despliegue"
+
+#: templates/home/index.html:350
+msgid "Shipping Django behind Docker, Gunicorn & nginx"
+msgstr "Publicar Django con Docker, Gunicorn y nginx"
+
+#: templates/home/index.html:351
+msgid ""
+"Operational checklist from zero-ish to TLS with backups you can swear by."
+msgstr ""
+"Lista operativa desde casi cero hasta TLS con copias en las que confiar."
+
+#: templates/home/index.html:352 templates/home/index.html:360
+#: templates/home/index.html:368
+msgid "Continue reading →"
+msgstr "Seguir leyendo →"
+
+#: templates/home/index.html:357
+msgid "Local IA"
+msgstr "IA local"
+
+#: templates/home/index.html:358
+msgid "Responsible local AI workflows you can iterate on nightly"
+msgstr "Flujos responsables de IA local que puedes iterar cada noche"
+
+#: templates/home/index.html:359
+msgid ""
+"Thinking through when modest models outperform giant APIs without leaking "
+"payloads."
+msgstr ""
+"Cuándo modelos modestos superan APIs gigantes sin filtrar datos sensibles."
+
+#: templates/home/index.html:365
+msgid "Productivity"
+msgstr "Productividad"
+
+#: templates/home/index.html:366
+msgid "Automating small chores that secretly eat half your roadmap"
+msgstr ""
+"Automatizar las tareas pequeñas que se meriendan la mitad de tu roadmap en "
+"silencio"
+
+#: templates/home/index.html:367
+msgid ""
+"Email triage helpers, politely scoped scrapers and sleepy cronfriends that "
+"amortize infra."
+msgstr ""
+"Asistentes de correo, scrapers bien acotados y crons amortiguadores de "
+"infraestructura."
+
+#: templates/home/index.html:379
+msgctxt "cta"
+msgid "Next beat"
+msgstr "Siguiente paso"
+
+#: templates/home/index.html:381
+msgid "Do you have an idea or a process you want to improve?"
+msgstr "¿Tienes una idea o un proceso que quieres mejorar?"
+
+#: templates/home/index.html:384
+msgid ""
+"I can translate it into a web tool, automate the boring limbs or scaffold "
+"the whole dependable system."
+msgstr ""
+"Puedo traducirlo a una herramienta web, automatizar lo aburrido o montar el "
+"sistema fiable de punta a punta."
+
+#: templates/home/index.html:387
+msgid "Contact me"
+msgstr "Contactar"
 
 #: templates/home/legal_policies.html:22
 msgid "Legal Policy"
@@ -153,6 +851,147 @@ msgstr "Política Legal"
 #: templates/home/privacy_policy.html:22
 msgid "Privacy Policy"
 msgstr "Política de Privacidad"
+
+#~ msgid ""
+#~ "Hi, I'm Iñaki Retegi. I build digital solutions with a practical mindset."
+#~ msgstr ""
+#~ "Hola, soy Iñaki Retegi. Desarrollo soluciones digitales con mentalidad "
+#~ "práctica."
+
+#~ msgid ""
+#~ "Transparency layer for comparing public sector platforms with curated "
+#~ "rankings plus an IA/RAG copilot."
+#~ msgstr ""
+#~ "Capa de transparencia para comparar plataformas del sector público con "
+#~ "rankings curados y un copiloto IA/RAG."
+
+#~ msgid "RAG"
+#~ msgstr "RAG"
+
+#~ msgid "Learn more"
+#~ msgstr "Saber más"
+
+#~ msgctxt "badge"
+#~ msgid "maps"
+#~ msgstr "mapas"
+
+#~ msgid "Ares · local IA"
+#~ msgstr "Ares · IA local"
+
+#~ msgid ""
+#~ "Hands-free assistant leaning on local Ollama models, scripted homes and "
+#~ "pragmatic privacy posture."
+#~ msgstr ""
+#~ "Asistente manos libres basado en modelos locales Ollama, hogares con scripts"
+#~ " y una postura de privacidad pragmática."
+
+#~ msgctxt "hardware"
+#~ msgid "Voice"
+#~ msgstr "Voz"
+
+#~ msgid "Details"
+#~ msgstr "Detalles"
+
+#~ msgid ""
+#~ "Hybrid POS orchestration bridging stock, cashier UX and bookkeeping without "
+#~ "brittle spreadsheets."
+#~ msgstr ""
+#~ "Orquestación híbrida de TPV entre stock, experiencia en caja y contabilidad "
+#~ "sin hojas frágiles."
+
+#~ msgid "Retail ops"
+#~ msgstr "Retail"
+
+#~ msgid ""
+#~ "Useful web software, automation and artificial intelligence for real "
+#~ "projects."
+#~ msgstr ""
+#~ "Software útil, automatización e inteligencia artificial para proyectos "
+#~ "reales."
+
+#~ msgid ""
+#~ "I build web apps, internal tools, Django deployments on your infrastructure,"
+#~ " and AI solutions aimed at saving time and solving tangible problems."
+#~ msgstr ""
+#~ "Desarrollo aplicaciones web, herramientas internas, despliegues Django en tu"
+#~ " infraestructura y soluciones con IA para ahorrar tiempo y resolver "
+#~ "problemas concretos."
+
+#~ msgid "Docker & Linux"
+#~ msgstr "Docker y Linux"
+
+#~ msgid "RAG · assistants"
+#~ msgstr "RAG · asistentes"
+
+#~ msgid "Django"
+#~ msgstr "Django"
+
+#~ msgid "Docker"
+#~ msgstr "Docker"
+
+#~ msgid "AI local"
+#~ msgstr "IA local"
+
+#~ msgid "Nginx"
+#~ msgstr "Nginx"
+
+#~ msgid "Retegi system"
+#~ msgstr "Sistema Retegi"
+
+#~ msgid "online"
+#~ msgstr "online"
+
+#~ msgid "django-admin startproject"
+#~ msgstr "django-admin startproject"
+
+#~ msgid "docker compose up -d"
+#~ msgstr "docker compose up -d"
+
+#~ msgid "python manage.py deploy"
+#~ msgstr "python manage.py deploy"
+
+#~ msgid "API REST online"
+#~ msgstr "API REST online"
+
+#~ msgid "RAG assistant ready"
+#~ msgstr "Asistente RAG listo"
+
+#~ msgid "SSL + Nginx active"
+#~ msgstr "SSL + Nginx activo"
+
+#~ msgid "ReteGI"
+#~ msgstr "ReteGI"
+
+#~ msgid "ReteGI assistant"
+#~ msgstr "Asistente de ReteGI"
+
+#~ msgid "~/projects"
+#~ msgstr "~/proyectos"
+
+#~ msgctxt "terminal-status"
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "deploy ready"
+#~ msgstr "listo para desplegar"
+
+#~ msgid "REST API"
+#~ msgstr "API REST"
+
+#~ msgid "CI · scripts"
+#~ msgstr "CI · scripts"
+
+#~ msgid "TLS · nginx"
+#~ msgstr "TLS · nginx"
+
+#~ msgid "REST"
+#~ msgstr "REST"
+
+#~ msgid "CI"
+#~ msgstr "CI"
+
+#~ msgid "Search..."
+#~ msgstr "Buscar"
 
 #~ msgid "First name"
 #~ msgstr "Nombre"
@@ -174,6 +1013,3 @@ msgstr "Política de Privacidad"
 
 #~ msgid "Additional information"
 #~ msgstr "Información adicional"
-
-#~ msgid "Send"
-#~ msgstr "Enviar"

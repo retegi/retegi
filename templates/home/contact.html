@@ -2,30 +2,59 @@
 {% load static %}
 {% load i18n %}
 
-
 {% block head %}
-
-
+<title>{% trans "Contact" %} · {% trans "retegi.eus" %}</title>
 {% endblock %}
 
 {% block content %}
+<main id="contact-page">
+  <section class="section-rete border-bottom" style="border-color: rgba(17,24,39,0.06) !important;">
+    <div class="container-xl py-4 py-lg-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7">
+          <p class="text-uppercase small fw-semibold text-muted mb-2" style="letter-spacing: .12em;">{% trans "Let's talk" %}</p>
+          <h1 class="fw-bold mb-3" style="font-size: clamp(1.6rem, 2vw + 1rem, 2.35rem); color: var(--rete-text); letter-spacing: -0.03em;">
+            {% trans "Contact" %}
+          </h1>
+          <p class="lead-rete mb-4">{% blocktrans trimmed %}Tell me briefly what you need and I'll get back to you.{% endblocktrans %}</p>
 
-    <div class="container">
-        <div class="row text-center p-5 bg-white">
-            <h1>{% trans 'Contact' %}</h1>
+          {% if messages %}
+            <div class="mb-4" role="status">
+              {% for message in messages %}
+                <div class="alert rounded-4 px-4 py-3 mb-2 border-0 {% if message.tags == 'success' %}alert-success text-dark{% elif 'error' in message.tags %}alert-danger{% else %}alert-info{% endif %}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <div class="rete-card p-4 p-lg-5 rounded-5">
+            <form method="post" novalidate class="contact-form-rete">
+              {% csrf_token %}
+              {% if form.non_field_errors %}
+                <div class="alert alert-danger border-0 rounded-4 py-3" role="alert">
+                  {% for error in form.non_field_errors %}<div>{{ error }}</div>{% endfor %}
+                </div>
+              {% endif %}
+              {% for field in form %}
+                <div class="mb-4">
+                  <label class="form-label fw-semibold small text-muted mb-2" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  {{ field }}
+                  {% if field.errors %}
+                    <div class="small text-danger mt-2">{{ field.errors }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+              <div class="mt-4 d-flex justify-content-lg-start justify-content-center">
+                <button type="submit" class="btn btn-rete-dark rounded-pill btn-rete-pill px-5">
+                  {% trans "Send" %}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="container bg-white">
-        <div class="row">
-        <div class="col-2"></div>
-        <div class="col-lg-8 col-md-12 bg-white p-5">
-             <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}  <!-- Renderiza el formulario -->
-        <button type="submit">Enviar</button>
-    </form>
-        <div class="col-2"></div>
-          
-        </div>
-    </div>
+  </section>
+</main>
 {% endblock %}

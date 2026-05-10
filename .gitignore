@@ -1,16 +1,98 @@
-.sqlite3
-settings.py# Django specific
-*.log
+# Entorno y secretos (mantener .env.example versionado)
+.env
+.env.*
+!.env.example
+.env.local
+
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Base de datos local
+*.sqlite3
 db.sqlite3
 db.sqlite3-journal
-.env
 
-# Ignore the settings file
-settings.py
+# Datos persistentes Docker / SQLite en volumen
+data/
 
-migrations/
-
+# Estáticos recogidos (collectstatic)
 staticfiles/
-media/sendgrid.env
+
+# Subidas y ficheros generados bajo media/ (no nuevos commits salvo fuerces -u)
+# Si ya tenías archivos trackeados en media/, siguen en el índice hasta:
+#   git rm -r --cached media/
+media/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Cachés, tests y cobertura
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+coverage.xml
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+
+# Backups y dumps
+*.dump
+*.sql
+*.bak
+*.backup
+*.tar
+*.gz
+*.zip
+backup/
+backups/
+
+# Certificados y claves privadas
+*.pem
+*.key
+certs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (no versionar dependencias; ver package.json si aplica)
+node_modules/
+
+# Credenciales sueltas
 sendgrid.env
+media/sendgrid.env
+
+# Django: settings versionado; secretos solo en .env
+
+# Editores (descomenta .vscode/ si quieres compartir ajustes del equipo)
+.idea/
+.vscode/
+
+
+# Redis / Celery
+dump.rdb
+celerybeat-schedule
+
+# Archivos temporales raros del proyecto
+captcha
+j--indent
+
+# Copias antiguas de plantillas
+* copy.html
+* copy 2.html
+* copy 3.html
+* copy 4.html
+requirements copy.txt

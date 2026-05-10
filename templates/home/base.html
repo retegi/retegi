@@ -1,494 +1,331 @@
 {% load static %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!doctype html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/YOUR_API_KEY/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="https://cdn.tiny.cloud/1/2j2ya02wdq6mdhmgizz8hdn82mtkk38ahs0gl3rwdw6dnyws/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-      <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-  body{
-    padding-top: 56px;
-  }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 
-
-.word {
-  position: absolute;
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.9);
-  opacity: 0.8;
-  animation: moveWord linear infinite;
-  z-index: -1;
-}
-
-@keyframes moveWord {
-  from {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.9;
-  }
-  to {
-    transform: translate(var(--x-end), var(--y-end)) scale(var(--scale-end));
-    opacity: 0;
-  }
-}
-
-
-input::placeholder {
-    color: #aaa; /* Cambia a un color claro para contraste */
-    opacity: 1; /* Asegúrate de que el placeholder sea visible */
-}
-
-input:focus::placeholder {
-    color: #bbb; /* Cambia el color del placeholder al enfocar el campo, si lo deseas */
-}
-input[type="search"] {
-    background-color: #222; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    border: 0.1px solid #555; /* Borde inicial */
-    border-radius: 5px; /* Bordes redondeados */
-    
-}
-
-input[type="search"]:focus {
-    intline: 0.1px solid gray; /* Contorno verde al enfocar */
-    intline-offset: 0.1px;
-    box-shadow: 0 0 5px gray; /* Efecto de brillo */
-    border-color: gray; /* Cambia el color del borde */
-}
-
-#searchInput {
-        border: 1px solid #eee; /* Borde normal */
-        border-radius: 25px; /* Forma redondeada */
-        outline: none; /* Elimina el borde azul del navegador */
-        font-size: 16px;
-    }
-
-    #searchInput:focus {
-        border: 2px solid #28a745; /* Borde verde al enfocar */
-        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Efecto de sombra verde */
-    }
-
-
-  /* Limitar la altura del modal */
-  .modal-content {
-    max-height: 80vh; /* Altura máxima del modal */
-    overflow: hidden; /* Evitar que el contenido desborde */
-  }
-
-  /* Hacer el contenedor del chat desplazable */
-  #chat-container {
-    height: 20vh; /* Altura máxima del chat */
-    overflow-y: auto; /* Habilitar el desplazamiento vertical */
-  }
-
-  /* Ajustar el tamaño del botón de cerrar */
-  .btn-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-
-
-
-  /* Mantener el área de entrada fija */
-  #input-container {
-    position: relative; /* Asegura que sea independiente del área de chat */
-    bottom: 0;
-    width: 100%;
-    max-height: 40vh; /* Altura máxima del área del chat */
-    overflow-y: auto; 
-  }
-
-  /* Scroll automático al final del chat */
-  #chat-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-@media (max-width: 576px) {
-        header {
-            padding: 8px; /* Reducir padding en pantallas pequeñas */
-        }
-
-        header .nav {
-            font-size: 14px; /* Reducir tamaño de texto del menú */
-        }
-
-        header .btn {
-            padding: 4px 8px; /* Reducir botones */
-            font-size: 12px;
-        }
-    }
-
-    </style>
     {% block head %}
     {% endblock %}
-</head>
-  <body style="background-image: url()">
-    <header class="fixed-top">
-        <div class="container bg-dark p-2">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-            </a>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <a href="{% url 'home_app:home' %}" class="nav-link px-2 text-secondary text-white text-center">
-                <b class="inter-familia" id="animated-text" style="font-family: 'Courier New', monospace;">Iñaki Retegi</b>
-              </a>
-            </li> </ul>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              
-              <li><a href="{% url 'home_app:home' %}" class="nav-link px-2 text-white">{% trans "Home" %}</a></li>
-              <li><a href="{% url 'home_app:about' %}" class="nav-link px-2 text-white">{% trans "About" %}</a></li>
-              <li><a href="{% url 'home_app:contact' %}" class="nav-link px-2 text-white">{% trans "Contact" %}</a></li>
-              <li class="text-light footer-lista">
-               
-                 <button type="button" class="nav-link btn btn-sm bg-success text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      reteBot
+  </head>
+  <body class="retegi-body">
+
+    <nav class="navbar navbar-expand-lg fixed-top border-bottom rete-navbar">
+      <div class="container-xl py-2">
+        <a class="navbar-brand" href="{% url 'home_app:home' %}">{% trans "retegi.eus" %}</a>
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#reteNavbar" aria-controls="reteNavbar" aria-expanded="false" aria-label="{% trans 'Main menu' %}">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="reteNavbar">
+          <ul class="navbar-nav ms-lg-auto mb-3 mb-lg-0 align-items-lg-center gap-lg-1 py-3 py-lg-0 flex-wrap justify-content-lg-end">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home_app:home' %}#proyectos">{% trans "Projects" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home_app:home' %}#servicios">{% trans "Services" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home_app:home' %}#laboratorio">{% trans "Lab" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home_app:home' %}#blog-tecnico">{% trans "Blog" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home_app:contact' %}">{% trans "Contact" %}</a>
+            </li>
+
+            {% get_available_languages as LANGUAGES_AVAILABLE %}
+            <li class="nav-item px-lg-2 py-2 py-lg-0 mt-lg-0 d-flex align-items-center">
+              <form action="{% url 'set_language' %}" method="post" class="language-switcher" aria-label="{% trans 'Choose language' %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                <div class="btn-group" role="group" aria-label="{% trans 'Choose language' %}">
+                  {% for lang_code, lang_name in LANGUAGES_AVAILABLE %}
+                  <button type="submit"
+                          name="language"
+                          value="{{ lang_code }}"
+                          class="language-switcher__pill btn btn-sm {% if lang_code == LANGUAGE_CODE %}language-switcher__pill--active btn-dark{% else %}btn-light border{% endif %}"
+                          lang="{{ lang_code }}"
+                          {% if lang_code == LANGUAGE_CODE %}aria-current="true"{% endif %}>
+                    {% if lang_code == 'eu' %}EU{% elif lang_code == 'es' %}ES{% elif lang_code == 'en' %}EN{% else %}{{ lang_code|upper }}{% endif %}
                   </button>
-                
-              </li>
-            </ul>
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-
-              {% load i18n %}
-              {% get_current_language as CURRENT_LANGUAGE %}
-              {% get_available_languages as AVAILABLE_LANGUAGES %}
-              {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
-
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" 
-                    style="color:white;" 
-                    href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
-                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
-              </svg>
-                  </a>
-                  <ul class="dropdown-menu" style="z-index:500;">
-                      {% for language in languages %}
-                      <li>
-                          <a class="dropdown-item" style="text-transform:uppercase;" 
-                            href="/{{ language.code }}/{{ request.get_full_path|slice:'4:' }}">
-                              {{ language.code }}
-                          </a>
-                      </li>
-                      {% endfor %}
-                  </ul>
-              </li>
-              <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="GET">
-                <input type="text" name="q" id="searchInput" placeholder="{% trans 'Search' %}..." class="form-control rounded-pill bg-dark text-light" 
-                    style="border: 1px solid #eee; font-size: 16px;">
+                  {% endfor %}
+                </div>
               </form>
+            </li>
 
-      
-              
-              <div class="text-end">
-              {% if user.is_authenticated and user.is_staff %}
-              <a href="{% url 'home_app:article_create' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "publish" %}</button></a>
-              {% endif %}
-              {% if user.is_authenticated %}
-                <a href="#"><button type="button" class="btn btn-outline-light me-2">{{ user.username }}</button></a>
-                <a href="{% url 'account_logout' %}"><button type="button" class="btn btn-outline-light me-2">{% trans 'log out' %}</button></a>
-              </div>
-              {% else %}
-                <a href="{% url 'account_login' %}"><button type="button" class="btn btn-outline-light me-2">{% trans "Login" %}</button></a>
-                <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-light">{% trans "Sign-up" %}</button></a>
-              </div>
-              {% endif %}
+            <li class="nav-item ps-lg-2 pt-2 pt-lg-0 mt-lg-0">
+              <a class="btn btn-rete-dark rounded-pill btn-rete-pill px-4 w-100 w-lg-auto" href="{% url 'home_app:contact' %}">{% trans "Let's talk" %}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="rete-footer mt-5">
+      <div class="container-xl">
+        <div class="row gy-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="rete-pixel-dot mb-2">
+              <span class="fw-bold text-dark ms-1">{% trans "retegi.eus" %}</span>
+            </div>
+            <p class="mb-3 pe-lg-4">
+              {% blocktrans %}Useful web software, automation and AI solutions. Real projects, your own infra, and a practical approach for teams that want to ship fast without losing control.{% endblocktrans %}
+            </p>
+            <span class="rete-chip">Django</span>
+            <span class="rete-chip">Docker</span>
+            <span class="rete-chip">{% trans "AI &amp; RAG" %}</span>
+          </div>
+          <div class="col-6 col-lg-2 col-md-6">
+            <div class="rete-footer-title">{% trans "Navigation" %}</div>
+            <ul class="list-unstyled">
+              <li><a href="{% url 'home_app:home' %}#servicios">{% trans "Services" %}</a></li>
+              <li><a href="{% url 'home_app:home' %}#proyectos">{% trans "Projects" %}</a></li>
+              <li><a href="{% url 'home_app:about' %}">{% trans "About" %}</a></li>
+              <li><a href="{% url 'home_app:contact' %}">{% trans "Contact" %}</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="rete-footer-title">{% trans "Legal &amp; extras" %}</div>
+            <ul class="list-unstyled">
+              <li><a href="{% url 'home_app:home' %}#blog-tecnico">{% trans "Blog" %}</a></li>
+              <li><a href="{% url 'home_app:privacy_policy' %}">{% trans "Privacy" %}</a></li>
+              <li><a href="{% url 'home_app:cookies_policy' %}">{% trans "Cookies" %}</a></li>
+              <li><a href="{% url 'home_app:legal_policies' %}">{% trans "Legal" %}</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="rete-footer-title">{% trans "Contact" %}</div>
+            <p class="mb-2">{% trans "Ideas or collaborations? Message me via the form." %}</p>
+            <p class="mb-3"><a href="{% url 'home_app:contact' %}" class="fw-semibold">{% trans "Go to contact →" %}</a></p>
+            <div class="rete-footer-title">{% trans "Social profiles" %}</div>
+            <ul class="list-unstyled">
+              {# Reemplazar href cuando tengas URL pública confirmada #}
+              <li><a href="#">{% blocktrans trimmed %}GitHub — coming soon{% endblocktrans %}</a></li>
+              <li><a href="#">{% blocktrans trimmed %}LinkedIn — coming soon{% endblocktrans %}</a></li>
             </ul>
           </div>
         </div>
-      </header>
-
-      {% block content %}
-      {% endblock %}
-    
-<div class="bg-dark">
-    <div class="container bg-dark p-3">
-        <div class="row">
-            <!-- Primera columna -->
-            <div class="col-lg-4 col-md-12">
-                <ul class="list-unstyled">
-                    <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:home' %}" class="text-light" style="text-decoration:none;">{% trans 'Home' %}</a>
-                    </li>
-                    <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:about' %}" class="text-light" style="text-decoration:none;">{% trans 'About' %}</a>
-                    </li>
-                    <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:contact' %}" class="text-light" style="text-decoration:none;">{% trans 'Contact' %}</a>
-                    </li>
-                    <li class="text-light footer-lista">
-                        <a href="" class="text-light" style="text-decoration:none;">reteBot</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Segunda columna -->
-            <div class="col-lg-4 col-md-12">
-                <ul class="list-unstyled">
-                    <li class="text-light footer-lista">Iñaki Retegi</li>
-                    <li class="text-light footer-lista">
-                        <a href="https://github.com/yourprofile" class="text-light" style="text-decoration:none;">Github</a>
-                    </li>
-                    <li class="text-light footer-lista">
-                    <a href="mailto:retegi84@gmail.com" style="text-decoration:none;" class="text-white">
-                    info@retegi.eus
-                    </a>
-                    </li>
-                    <li class="text-light footer-lista">www.retegi.eus</li>
-                </ul>
-            </div>
-
-            <!-- Tercera columna -->
-            <div class="col-lg-4 col-md-12">
-                <ul class="list-unstyled">
-                    <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:cookies_policy' %}" class="text-light" style="text-decoration:none;">Cookies Policy</a>
-                    </li>
-                    <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:privacy_policy' %}" class="text-light" style="text-decoration:none;">Privacy Policy</a>
-                    </li>
-                    <li class="text-light footer-lista">
-                        <a href="{% url 'home_app:legal_policies' %}" class="text-light" style="text-decoration:none;">Legal Policies</a>
-                    </li>
-                </ul>
-            </div>
+        <div class="d-flex flex-wrap justify-content-between align-items-center pt-5 mt-3 border-top small text-muted">
+          <span>© {% now "Y" %} {% trans "retegi.eus" %}</span>
+          <span>{% blocktrans trimmed %}Made with Django and lots of ☕.{% endblocktrans %}</span>
         </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="min-height:30vh;">
-      <!-- Icono del bot -->
-      <img class="w-50 mx-auto d-block mt-3" src="{% static 'img/retebot.gif' %}" alt="Bot Icon">
-
-      <!-- Encabezado del modal -->
-      <div class="modal-header text-center w-100">
-        <h5 class="modal-title text-center w-100" id="exampleModalLabel">reteBot</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+    </footer>
 
-      <!-- Contenedor del chat -->
-      <div id="chat-container" class="bg-white px-3 py-4" style="max-height:800vh; overflow-y: auto;">
-        <div id="chat-box" style="min-height:20vh;">
-          <!-- Los mensajes del chat se mostrarán aquí -->
+    {# RetegiBot: widget flotante (lista para conectar a la API cuando quieras) #}
+    <div id="retefab-widget" class="retefab-root">
+      <div id="retefab-panel"
+           class="retefab-panel"
+           role="dialog"
+           aria-modal="false"
+           aria-labelledby="retefab-title">
+
+        <div class="retefab-panel-inner">
+
+          <div class="retefab-header d-flex justify-content-between align-items-start px-4 pt-3 pb-2">
+            <div>
+              <h2 id="retefab-title" class="h6 fw-bold mb-1">{% trans "RetegiBot" %}</h2>
+              <p class="mb-0 small text-muted">{% trans "Assistant · retegi.eus" %}</p>
+            </div>
+            <button type="button"
+                    class="btn btn-sm rounded-circle retefab-close"
+                    aria-label="{% trans 'Close RetegiBot' %}">&times;</button>
+          </div>
+
+          {# Mensaje inicial fijo visible #}
+          <div id="retefab-welcome" class="small text-muted px-4 pt-3 pb-2">
+            {% blocktrans trimmed %}Kaixo, I'm RetegiBot. I can help you with web projects, automation, AI or servers.{% endblocktrans %}
+          </div>
+
+          <div id="chat-container" class="retefab-chat px-4 py-2">
+            <div id="chat-box" class="retefab-messages mb-2" style="min-height:140px;"></div>
+          </div>
+
+          <div id="input-container" class="px-4 pb-3 pt-3 retefab-input-shell">
+            <form id="message-form" method="post" class="position-relative">
+              {% csrf_token %}
+              {# Conectado a aplicación assistant existente cuando el backend está activo #}
+              <label for="user-message" class="visually-hidden">{% trans "Your message" %}</label>
+              <input type="text"
+                     id="user-message"
+                     name="user_message"
+                     class="form-control retefab-input mb-2 rounded-3"
+                     autocomplete="off"
+                     maxlength="1200"
+                     placeholder="{% trans 'Type your question…' %}">
+              <button type="button" id="send-button" class="btn retefab-send w-100 rounded-pill">{% trans "Send" %}</button>
+            </form>
+          </div>
         </div>
       </div>
 
-      <!-- Zona de entrada fija -->
-      <div id="input-container" class="px-3 py-2 bg-light">
-        <form id="message-form" method="post">
-          <input type="text" id="user-message" class="form-control mb-2" placeholder="{% trans 'Write your question in any language' %}">
-          <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-          <button type="button" id="send-button" class="btn btn-success w-100">Enviar</button>
-        </form>
-      </div>
-
-      <!-- Pie del modal -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
+      <button type="button"
+              id="retefab-trigger"
+              class="retefab-trigger"
+              aria-expanded="true"
+              aria-controls="retefab-panel">
+        <span class="retefab-trigger-icon rounded-circle d-inline-flex align-items-center justify-content-center" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M13 14h5l-8.5 7.8L21 21l-9-17-3 17 4-13z"/></svg>
+        </span>
+        <span class="retefab-trigger-label d-none d-sm-inline">{% trans "RetegiBot" %}</span>
+      </button>
     </div>
-  </div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("searchInput").focus();
-    });
-</script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    var chatContainer = document.getElementById("chat-container");
-
-    function scrollToBottom() {
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-
-    // Monitorear cambios en el chat-box
-    var chatBox = document.getElementById("chat-box");
-    var observer = new MutationObserver(function () {
-        scrollToBottom(); // Hacer scroll automáticamente cuando hay cambios
-    });
-
-    observer.observe(chatBox, { childList: true }); // Observar adiciones o eliminaciones en el chat-box
-
-    // También hacer scroll cuando el modal se muestra
-    var exampleModal = document.getElementById('exampleModal');
-    exampleModal.addEventListener('shown.bs.modal', function () {
-        scrollToBottom();
-    });
-});
-
-
-</script>
-
-
-    <!--Efecto creamos algo juntos-->
     <script>
-        const textElement = document.getElementById("text");
-        const fullText = "¿Creamos algo juntos? ;)";
-        let index = 0;
-        let deleting = false;
+    document.addEventListener("DOMContentLoaded", function () {
+      var panel = document.getElementById("retefab-panel");
+      var trig = document.getElementById("retefab-trigger");
+      var closeBtn = panel ? panel.querySelector(".retefab-close") : null;
+      var chatContainer = document.getElementById("chat-container");
+      var STORAGE_DISMISS_KEY = "retegibot_dismissed_session";
+      var LABEL_OPEN = "{% filter escapejs %}{% trans 'Open RetegiBot' %}{% endfilter %}";
+      var LABEL_CLOSE = "{% filter escapejs %}{% trans 'Close RetegiBot' %}{% endfilter %}";
 
-        function typeEffect() {
-            if (!deleting) {
-                // Escribir
-                textElement.textContent = fullText.slice(0, index);
-                index++;
-                if (index > fullText.length) {
-                    deleting = true;
-                    setTimeout(typeEffect, 1000); // Pausa antes de borrar
-                    return;
-                }
-            } else {
-                // Borrar
-                textElement.textContent = fullText.slice(0, index);
-                index--;
-                if (index < 0) {
-                    deleting = false;
-                    setTimeout(typeEffect, 500); // Pausa antes de escribir de nuevo
-                    return;
-                }
-            }
-            setTimeout(typeEffect, 150); // Velocidad de escribir/borrar
+      function syncPanelAria(openNow) {
+        if (!panel || !trig) return;
+        trig.setAttribute("aria-expanded", openNow ? "true" : "false");
+        trig.setAttribute("aria-label", openNow ? LABEL_CLOSE : LABEL_OPEN);
+      }
+
+      function dismissForSession() {
+        try {
+          sessionStorage.setItem(STORAGE_DISMISS_KEY, "1");
+        } catch (e) {}
+      }
+
+      function userDismissedThisSession() {
+        try {
+          return sessionStorage.getItem(STORAGE_DISMISS_KEY) === "1";
+        } catch (e) {
+          return false;
         }
+      }
 
-        typeEffect();
-    </script>
+      function setPanelOpen(show) {
+        if (!panel || !trig) return;
+        if (show) panel.removeAttribute("hidden");
+        else panel.setAttribute("hidden", "hidden");
+        syncPanelAria(show);
+      }
 
-
-<!--Efecto nombre que corre letras-->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const targetText = "Iñaki Retegi ;)"; // El texto final deseado
-    const element = document.getElementById("animated-text");
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Solo caracteres uniformes
-    const duration = 5000; // Duración total de la animación en ms
-    const interval = 50; // Intervalo de actualización en ms
-    const steps = duration / interval; // Número total de pasos
-    let iterations = 0; // Contador de iteraciones
-
-    function randomizeText() {
-      const randomizedText = targetText.split("").map((char, i) => {
-        if (char === "\n") return "<br>"; // Manejo del salto de línea
-        if (iterations > (steps / targetText.length) * i) return char; // Fija la letra si se cumple el tiempo
-        return characters[Math.floor(Math.random() * characters.length)]; // Letra aleatoria
+      if (trig && panel) {
+        if (userDismissedThisSession()) {
+          setPanelOpen(false);
+        } else {
+          setPanelOpen(true);
+        }
+        trig.addEventListener("click", function () {
+          if (panel.hasAttribute("hidden")) {
+            setPanelOpen(true);
+            var inp = document.getElementById("user-message");
+            if (inp) inp.focus({ preventScroll: true });
+          } else {
+            setPanelOpen(false);
+          }
+        });
+      }
+      if (closeBtn && panel && trig) {
+        closeBtn.addEventListener("click", function () {
+          dismissForSession();
+          setPanelOpen(false);
+          trig.focus();
+        });
+      }
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape" && panel && trig && !panel.hasAttribute("hidden")) {
+          dismissForSession();
+          setPanelOpen(false);
+          trig.focus();
+        }
       });
 
-      element.innerHTML = randomizedText.join("");
-
-      if (iterations < steps) {
-        iterations++;
-        setTimeout(randomizeText, interval); // Llama a la función en cada intervalo
-      } else {
-        setTimeout(() => {
-          iterations = 0; // Reinicia las iteraciones
-          randomizeText(); // Vuelve a iniciar el efecto
-        }, 1000); // Pausa antes de repetir
+      function scrollChat() {
+        if (!chatContainer) return;
+        chatContainer.scrollTop = chatContainer.scrollHeight;
       }
-    }
 
-    randomizeText(); // Inicia la animación
-  });
-</script>
-
-
-<script>
-   /* document.addEventListener('DOMContentLoaded', function () {
-        const searchInput = document.querySelector('input[type="search"]');
-        if (searchInput) {
-            searchInput.focus();
-        }
-    });*/
-</script>
-<script src="https://cdn.tiny.cloud/1/2j2ya02wdq6mdhmgizz8hdn82mtkk38ahs0gl3rwdw6dnyws/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-
-<script>
-  tinymce.init({
-    selector: '#editor',
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-  });
-</script>
-
-
-
-<!--OpenAI-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Función para enviar mensaje
-        function sendMessage() {
-            let userMessage = $('#user-message').val();
-            if (userMessage.trim() !== '') {
-                // Limpiar el chat-box antes de agregar nuevos mensajes
-                //$('#chat-box').empty();
-
-                $('#chat-box').append(`<p class="user-message"><strong>Tú:</strong> ${userMessage}</p>`);
-                $('#user-message').val('');
-
-                // Desplazarse automáticamente al final del chat
-                $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/assistant/api/get_response/',
-                    data: {
-                        'message': userMessage,
-                        'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
-                    },
-                    success: function (response) {
-                        if (response.reply) {
-                            $('#chat-box').append(`<p class="bot-message"><strong>Bot:</strong> ${response.reply}</p>`);
-                            $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
-                        } else {
-                            $('#chat-box').append('<p class="bot-message"><strong>Error:</strong> Algo salió mal.</p>');
-                        }
-                    },
-                    error: function () {
-                        $('#chat-box').append('<p class="bot-message"><strong>Error:</strong> No se pudo conectar con el servidor.</p>');
-                    }
-                });
-            }
-        }
-
-        // Enviar mensaje al hacer clic en el botón
-        $('#send-button').click(function () {
-            sendMessage();
-        });
-
-        // Enviar mensaje al presionar Enter
-        $('#user-message').keypress(function (e) {
-            if (e.which === 13) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
+      var chatBox = document.getElementById("chat-box");
+      if (chatBox && chatContainer) {
+        var observer = new MutationObserver(scrollChat);
+        observer.observe(chatBox, { childList: true });
+      }
     });
-</script>
+    </script>
 
+    {# Chat labels para JS escapadas #}
+    {% block rete-chat-i18n-js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    window.RETE_I18N = {
+      lblYou: "{% filter escapejs %}{% trans 'You:' %}{% endfilter %}",
+      lblBot: "{% filter escapejs %}{% trans 'Bot:' %}{% endfilter %}",
+      errGeneric: "{% filter escapejs %}{% trans 'Something went wrong.' %}{% endfilter %}",
+      errNetwork: "{% filter escapejs %}{% trans 'Could not reach the server.' %}{% endfilter %}"
+    };
+    window.RETE_ASSIST_URL = "{% url 'get_bot_response' %}";
 
+    $(document).ready(function () {
+      function sendMessage() {
+          var userMessage = $('#user-message').val();
+          if (userMessage.trim() !== '') {
+
+              $('#chat-box').append('<p class="user-message mb-1"><strong>' + window.RETE_I18N.lblYou + '</strong> ' +
+                $('<span>').text(userMessage).html() +
+                '</p>');
+              $('#user-message').val('');
+
+              $.ajax({
+                  type: 'POST',
+                  url: window.RETE_ASSIST_URL,
+                  data: {
+                      'message': userMessage,
+                      'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()
+                  },
+                  success: function (response) {
+                      if (response.reply) {
+                          $('#chat-box').append('<p class="bot-message mb-1"><strong>' + window.RETE_I18N.lblBot + '</strong> ' +
+                          $('<span>').text(response.reply).html() + '</p>');
+                      } else {
+                          $('#chat-box').append('<p class="bot-message mb-1"><strong>' + window.RETE_I18N.lblBot + '</strong> ' +
+                          $('<span>').text(window.RETE_I18N.errGeneric).html() + '</p>');
+                      }
+                  },
+                  error: function () {
+                      $('#chat-box').append('<p class="bot-message mb-1"><strong>' + window.RETE_I18N.lblBot + '</strong> ' +
+                      $('<span>').text(window.RETE_I18N.errNetwork).html() + '</p>');
+                  }
+              });
+          }
+      }
+
+      $('#send-button').on('click', sendMessage);
+
+      $('#user-message').keypress(function (e) {
+          if (e.which === 13) {
+              e.preventDefault();
+              sendMessage();
+          }
+      });
+    });
+    </script>
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
